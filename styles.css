@@ -69,13 +69,12 @@ button:hover {
 
 .section {
     margin-bottom: 70px;
-}
 
 
 
 
 
-html {
+  html {
     scroll-behavior: smooth;
 }
 
@@ -119,4 +118,5 @@ html {
 
 .dua {
     background: #f8f5f0;
+}  
 }

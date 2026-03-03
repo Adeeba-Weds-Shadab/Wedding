@@ -65,16 +65,15 @@ button:hover {
 
 .content.show {
     opacity: 1;
+
 }
 
-.section {
-    margin-bottom: 70px;
 
 
 
 
 
-  html {
+html {
     scroll-behavior: smooth;
 }
 
@@ -118,5 +117,4 @@ button:hover {
 
 .dua {
     background: #f8f5f0;
-}  
 }

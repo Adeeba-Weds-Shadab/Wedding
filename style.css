@@ -1,7 +1,12 @@
 body {
     margin: 0;
-    font-family: Georgia, serif;
+    font-family: 'Playfair Display', serif;
     background: #f4efe8;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .cover {
@@ -23,22 +28,36 @@ body {
 
 .card {
     background: white;
-    padding: 50px;
+    padding: 60px;
     text-align: center;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    max-width: 380px;
+}
+
+.card h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 18px;
 }
 
 button {
-    padding: 12px 25px;
-    margin-top: 25px;
+    padding: 14px 30px;
+    margin-top: 30px;
     cursor: pointer;
     border: none;
     background: #b08968;
     color: white;
     font-size: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #7f5539;
 }
 
 .content {
@@ -58,6 +77,17 @@ button {
     align-items: center;
     padding: 40px;
     text-align: center;
+}
+
+.section h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 20px;
+    max-width: 600px;
+    line-height: 1.6;
 }
 
 .hero {

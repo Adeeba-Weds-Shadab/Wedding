@@ -5,6 +5,10 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .cover {
     position: fixed;
     height: 100vh;
@@ -31,15 +35,6 @@ body {
     max-width: 350px;
 }
 
-.card h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 18px;
-}
-
 button {
     padding: 12px 25px;
     margin-top: 25px;
@@ -59,28 +54,6 @@ button:hover {
 .content {
     opacity: 0;
     transition: opacity 1s ease;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.content.show {
-    opacity: 1;
-
-}
-
-
-
-
-
-
-html {
-    scroll-behavior: smooth;
-}
-
-.content {
-    opacity: 0;
-    transition: opacity 1s ease;
-    padding: 0;
 }
 
 .content.show {

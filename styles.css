@@ -70,3 +70,53 @@ button:hover {
 .section {
     margin-bottom: 70px;
 }
+
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.content {
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding: 0;
+}
+
+.content.show {
+    opacity: 1;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.section p {
+    font-size: 18px;
+    max-width: 500px;
+}
+
+.hero {
+    background: #f4efe8;
+}
+
+.details {
+    background: #e6d3b3;
+}
+
+.dua {
+    background: #f8f5f0;
+}

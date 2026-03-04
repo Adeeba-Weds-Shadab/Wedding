@@ -189,6 +189,20 @@ body::before{
 
 }
 
+  
+
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
 </style>
 </head>
 
@@ -212,7 +226,7 @@ body::before{
 </div>
 
 <!-- MAIN CONTENT -->
-<div class="section" id="main">
+<div class="section reveal" id="main">
 
   <h2>Nikah Ceremony</h2>
 

@@ -3,83 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed & Fatima - Wedding</title>
+<title>Ahmed & Fatima | Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-
-
-
-
-
 <style>
 
-* {margin:0;padding:0;box-sizing:border-box;}
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-body {
+html{
+  scroll-behavior:smooth;
+}
+
+body{
   font-family:'Poppins',sans-serif;
-  background:#000;
+  background:#0c0c0c;
   color:white;
   overflow-x:hidden;
 }
 
-/* HERO */
-.hero {
-  height:100vh;
+/* HERO SECTION */
+.hero{
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:radial-gradient(circle at center,#111 0%,#000 70%);
-  position:relative;
+  padding:80px 20px;
+  background:linear-gradient(180deg,#111 0%,#000 100%);
 }
 
-/* FIXED OVERLAY */
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle, rgba(212,175,55,0.06), transparent 70%);
-  animation:glow 10s linear infinite;
-  pointer-events:none; /* THIS FIXES CLICK ISSUE */
-}
-
-@keyframes glow {
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
-
-.bismillah {
+.bismillah{
   font-family:'Cinzel',serif;
-  color:#d4af37;
+  font-size:18px;
   letter-spacing:3px;
-  font-size:20px;
-  margin-bottom:20px;
+  color:#d4af37;
+  margin-bottom:25px;
   opacity:0;
-  animation:fadeIn 2s forwards;
+  animation:fadeUp 1.5s forwards;
 }
 
-.names {
+.names{
   font-family:'Cinzel',serif;
   font-size:42px;
   font-weight:700;
-  letter-spacing:3px;
+  letter-spacing:4px;
   margin-bottom:15px;
   opacity:0;
-  animation:fadeIn 2s forwards 1s;
+  animation:fadeUp 1.5s forwards 0.7s;
 }
 
-.subtitle {
-  color:#aaa;
+.subtitle{
   font-size:14px;
-  margin-bottom:40px;
+  color:#aaa;
+  margin-bottom:50px;
   opacity:0;
-  animation:fadeIn 2s forwards 2s;
+  animation:fadeUp 1.5s forwards 1.2s;
 }
 
-.open-btn {
-  padding:14px 40px;
+.enter-btn{
+  padding:14px 42px;
   border-radius:50px;
   border:1px solid #d4af37;
   background:transparent;
@@ -88,61 +77,65 @@ body {
   cursor:pointer;
   transition:0.4s ease;
   opacity:0;
-  animation:fadeIn 2s forwards 3s;
-  position:relative;
-  z-index:2;
+  animation:fadeUp 1.5s forwards 1.8s;
 }
 
-.open-btn:hover{
+.enter-btn:hover{
   background:#d4af37;
   color:black;
-  box-shadow:0 0 25px rgba(212,175,55,0.8);
+  box-shadow:0 0 20px rgba(212,175,55,0.6);
   transform:translateY(-3px);
 }
 
-@keyframes fadeIn{
-  to{opacity:1;}
+/* ANIMATION */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-/* SECTION */
+/* MAIN SECTION */
 .section{
-  padding:80px 20px;
+  padding:100px 20px;
   text-align:center;
   background:#111;
 }
 
 .section h2{
   font-family:'Cinzel',serif;
+  font-size:30px;
   color:#d4af37;
-  margin-bottom:20px;
-  font-size:28px;
+  margin-bottom:30px;
 }
 
-.section p{
+.details p{
+  font-size:16px;
   color:#ccc;
-  font-size:15px;
-  line-height:1.8;
-  max-width:400px;
-  margin:0 auto 10px auto;
+  margin-bottom:8px;
 }
 
 .countdown{
-  margin-top:20px;
-  font-size:16px;
+  margin-top:30px;
+  font-size:18px;
   color:#d4af37;
 }
 
 .button-group{
-  margin-top:30px;
+  margin-top:40px;
 }
 
 .button-group button{
-  padding:12px 26px;
+  padding:12px 28px;
   border-radius:40px;
   border:1px solid #d4af37;
   background:transparent;
   color:#d4af37;
-  margin:8px;
+  margin:10px;
   cursor:pointer;
   transition:0.4s;
 }
@@ -152,32 +145,64 @@ body {
   color:black;
 }
 
-html {
-  scroll-behavior:smooth;
+/* RESPONSIVE */
+@media (max-width:768px){
+
+  .names{
+    font-size:30px;
+    letter-spacing:2px;
+  }
+
+  .section{
+    padding:70px 20px;
+  }
+
+  .section h2{
+    font-size:24px;
+  }
+
+  .details p{
+    font-size:14px;
+  }
+
+  .countdown{
+    font-size:16px;
+  }
+
 }
 
 </style>
-
-
-
-  
-
-  
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
+
   <div class="bismillah">BISMILLAH</div>
+
   <div class="names">Ahmed & Fatima</div>
-  <div class="subtitle">Together with our families</div>
-  <button class="open-btn" onclick="scrollToSection()">Enter Invitation</button>
+
+  <div class="subtitle">
+    Together with our families, we invite you
+  </div>
+
+  <button class="enter-btn" onclick="goToMain()">
+    Enter Invitation
+  </button>
+
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="section" id="main">
+
   <h2>Nikah Ceremony</h2>
-  <p>Date: 15 May 2026</p>
-  <p>Venue: Royal Banquet Hall</p>
+
+  <div class="details">
+    <p><strong>Date:</strong> 15 May 2026</p>
+    <p><strong>Time:</strong> 6:00 PM</p>
+    <p><strong>Venue:</strong> Royal Banquet Hall</p>
+  </div>
 
   <div class="countdown" id="countdown"></div>
 
@@ -185,31 +210,47 @@ html {
     <button onclick="openMap()">View Location</button>
     <button onclick="rsvp()">RSVP on WhatsApp</button>
   </div>
+
 </div>
 
 <script>
-function scrollToSection(){
+
+/* SCROLL */
+function goToMain(){
   document.getElementById("main").scrollIntoView();
 }
 
+/* COUNTDOWN */
 const eventDate = new Date("May 15, 2026 18:00:00").getTime();
+
 setInterval(function(){
   const now = new Date().getTime();
   const distance = eventDate - now;
+
+  if(distance < 0){
+    document.getElementById("countdown").innerHTML = "The event has started";
+    return;
+  }
+
   const days = Math.floor(distance/(1000*60*60*24));
   const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
   const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+
   document.getElementById("countdown").innerHTML =
-  days+" Days | "+hours+" Hours | "+minutes+" Minutes";
+  days + " Days | " + hours + " Hours | " + minutes + " Minutes Remaining";
+
 },1000);
 
+/* MAP */
 function openMap(){
   window.open("https://maps.google.com","_blank");
 }
 
+/* WHATSAPP */
 function rsvp(){
-  window.open("https://wa.me/919999999999","_blank");
+  window.open("https://wa.me/919999999999?text=Assalamualaikum%20I%20will%20attend%20the%20Nikah%20InshaAllah","_blank");
 }
+
 </script>
 
 </body>

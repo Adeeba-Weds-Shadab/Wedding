@@ -17,10 +17,10 @@ html,body{
   background:#0c0c0c;
   font-family:'Cinzel', serif;
   color:white;
-  overflow:hidden;
+  scroll-behavior:smooth;
 }
 
-/* LOADER (UNCHANGED) */
+/* LOADER */
 .loader{
   position:fixed;
   inset:0;
@@ -60,40 +60,42 @@ html,body{
   100%{left:100%;}
 }
 
-/* PAGE */
-.page{
-  height:100vh;
+/* PAGE BASE */
+.section{
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:20px;
-  perspective:2000px;
+  padding:80px 20px;
   position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255,215,0,0.05), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05), transparent 40%),
-    #0c0c0c;
+  text-align:center;
 }
 
-/* LIGHTWEIGHT GOLD DUST */
+/* GOLD DUST (shared) */
 .dust{
   position:absolute;
   width:4px;
   height:4px;
   background:radial-gradient(circle, #fff4c4, #d4af37);
   border-radius:50%;
-  opacity:0.6;
+  opacity:0.5;
   animation:float linear infinite;
 }
-
 @keyframes float{
   from{transform:translateY(0);}
   to{transform:translateY(-120vh);}
 }
 
-/* CARD */
+/* =========================
+   PAGE 1
+========================= */
+
+.section1{
+  perspective:2000px;
+  overflow:hidden;
+}
+
 .invite-box{
   width:100%;
   max-width:650px;
@@ -103,24 +105,21 @@ html,body{
   border-radius:24px;
   text-align:center;
   transform-style:preserve-3d;
-  transition:transform .08s ease, box-shadow .08s ease;
+  transition:transform .08s ease;
   will-change:transform;
   z-index:2;
-
   box-shadow:
     0 60px 120px rgba(0,0,0,0.75),
     0 0 80px rgba(212,175,55,0.08),
     inset 0 0 40px rgba(255,215,0,0.03);
 }
 
-/* GOLD BORDER */
 .invite-box::before{
   content:"";
   position:absolute;
   inset:0;
   padding:2px;
   border-radius:24px;
-
   background:linear-gradient(
     120deg,
     #5c4500,
@@ -131,7 +130,6 @@ html,body{
   );
   background-size:300% 300%;
   animation:goldFlow 6s ease infinite;
-
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -144,13 +142,13 @@ html,body{
   100%{background-position:0% 50%;}
 }
 
-/* TEXT */
 .invite-title{
   font-size:2.6rem;
   letter-spacing:4px;
   color:#f5e6b3;
   margin-bottom:30px;
 }
+
 .invite-subtitle{
   font-family:'Playfair Display', serif;
   font-size:18px;
@@ -159,7 +157,6 @@ html,body{
   margin-bottom:50px;
 }
 
-/* BUTTON */
 .enter-btn{
   padding:14px 45px;
   font-size:15px;
@@ -177,24 +174,62 @@ html,body{
     0 0 25px rgba(255,215,0,0.7);
 }
 
-/* CEREMONIAL LINE */
-.bottom-line{
-  position:absolute;
-  bottom:25px;
+/* =========================
+   PAGE 2 (Couple Reveal)
+========================= */
+
+.section2{
+  background:#0c0c0c;
+}
+
+.couple-names{
+  font-size:3rem;
+  letter-spacing:4px;
+  color:#f5e6b3;
+  margin-bottom:25px;
+}
+
+.amp{
   font-family:'Playfair Display', serif;
-  font-size:13px;
-  letter-spacing:2px;
-  color:rgba(212,175,55,0.6);
-  text-align:center;
+  font-size:2rem;
+  color:#d4af37;
+  margin:10px 0;
+}
+
+.gold-divider{
+  width:120px;
+  height:1px;
+  background:linear-gradient(to right, transparent, #d4af37, transparent);
+  margin:40px auto;
+}
+
+.wedding-date{
+  font-family:'Playfair Display', serif;
+  font-size:20px;
+  letter-spacing:3px;
+  color:#d6d6d6;
+  margin-bottom:25px;
+}
+
+.spiritual-line{
+  font-family:'Playfair Display', serif;
+  font-size:16px;
+  color:rgba(212,175,55,0.7);
+  max-width:600px;
+  line-height:1.8;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-  html,body{overflow:auto;}
+
   .invite-box{padding:60px 28px;}
   .invite-title{font-size:1.9rem;}
   .invite-subtitle{font-size:16px;}
   .enter-btn{width:100%;padding:16px;}
+
+  .couple-names{font-size:2rem;}
+  .wedding-date{font-size:16px;}
+  .spiritual-line{font-size:14px;}
 }
 
 </style>
@@ -206,19 +241,15 @@ html,body{
   <div class="loader-bar"></div>
 </div>
 
-<div class="page" id="page">
+<!-- PAGE 1 -->
+<section class="section section1" id="page1">
 
-  <!-- Gold Dust (Only 18 particles — lightweight) -->
-  <div class="dust" style="left:5%; animation-duration:14s;"></div>
-  <div class="dust" style="left:15%; animation-duration:18s;"></div>
-  <div class="dust" style="left:25%; animation-duration:16s;"></div>
-  <div class="dust" style="left:35%; animation-duration:20s;"></div>
-  <div class="dust" style="left:45%; animation-duration:15s;"></div>
-  <div class="dust" style="left:55%; animation-duration:19s;"></div>
-  <div class="dust" style="left:65%; animation-duration:17s;"></div>
-  <div class="dust" style="left:75%; animation-duration:22s;"></div>
-  <div class="dust" style="left:85%; animation-duration:14s;"></div>
-  <div class="dust" style="left:95%; animation-duration:18s;"></div>
+  <!-- Gold Dust -->
+  <div class="dust" style="left:10%; animation-duration:16s;"></div>
+  <div class="dust" style="left:30%; animation-duration:18s;"></div>
+  <div class="dust" style="left:50%; animation-duration:20s;"></div>
+  <div class="dust" style="left:70%; animation-duration:22s;"></div>
+  <div class="dust" style="left:90%; animation-duration:19s;"></div>
 
   <div class="invite-box" id="card">
     <div class="invite-title">YOU ARE INVITED</div>
@@ -226,14 +257,29 @@ html,body{
       With gratitude and joy, we request the honour of your presence
       at a sacred celebration of love and unity.
     </div>
-    <button class="enter-btn">Enter</button>
+    <button class="enter-btn" onclick="goToPage2()">Enter</button>
   </div>
 
-  <div class="bottom-line">
-    In the Name of Allah, The Most Gracious, The Most Merciful
+</section>
+
+<!-- PAGE 2 -->
+<section class="section section2" id="page2">
+
+  <div class="couple-names">Aisha</div>
+  <div class="amp">&</div>
+  <div class="couple-names">Omar</div>
+
+  <div class="gold-divider"></div>
+
+  <div class="wedding-date">
+    15 December 2026
   </div>
 
-</div>
+  <div class="spiritual-line">
+    “And He placed between you affection and mercy.”
+  </div>
+
+</section>
 
 <script>
 
@@ -247,7 +293,12 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* TILT */
+/* Scroll to Page 2 */
+function goToPage2(){
+  document.getElementById("page2").scrollIntoView({behavior:"smooth"});
+}
+
+/* Tilt */
 const card = document.getElementById("card");
 
 function tilt(e, isTouch=false){
@@ -261,8 +312,8 @@ function tilt(e, isTouch=false){
   const percentX = (x - centerX) / (rect.width/2);
   const percentY = (y - centerY) / (rect.height/2);
 
-  const rotateY = percentX * 20;
-  const rotateX = -percentY * 20;
+  const rotateY = percentX * 18;
+  const rotateX = -percentY * 18;
 
   card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
 }

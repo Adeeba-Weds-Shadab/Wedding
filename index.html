@@ -17,7 +17,7 @@ html,body{
   background:#0c0c0c;
   font-family:'Cinzel', serif;
   color:white;
-  scroll-behavior:smooth;
+  overflow:hidden; /* prevents scroll */
 }
 
 /* LOADER */
@@ -60,19 +60,19 @@ html,body{
   100%{left:100%;}
 }
 
-/* PAGE BASE */
+/* SECTION BASE */
 .section{
-  min-height:100vh;
+  position:fixed;
+  inset:0;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:80px 20px;
-  position:relative;
+  padding:40px 20px;
   text-align:center;
+  transition:opacity 1s ease;
 }
 
-/* GOLD DUST (shared) */
+/* GOLD DUST */
 .dust{
   position:absolute;
   width:4px;
@@ -83,31 +83,30 @@ html,body{
   animation:float linear infinite;
 }
 @keyframes float{
-  from{transform:translateY(0);}
-  to{transform:translateY(-120vh);}
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
-/* =========================
-   PAGE 1
-========================= */
+/* ================= PAGE 1 ================= */
 
 .section1{
-  perspective:2000px;
-  overflow:hidden;
+  z-index:2;
+}
+
+.section1.fade-out{
+  opacity:0;
+  pointer-events:none;
 }
 
 .invite-box{
   width:100%;
   max-width:650px;
-  position:relative;
   background:rgba(20,20,20,0.97);
   padding:70px 50px;
   border-radius:24px;
-  text-align:center;
+  position:relative;
   transform-style:preserve-3d;
   transition:transform .08s ease;
-  will-change:transform;
-  z-index:2;
   box-shadow:
     0 60px 120px rgba(0,0,0,0.75),
     0 0 80px rgba(212,175,55,0.08),
@@ -157,6 +156,7 @@ html,body{
   margin-bottom:50px;
 }
 
+/* GOLD BUTTON */
 .enter-btn{
   padding:14px 45px;
   font-size:15px;
@@ -166,34 +166,56 @@ html,body{
   border-radius:40px;
   cursor:pointer;
   transition:.3s;
+  position:relative;
+  overflow:hidden;
 }
+
+.enter-btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:40px;
+  background:radial-gradient(circle, rgba(255,215,0,0.6), transparent 70%);
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
 .enter-btn:hover{
   transform:translateY(-5px);
   box-shadow:
-    0 25px 50px rgba(212,175,55,0.5),
-    0 0 25px rgba(255,215,0,0.7);
+    0 0 30px rgba(212,175,55,0.8),
+    0 20px 40px rgba(212,175,55,0.6);
 }
 
-/* =========================
-   PAGE 2 (Couple Reveal)
-========================= */
+.enter-btn:hover::after{
+  opacity:1;
+}
+
+/* ================= PAGE 2 ================= */
 
 .section2{
   background:#0c0c0c;
+  opacity:0;
+  pointer-events:none;
+  z-index:3;
+}
+
+.section2.active{
+  opacity:1;
+  pointer-events:auto;
 }
 
 .couple-names{
   font-size:3rem;
   letter-spacing:4px;
   color:#f5e6b3;
-  margin-bottom:25px;
 }
 
 .amp{
   font-family:'Playfair Display', serif;
   font-size:2rem;
   color:#d4af37;
-  margin:10px 0;
+  margin:15px 0;
 }
 
 .gold-divider{
@@ -221,7 +243,6 @@ html,body{
 
 /* MOBILE */
 @media(max-width:768px){
-
   .invite-box{padding:60px 28px;}
   .invite-title{font-size:1.9rem;}
   .invite-subtitle{font-size:16px;}
@@ -244,7 +265,7 @@ html,body{
 <!-- PAGE 1 -->
 <section class="section section1" id="page1">
 
-  <!-- Gold Dust -->
+  <!-- Dust -->
   <div class="dust" style="left:10%; animation-duration:16s;"></div>
   <div class="dust" style="left:30%; animation-duration:18s;"></div>
   <div class="dust" style="left:50%; animation-duration:20s;"></div>
@@ -265,9 +286,9 @@ html,body{
 <!-- PAGE 2 -->
 <section class="section section2" id="page2">
 
-  <div class="couple-names">Aisha</div>
+  <div class="couple-names">Adeeba</div>
   <div class="amp">&</div>
-  <div class="couple-names">Omar</div>
+  <div class="couple-names">Shadab</div>
 
   <div class="gold-divider"></div>
 
@@ -293,12 +314,19 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* Scroll to Page 2 */
+/* PAGE TRANSITION */
 function goToPage2(){
-  document.getElementById("page2").scrollIntoView({behavior:"smooth"});
+  const page1 = document.getElementById("page1");
+  const page2 = document.getElementById("page2");
+
+  page1.classList.add("fade-out");
+
+  setTimeout(()=>{
+    page2.classList.add("active");
+  },600);
 }
 
-/* Tilt */
+/* TILT EFFECT */
 const card = document.getElementById("card");
 
 function tilt(e, isTouch=false){

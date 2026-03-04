@@ -17,7 +17,7 @@ html,body{
   background:#0c0c0c;
   font-family:'Cinzel', serif;
   color:white;
-  overflow:hidden; /* prevents scroll */
+  overflow:hidden;
 }
 
 /* LOADER */
@@ -72,14 +72,14 @@ html,body{
   transition:opacity 1s ease;
 }
 
-/* GOLD DUST */
+/* GOLD DUST (starts immediately) */
 .dust{
   position:absolute;
-  width:4px;
-  height:4px;
+  width:5px;
+  height:5px;
   background:radial-gradient(circle, #fff4c4, #d4af37);
   border-radius:50%;
-  opacity:0.5;
+  opacity:0.6;
   animation:float linear infinite;
 }
 @keyframes float{
@@ -89,10 +89,7 @@ html,body{
 
 /* ================= PAGE 1 ================= */
 
-.section1{
-  z-index:2;
-}
-
+.section1{z-index:2;}
 .section1.fade-out{
   opacity:0;
   pointer-events:none;
@@ -106,27 +103,21 @@ html,body{
   border-radius:24px;
   position:relative;
   transform-style:preserve-3d;
-  transition:transform .08s ease;
+  transition:transform .12s ease;
   box-shadow:
     0 60px 120px rgba(0,0,0,0.75),
-    0 0 80px rgba(212,175,55,0.08),
-    inset 0 0 40px rgba(255,215,0,0.03);
+    0 0 60px rgba(212,175,55,0.06),
+    inset 0 0 30px rgba(255,215,0,0.03);
 }
 
+/* Elegant Border */
 .invite-box::before{
   content:"";
   position:absolute;
   inset:0;
   padding:2px;
   border-radius:24px;
-  background:linear-gradient(
-    120deg,
-    #5c4500,
-    #d4af37,
-    #fff2b0,
-    #d4af37,
-    #7a5a00
-  );
+  background:linear-gradient(120deg,#7a5a00,#d4af37,#fff2b0,#d4af37,#7a5a00);
   background-size:300% 300%;
   animation:goldFlow 6s ease infinite;
   -webkit-mask:
@@ -145,7 +136,7 @@ html,body{
   font-size:2.6rem;
   letter-spacing:4px;
   color:#f5e6b3;
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 .invite-subtitle{
@@ -153,10 +144,18 @@ html,body{
   font-size:18px;
   line-height:1.8;
   color:#d6d6d6;
-  margin-bottom:50px;
+  margin-bottom:30px;
 }
 
-/* GOLD BUTTON */
+.quran-line{
+  font-family:'Playfair Display', serif;
+  font-size:15px;
+  color:rgba(212,175,55,0.75);
+  margin-bottom:45px;
+  line-height:1.6;
+}
+
+/* Button */
 .enter-btn{
   padding:14px 45px;
   font-size:15px;
@@ -167,28 +166,13 @@ html,body{
   cursor:pointer;
   transition:.3s;
   position:relative;
-  overflow:hidden;
-}
-
-.enter-btn::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:40px;
-  background:radial-gradient(circle, rgba(255,215,0,0.6), transparent 70%);
-  opacity:0;
-  transition:opacity .4s ease;
 }
 
 .enter-btn:hover{
-  transform:translateY(-5px);
+  transform:translateY(-4px);
   box-shadow:
-    0 0 30px rgba(212,175,55,0.8),
-    0 20px 40px rgba(212,175,55,0.6);
-}
-
-.enter-btn:hover::after{
-  opacity:1;
+    0 0 18px rgba(212,175,55,0.6),
+    0 15px 30px rgba(212,175,55,0.4);
 }
 
 /* ================= PAGE 2 ================= */
@@ -198,6 +182,10 @@ html,body{
   opacity:0;
   pointer-events:none;
   z-index:3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
 .section2.active{
@@ -205,10 +193,23 @@ html,body{
   pointer-events:auto;
 }
 
-.couple-names{
+/* Animation */
+.name-left,
+.name-right{
   font-size:3rem;
   letter-spacing:4px;
   color:#f5e6b3;
+  opacity:0;
+  transform:translateX(60px);
+  transition:all 1.2s ease;
+}
+
+.name-left{ transform:translateX(-60px); }
+
+.section2.active .name-left,
+.section2.active .name-right{
+  opacity:1;
+  transform:translateX(0);
 }
 
 .amp{
@@ -216,41 +217,44 @@ html,body{
   font-size:2rem;
   color:#d4af37;
   margin:15px 0;
+  opacity:0;
+  transition:opacity 1s ease 0.8s;
 }
+
+.section2.active .amp{ opacity:1; }
 
 .gold-divider{
-  width:120px;
+  width:140px;
   height:1px;
   background:linear-gradient(to right, transparent, #d4af37, transparent);
-  margin:40px auto;
+  margin:40px 0;
 }
 
-.wedding-date{
+.event-details{
   font-family:'Playfair Display', serif;
-  font-size:20px;
-  letter-spacing:3px;
+  font-size:18px;
+  letter-spacing:2px;
+  line-height:2;
   color:#d6d6d6;
-  margin-bottom:25px;
+  max-width:600px;
 }
 
-.spiritual-line{
-  font-family:'Playfair Display', serif;
-  font-size:16px;
-  color:rgba(212,175,55,0.7);
-  max-width:600px;
-  line-height:1.8;
+.event-title{
+  color:#d4af37;
+  font-size:20px;
+  margin-bottom:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
+
   .invite-box{padding:60px 28px;}
   .invite-title{font-size:1.9rem;}
   .invite-subtitle{font-size:16px;}
-  .enter-btn{width:100%;padding:16px;}
+  .enter-btn{width:100%;}
 
-  .couple-names{font-size:2rem;}
-  .wedding-date{font-size:16px;}
-  .spiritual-line{font-size:14px;}
+  .name-left,.name-right{font-size:2rem;}
+  .event-details{font-size:15px;}
 }
 
 </style>
@@ -265,19 +269,25 @@ html,body{
 <!-- PAGE 1 -->
 <section class="section section1" id="page1">
 
-  <!-- Dust -->
-  <div class="dust" style="left:10%; animation-duration:16s;"></div>
-  <div class="dust" style="left:30%; animation-duration:18s;"></div>
-  <div class="dust" style="left:50%; animation-duration:20s;"></div>
-  <div class="dust" style="left:70%; animation-duration:22s;"></div>
-  <div class="dust" style="left:90%; animation-duration:19s;"></div>
+  <!-- Dust (more visible & instant) -->
+  <div class="dust" style="left:15%; animation-duration:12s;"></div>
+  <div class="dust" style="left:35%; animation-duration:14s;"></div>
+  <div class="dust" style="left:55%; animation-duration:16s;"></div>
+  <div class="dust" style="left:75%; animation-duration:13s;"></div>
+  <div class="dust" style="left:90%; animation-duration:15s;"></div>
 
   <div class="invite-box" id="card">
     <div class="invite-title">YOU ARE INVITED</div>
+
     <div class="invite-subtitle">
       With gratitude and joy, we request the honour of your presence
       at a sacred celebration of love and unity.
     </div>
+
+    <div class="quran-line">
+      “And We created you in pairs.”
+    </div>
+
     <button class="enter-btn" onclick="goToPage2()">Enter</button>
   </div>
 
@@ -286,18 +296,18 @@ html,body{
 <!-- PAGE 2 -->
 <section class="section section2" id="page2">
 
-  <div class="couple-names">Adeeba</div>
+  <div class="name-left">Adeeba</div>
   <div class="amp">&</div>
-  <div class="couple-names">Shadab</div>
+  <div class="name-right">Shadab</div>
 
   <div class="gold-divider"></div>
 
-  <div class="wedding-date">
-    15 December 2026
-  </div>
+  <div class="event-title">Nikah Ceremony</div>
 
-  <div class="spiritual-line">
-    “And He placed between you affection and mercy.”
+  <div class="event-details">
+    1st April 2026<br>
+    Day Event<br>
+    Venue: M.A. Palace
   </div>
 
 </section>
@@ -311,10 +321,10 @@ window.addEventListener("load",()=>{
     setTimeout(()=>{
       document.getElementById("loader").style.display="none";
     },1000);
-  },2000);
+  },1800);
 });
 
-/* PAGE TRANSITION */
+/* Page Transition */
 function goToPage2(){
   const page1 = document.getElementById("page1");
   const page2 = document.getElementById("page2");
@@ -326,34 +336,26 @@ function goToPage2(){
   },600);
 }
 
-/* TILT EFFECT */
+/* Reduced Elegant Tilt */
 const card = document.getElementById("card");
 
-function tilt(e, isTouch=false){
+function tilt(e){
   const rect = card.getBoundingClientRect();
-  const x = isTouch ? e.touches[0].clientX : e.clientX;
-  const y = isTouch ? e.touches[0].clientY : e.clientY;
-
   const centerX = rect.left + rect.width/2;
   const centerY = rect.top + rect.height/2;
 
-  const percentX = (x - centerX) / (rect.width/2);
-  const percentY = (y - centerY) / (rect.height/2);
+  const rotateY = ((e.clientX - centerX) / rect.width) * 12;
+  const rotateX = ((e.clientY - centerY) / rect.height) * -12;
 
-  const rotateY = percentX * 18;
-  const rotateX = -percentY * 18;
-
-  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
 }
 
 function resetTilt(){
-  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  card.style.transform = "rotateX(0) rotateY(0) scale(1)";
 }
 
 card.addEventListener("mousemove", tilt);
 card.addEventListener("mouseleave", resetTilt);
-card.addEventListener("touchmove", function(e){ tilt(e,true); }, {passive:true});
-card.addEventListener("touchend", resetTilt);
 
 </script>
 

@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -16,19 +17,19 @@
 
 html,body{
   height:100%;
-  font-family:'Cinzel',serif;
   background:#050505;
+  font-family:'Cinzel',serif;
   overflow-x:hidden;
 }
 
-/* ---------- GLOBAL WRAPPER ---------- */
+/* ---------- PAGE SYSTEM ---------- */
 .page{
-  position:relative;
-  min-height:100vh;
+  position:fixed;
+  inset:0;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:40px 20px;
+  align-items:center;
+  padding:30px 20px;
   transition:opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -38,21 +39,21 @@ html,body{
   transform:scale(1.05);
 }
 
-/* ---------- GOLD BACKGROUND SHIMMER ---------- */
-.gold-bg{
+/* ---------- BACKGROUND SHIMMER ---------- */
+.bg-shimmer{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,215,0,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08), transparent 40%),
-    linear-gradient(120deg, rgba(255,215,0,0.05), transparent 40%, rgba(255,215,0,0.05));
-  animation: shimmer 12s linear infinite;
+    radial-gradient(circle at 30% 30%, rgba(255,215,0,0.12), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255,215,0,0.12), transparent 40%);
+  animation: shimmerMove 10s linear infinite;
   z-index:-2;
 }
 
-@keyframes shimmer{
-  0%{background-position:0% 50%;}
-  100%{background-position:200% 50%;}
+@keyframes shimmerMove{
+  0%{transform:translateX(-5%);}
+  50%{transform:translateX(5%);}
+  100%{transform:translateX(-5%);}
 }
 
 /* ---------- GEOMETRIC OVERLAY ---------- */
@@ -64,64 +65,66 @@ html,body{
   z-index:-1;
 }
 
-/* ---------- INVITATION BOX ---------- */
-.invite-box{
-  position:relative;
-  background:rgba(10,10,10,0.95);
-  backdrop-filter:blur(15px);
-  padding:60px 40px;
-  max-width:600px;
+/* ---------- 3D CONTAINER ---------- */
+.perspective-wrapper{
+  perspective:1200px;
   width:100%;
-  text-align:center;
-  border-radius:18px;
-  transition:transform 0.2s ease;
-  overflow:hidden;
+  max-width:650px;
 }
 
-/* EDGE GLOW FRAME */
+/* ---------- INVITE BOX ---------- */
+.invite-box{
+  position:relative;
+  width:100%;
+  padding:60px 40px;
+  background:rgba(10,10,10,0.96);
+  border-radius:20px;
+  transform-style:preserve-3d;
+  transition:transform 0.2s ease;
+  box-shadow:0 0 40px rgba(255,215,0,0.08);
+}
+
+/* ---------- TRUE EDGE ANIMATED BORDER ---------- */
 .invite-box::before{
   content:"";
   position:absolute;
-  inset:-2px;
+  inset:0;
   border-radius:20px;
   padding:2px;
-  background:linear-gradient(
-    90deg,
-    #ff0080,
-    #ff8c00,
-    #ffd700,
-    #00ffff,
-    #ff0080
-  );
+  background:linear-gradient(90deg,#ff00cc,#ff8800,#ffd700,#00ffff,#ff00cc);
   background-size:300% 300%;
-  animation:borderShift 6s linear infinite;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
+  animation:borderFlow 6s linear infinite;
+  z-index:-1;
 }
 
-@keyframes borderShift{
+@keyframes borderFlow{
   0%{background-position:0% 50%;}
   100%{background-position:300% 50%;}
 }
 
-/* TEXT */
+/* Real inner background to keep border-only look */
+.invite-box::after{
+  content:"";
+  position:absolute;
+  inset:2px;
+  border-radius:18px;
+  background:rgba(10,10,10,0.96);
+  z-index:-1;
+}
+
+/* ---------- TEXT ---------- */
 .invite-box h1{
-  font-size:2.5rem;
+  font-size:2.4rem;
   color:#ffd700;
   margin-bottom:20px;
-  letter-spacing:2px;
 }
 
 .invite-box p{
   color:#ccc;
-  font-size:1rem;
   margin-bottom:30px;
 }
 
-/* BUTTON */
+/* ---------- BUTTON ---------- */
 .enter-btn{
   padding:14px 40px;
   background:linear-gradient(45deg,#d4af37,#ffd700);
@@ -133,102 +136,99 @@ html,body{
 }
 
 .enter-btn:hover{
-  transform:scale(1.08);
+  transform:scale(1.1);
   box-shadow:0 0 20px gold;
 }
 
-/* MOBILE FIX */
-@media(max-width:768px){
-  .invite-box{
-    padding:40px 25px;
-    border-radius:16px;
-  }
-}
-
-/* NEXT PAGE CONTENT */
+/* ---------- NEXT PAGE ---------- */
 .next-content{
+  max-width:650px;
   text-align:center;
-  max-width:700px;
 }
 
 .next-content h2{
-  font-size:2rem;
   color:#ffd700;
   margin-bottom:20px;
 }
 
-.next-content p{
-  color:#ddd;
+/* ---------- MOBILE FIX ---------- */
+@media(max-width:768px){
+  .invite-box{
+    padding:40px 25px;
+  }
 }
+
 </style>
 </head>
-
 <body>
 
 <!-- PAGE 1 -->
 <div class="page" id="page1">
-  <div class="gold-bg"></div>
+  <div class="bg-shimmer"></div>
   <div class="pattern"></div>
 
-  <div class="invite-box" id="tiltBox">
-    <h1>You Are Invited</h1>
-    <p>To witness a moment of elegance and grace.</p>
-    <button class="enter-btn" onclick="enterInvitation()">Enter Invitation</button>
+  <div class="perspective-wrapper">
+    <div class="invite-box" id="card">
+      <h1>You Are Invited</h1>
+      <p>To witness a moment of elegance and grace.</p>
+      <button class="enter-btn" onclick="enterInvitation()">Enter Invitation</button>
+    </div>
   </div>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page hidden" id="page2">
-  <div class="gold-bg"></div>
+  <div class="bg-shimmer"></div>
   <div class="pattern"></div>
 
   <div class="next-content">
     <h2>The Celebration Awaits</h2>
-    <p>This is where full invitation content will go with same royal animated environment.</p>
+    <p>This page now keeps full animated background and environment.</p>
   </div>
 </div>
 
 <script>
 
-/* -------- PAGE TRANSITION -------- */
+/* ---------- PAGE TRANSITION ---------- */
 function enterInvitation(){
   document.getElementById("page1").classList.add("hidden");
   document.getElementById("page2").classList.remove("hidden");
 }
 
-/* -------- 3D TILT (MOBILE SAFE) -------- */
-const box = document.getElementById("tiltBox");
+/* ---------- TRUE 3D TILT ---------- */
+const card = document.getElementById("card");
+const wrapper = document.querySelector(".perspective-wrapper");
 
-box.addEventListener("mousemove",(e)=>{
-  const rect = box.getBoundingClientRect();
+wrapper.addEventListener("mousemove",(e)=>{
+  const rect = wrapper.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
   const centerX = rect.width/2;
   const centerY = rect.height/2;
   const rotateX = -(y - centerY)/20;
   const rotateY = (x - centerX)/20;
-  box.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 });
 
-box.addEventListener("mouseleave",()=>{
-  box.style.transform = "rotateX(0) rotateY(0)";
+wrapper.addEventListener("mouseleave",()=>{
+  card.style.transform = "rotateX(0) rotateY(0)";
 });
 
 /* TOUCH SUPPORT */
-box.addEventListener("touchmove",(e)=>{
+wrapper.addEventListener("touchmove",(e)=>{
   const touch = e.touches[0];
-  const rect = box.getBoundingClientRect();
+  const rect = wrapper.getBoundingClientRect();
   const x = touch.clientX - rect.left;
   const y = touch.clientY - rect.top;
   const centerX = rect.width/2;
   const centerY = rect.height/2;
   const rotateX = -(y - centerY)/25;
   const rotateY = (x - centerX)/25;
-  box.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 });
 
-box.addEventListener("touchend",()=>{
-  box.style.transform = "rotateX(0) rotateY(0)";
+wrapper.addEventListener("touchend",()=>{
+  card.style.transform = "rotateX(0) rotateY(0)";
 });
 
 </script>

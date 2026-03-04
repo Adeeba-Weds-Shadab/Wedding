@@ -214,18 +214,38 @@ canvas{
   perspective:1200px;
   width:100%;
   max-width:650px;
-}
+
+
 .invite-box{
-  padding:60px 40px;
-  background:rgba(15,15,15,0.9);
-  border-radius:20px;
-  text-align:center;
-  transition:transform .3s ease;
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.6),
-    0 0 80px rgba(212,175,55,0.2),
-    inset 0 0 40px rgba(255,215,0,0.05);
-}
+<div class="invite-box invite-content" id="card">
+
+  <h1>You Are Invited</h1>
+
+  <div class="gold-divider"></div>
+
+  <p style="margin-top:30px;color:#ccc;">
+    With joy and gratitude, we invite you to witness a sacred union.
+  </p>
+
+  <div class="quran-quote">
+    “And among His Signs is that He created for you spouses from among yourselves 
+    that you may find tranquility in them, and He placed between you affection and mercy.”
+    <div class="quran-source">— Surah Ar-Rum (30:21)</div>
+  </div>
+
+  <div style="margin-top:60px;">
+    <button class="enter-btn" onclick="enterInvitation()">
+      Enter Invitation
+    </button>
+  </div>
+
+</div>
+  }
+
+  
+  
+  
+  
 .invite-box h1{font-size:2.5rem;color:#ffd700;margin-bottom:20px;}
 .invite-box p{color:#ccc;margin-bottom:30px;}
 

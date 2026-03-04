@@ -20,12 +20,26 @@ html{
   scroll-behavior:smooth;
 }
 
+
 body{
   font-family:'Poppins',sans-serif;
   background:#0c0c0c;
   color:white;
   overflow-x:hidden;
+  position:relative;
 }
+
+/* Subtle Islamic Pattern Overlay */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:80px 80px;
+  pointer-events:none;
+  z-index:0;
+}
+  
 
 /* HERO SECTION */
 .hero{
@@ -37,6 +51,8 @@ body{
   text-align:center;
   padding:80px 20px;
   background:linear-gradient(180deg,#111 0%,#000 100%);
+  position:relative;
+  z-index:1;
 }
 
 .bismillah{
@@ -104,6 +120,8 @@ body{
   padding:100px 20px;
   text-align:center;
   background:#111;
+  position:relative;
+  z-index:1;
 }
 
 .section h2{

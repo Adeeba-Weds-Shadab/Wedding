@@ -24,7 +24,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= BACKGROUND LAYERS ================= */
+/* ================= BACKGROUND BASE ================= */
 
 .bg-base{
   position:fixed;
@@ -32,6 +32,8 @@ body{
   background:radial-gradient(circle at 30% 20%, #1a1a1a, #000 70%);
   z-index:-5;
 }
+
+/* ISLAMIC PATTERN */
 
 .bg-pattern{
   position:fixed;
@@ -41,17 +43,25 @@ body{
   z-index:-4;
 }
 
+/* GOLDEN SHIMMER (VISIBLE + CONTROLLED) */
+
 .bg-shimmer{
   position:fixed;
-  inset:-50%;
-  background:linear-gradient(120deg,transparent,rgba(212,175,55,0.05),transparent);
-  animation:shimmer 18s linear infinite;
+  inset:0;
+  background:linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(212,175,55,0.08) 50%,
+    transparent 60%
+  );
+  background-size:200% 200%;
+  animation:shimmerMove 8s linear infinite;
   z-index:-3;
 }
 
-@keyframes shimmer{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
+@keyframes shimmerMove{
+  from{background-position:-200% 0;}
+  to{background-position:200% 0;}
 }
 
 /* FLOATING ORBS */
@@ -94,7 +104,7 @@ body{
 
 .opening-screen.fade-out{
   opacity:0;
-  transform:scale(1.1);
+  transform:scale(1.05);
   pointer-events:none;
 }
 
@@ -106,34 +116,36 @@ body{
   max-width:520px;
   padding:60px 40px;
   border-radius:30px;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.75);
   backdrop-filter:blur(20px);
   text-align:center;
   box-shadow:0 0 60px rgba(212,175,55,0.15);
   transition:transform 0.2s ease;
 }
 
-/* GOLD ANIMATED BORDER */
+/* COLORFUL ANIMATED GLOW BORDER */
 
 .opening-card::before{
   content:"";
   position:absolute;
-  inset:0;
-  border-radius:30px;
-  padding:2px;
-  background:linear-gradient(45deg,#d4af37,#f9e27d,#d4af37);
-  background-size:300% 300%;
-  animation:borderMove 4s linear infinite;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-          mask-composite:exclude;
+  inset:-3px;
+  border-radius:35px;
+  background:linear-gradient(
+    45deg,
+    #d4af37,
+    #f9e27d,
+    #7b5cff,
+    #d4af37
+  );
+  background-size:400% 400%;
+  animation:borderAnimation 6s linear infinite;
+  z-index:-1;
+  filter:blur(8px);
 }
 
-@keyframes borderMove{
+@keyframes borderAnimation{
   0%{background-position:0% 50%;}
-  100%{background-position:100% 50%;}
+  100%{background-position:400% 50%;}
 }
 
 /* ================= TEXT ================= */
@@ -165,12 +177,12 @@ body{
   font-weight:600;
   cursor:pointer;
   transition:0.3s ease;
-  box-shadow:0 0 20px rgba(212,175,55,0.4);
+  box-shadow:0 0 25px rgba(212,175,55,0.5);
 }
 
 .enter-btn:hover{
   transform:scale(1.08);
-  box-shadow:0 0 40px rgba(212,175,55,0.8);
+  box-shadow:0 0 50px rgba(212,175,55,0.9);
 }
 
 .enter-btn:active{
@@ -211,8 +223,6 @@ h2{
 
 p{opacity:0.8;}
 
-/* ================= MOBILE ================= */
-
 @media(max-width:768px){
 
   .opening-card{
@@ -242,7 +252,6 @@ p{opacity:0.8;}
   <div class="orb orb2"></div>
 </div>
 
-<!-- OPENING -->
 <div class="opening-screen" id="opening">
   <div class="opening-card" id="tiltCard">
     <h3>Bismillah-ir-Rahman-ir-Raheem</h3>
@@ -251,7 +260,6 @@ p{opacity:0.8;}
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main-content" id="mainContent">
   <section>
     <h2>The Wedding Of</h2>
@@ -262,45 +270,36 @@ p{opacity:0.8;}
 
 <script>
 
-/* ================= BUTTON FIX (GUARANTEED WORKING) ================= */
+const enterBtn=document.getElementById("enterBtn");
+const opening=document.getElementById("opening");
+const mainContent=document.getElementById("mainContent");
 
-const enterBtn = document.getElementById("enterBtn");
-const opening = document.getElementById("opening");
-const mainContent = document.getElementById("mainContent");
-
-enterBtn.addEventListener("click", function(){
-
+enterBtn.addEventListener("click",function(){
   opening.classList.add("fade-out");
-
   setTimeout(()=>{
     opening.style.display="none";
     mainContent.classList.add("show");
     window.scrollTo(0,0);
   },1000);
-
 });
 
-/* ================= 3D TILT DESKTOP ================= */
+/* 3D TILT */
 
-if(window.innerWidth > 768){
-
-  const card = document.getElementById("tiltCard");
+if(window.innerWidth>768){
+  const card=document.getElementById("tiltCard");
 
   card.addEventListener("mousemove",(e)=>{
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateX = -(y - rect.height/2) / 20;
-    const rotateY = (x - rect.width/2) / 20;
-
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const rotateX=-(y-rect.height/2)/20;
+    const rotateY=(x-rect.width/2)/20;
+    card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
 
   card.addEventListener("mouseleave",()=>{
     card.style.transform="rotateX(0deg) rotateY(0deg)";
   });
-
 }
 
 </script>

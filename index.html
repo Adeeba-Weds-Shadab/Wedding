@@ -17,7 +17,7 @@
 
 html,body{
   height:100%;
-  background:#050505;
+  background:linear-gradient(to bottom,#0a0a0a,#111);
   font-family:'Cinzel',serif;
   overflow-x:hidden;
 }
@@ -39,7 +39,7 @@ html,body{
   transform:scale(1.05);
 }
 
-/* Page 2 becomes scrollable */
+/* Page 2 scrollable */
 #page2{
   position:absolute;
   overflow-y:auto;
@@ -52,39 +52,38 @@ html,body{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 30% 30%, rgba(255,215,0,0.12), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(255,215,0,0.12), transparent 40%);
-  animation: shimmerMove 12s linear infinite;
+    radial-gradient(circle at 20% 20%, rgba(255,215,0,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,215,0,0.12), transparent 40%);
+  animation: shimmerMove 15s linear infinite;
   z-index:-2;
 }
 
 @keyframes shimmerMove{
-  0%{transform:translateX(-5%);}
-  50%{transform:translateX(5%);}
-  100%{transform:translateX(-5%);}
+  0%{transform:translateX(-3%);}
+  50%{transform:translateX(3%);}
+  100%{transform:translateX(-3%);}
 }
 
 .pattern{
   position:absolute;
   inset:0;
   background-image:url("https://www.transparenttextures.com/patterns/arabesque.png");
-  opacity:0.05;
+  opacity:0.04;
   z-index:-1;
 }
 
-/* ---------- 3D PERSPECTIVE ---------- */
+/* ---------- 3D CARD ---------- */
 .perspective-wrapper{
   perspective:1200px;
   width:100%;
   max-width:650px;
 }
 
-/* ---------- CARD ---------- */
 .invite-box{
   position:relative;
   width:100%;
   padding:60px 40px;
-  background:rgba(10,10,10,0.96);
+  background:rgba(15,15,15,0.95);
   border-radius:20px;
   transform-style:preserve-3d;
   transition:transform 0.2s ease;
@@ -114,7 +113,7 @@ html,body{
   position:absolute;
   inset:2px;
   border-radius:18px;
-  background:rgba(10,10,10,0.96);
+  background:rgba(15,15,15,0.95);
   z-index:-1;
 }
 
@@ -148,7 +147,7 @@ html,body{
 /* ---------- PAGE 2 CONTENT ---------- */
 .invitation-content{
   text-align:center;
-  max-width:800px;
+  max-width:900px;
   margin:auto;
   opacity:0;
   transform:translateY(30px);
@@ -160,14 +159,27 @@ html,body{
   transform:translateY(0);
 }
 
-/* Bride Groom Reveal */
+/* BISMILLAH */
+.bismillah{
+  font-size:1.5rem;
+  color:#d4af37;
+  margin-bottom:40px;
+  letter-spacing:3px;
+  animation:fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* NAMES */
 .names{
-  margin-top:30px;
   margin-bottom:40px;
 }
 
 .names h2{
-  font-size:2.5rem;
+  font-size:2.7rem;
   color:#ffd700;
   letter-spacing:3px;
   margin-bottom:10px;
@@ -176,7 +188,7 @@ html,body{
 
 @keyframes nameGlow{
   0%{text-shadow:0 0 10px rgba(255,215,0,0.4);}
-  100%{text-shadow:0 0 25px rgba(255,215,0,0.9);}
+  100%{text-shadow:0 0 30px rgba(255,215,0,0.9);}
 }
 
 .ampersand{
@@ -193,8 +205,9 @@ html,body{
 }
 
 .event-card{
-  margin:30px 0;
+  margin:30px auto;
   padding:30px;
+  max-width:600px;
   border:1px solid rgba(255,215,0,0.3);
   border-radius:15px;
   background:rgba(255,215,0,0.05);
@@ -206,53 +219,70 @@ html,body{
 }
 
 .divider{
-  width:100px;
+  width:120px;
   height:2px;
   background:linear-gradient(to right, transparent, gold, transparent);
-  margin:40px auto;
+  margin:50px auto;
 }
 
-/* ---------- TIMELINE ---------- */
+/* ---------- CENTERED TIMELINE ---------- */
 .timeline{
   position:relative;
   max-width:700px;
-  margin:60px auto;
-  padding-left:30px;
-  text-align:left;
+  margin:80px auto;
+  padding-top:20px;
 }
 
 .timeline::before{
   content:"";
   position:absolute;
-  left:15px;
+  left:50%;
+  transform:translateX(-50%);
   top:0;
   bottom:0;
-  width:2px;
-  background:linear-gradient(to bottom, gold, transparent);
+  width:3px;
+  background:linear-gradient(to bottom,gold,transparent);
+  box-shadow:0 0 15px gold;
 }
 
 .timeline-item{
   position:relative;
-  margin-bottom:50px;
+  width:50%;
+  padding:20px 40px;
   opacity:0;
-  transform:translateY(40px);
   transition:all 1s ease;
 }
 
 .timeline-item.visible{
   opacity:1;
-  transform:translateY(0);
+}
+
+.timeline-item:nth-child(odd){
+  left:0;
+  text-align:right;
+}
+
+.timeline-item:nth-child(even){
+  left:50%;
+  text-align:left;
 }
 
 .timeline-dot{
   position:absolute;
-  left:-4px;
-  top:5px;
-  width:15px;
-  height:15px;
+  top:30px;
+  width:18px;
+  height:18px;
   background:gold;
   border-radius:50%;
   box-shadow:0 0 15px gold;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+  right:-9px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+  left:-9px;
 }
 
 .timeline-item h3{
@@ -266,9 +296,26 @@ html,body{
 
 /* MOBILE */
 @media(max-width:768px){
-  .invite-box{
-    padding:40px 25px;
-  }
+
+.timeline::before{
+  left:10px;
+}
+
+.timeline-item{
+  width:100%;
+  padding-left:40px;
+  text-align:left !important;
+  left:0 !important;
+}
+
+.timeline-dot{
+  left:1px !important;
+}
+
+.invite-box{
+  padding:40px 25px;
+}
+
 }
 
 </style>
@@ -296,15 +343,15 @@ html,body{
 
   <div class="invitation-content" id="content2">
 
+    <div class="bismillah">Bismillah-ir-Rahman-ir-Raheem</div>
+
     <div class="names">
       <h2>Adeeba</h2>
       <div class="ampersand">&</div>
       <h2>Shadab</h2>
     </div>
 
-    <div class="event-type">
-      Barat Reception Ceremony
-    </div>
+    <div class="event-type">Barat Reception Ceremony</div>
 
     <div class="divider"></div>
 
@@ -318,7 +365,6 @@ html,body{
 
     <div class="divider"></div>
 
-    <!-- TIMELINE SECTION -->
     <div class="timeline">
 
       <div class="timeline-item">
@@ -346,7 +392,6 @@ html,body{
 
 <script>
 
-/* PAGE TRANSITION */
 function enterInvitation(){
   document.getElementById("page1").classList.add("hidden");
   document.getElementById("page2").classList.remove("hidden");
@@ -356,42 +401,6 @@ function enterInvitation(){
   },400);
 }
 
-/* 3D TILT */
-const card = document.getElementById("card");
-const wrapper = document.querySelector(".perspective-wrapper");
-
-wrapper.addEventListener("mousemove",(e)=>{
-  const rect = wrapper.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const centerX = rect.width/2;
-  const centerY = rect.height/2;
-  const rotateX = -(y - centerY)/20;
-  const rotateY = (x - centerX)/20;
-  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-
-wrapper.addEventListener("mouseleave",()=>{
-  card.style.transform = "rotateX(0) rotateY(0)";
-});
-
-wrapper.addEventListener("touchmove",(e)=>{
-  const touch = e.touches[0];
-  const rect = wrapper.getBoundingClientRect();
-  const x = touch.clientX - rect.left;
-  const y = touch.clientY - rect.top;
-  const centerX = rect.width/2;
-  const centerY = rect.height/2;
-  const rotateX = -(y - centerY)/25;
-  const rotateY = (x - centerX)/25;
-  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-
-wrapper.addEventListener("touchend",()=>{
-  card.style.transform = "rotateX(0) rotateY(0)";
-});
-
-/* Scroll Reveal Animation */
 const items = document.querySelectorAll(".timeline-item");
 
 window.addEventListener("scroll",()=>{

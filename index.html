@@ -24,108 +24,109 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= BACKGROUND BASE ================= */
+/* ================= BACKGROUND ================= */
 
 body::before {
   content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: radial-gradient(circle at 30% 20%, #1a1a1a, #000 70%);
   z-index: -4;
 }
 
-/* ================= GOLD SHIMMER ================= */
-
 body::after {
   content: "";
   position: fixed;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg,
+  inset: -50%;
+  background: linear-gradient(
+    120deg,
     transparent,
-    rgba(212,175,55,0.06),
-    transparent);
-  animation: shimmer 15s infinite linear;
+    rgba(212,175,55,0.05),
+    transparent
+  );
+  animation: shimmer 18s linear infinite;
   z-index: -3;
 }
 
 @keyframes shimmer {
-  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
-  100% { transform: translateX(0%) translateY(0%) rotate(360deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* ================= ISLAMIC PATTERN OVERLAY ================= */
+/* ================= ISLAMIC PATTERN ================= */
 
 .pattern-overlay {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
   opacity: 0.05;
   z-index: -2;
 }
 
-/* ================= FLOATING ORBS ================= */
+/* ================= FLOATING LIGHT ================= */
 
 .luxury-bg {
   position: fixed;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: -1;
   overflow: hidden;
 }
 
 .light-orb {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
-  filter: blur(150px);
+  filter: blur(120px);
   opacity: 0.25;
   animation: float 20s infinite alternate ease-in-out;
 }
 
-.orb1 { background: #d4af37; top: -100px; left: -100px; }
-.orb2 { background: #7b5cff; bottom: -150px; right: -100px; animation-delay: 6s; }
+.orb1 { background: #d4af37; top: -80px; left: -80px; }
+.orb2 { background: #7b5cff; bottom: -100px; right: -80px; animation-delay: 6s; }
 
 @keyframes float {
-  0% { transform: translate(0,0); }
-  100% { transform: translate(80px,60px); }
+  from { transform: translate(0,0); }
+  to { transform: translate(60px,40px); }
 }
 
 /* ================= OPENING SCREEN ================= */
 
 .opening-screen {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s ease, transform 1s ease;
+  padding: 40px 20px; /* breathing space mobile */
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .opening-screen.fade-out {
   opacity: 0;
-  transform: scale(1.1);
+  transform: scale(1.05);
   pointer-events: none;
 }
 
-/* ================= GOLD FRAME ================= */
+/* ================= CARD ================= */
 
 .opening-card {
   position: relative;
-  padding: 70px 50px;
-  border-radius: 30px;
+  width: 100%;
+  max-width: 500px;
+  padding: 50px 40px;
+  border-radius: 25px;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(15px);
   text-align: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(20px);
 }
+
+/* GOLD BORDER FRAME */
 
 .opening-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 30px;
+  border-radius: 25px;
   padding: 2px;
   background: linear-gradient(45deg, #d4af37, #f9e27d, #d4af37);
   -webkit-mask:
@@ -133,54 +134,54 @@ body::after {
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  animation: borderGlow 4s linear infinite;
 }
 
-@keyframes borderGlow {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
-}
+/* ================= TEXT ================= */
 
 .opening-card h3 {
   font-family: 'Cinzel', serif;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  font-size: 14px;
   opacity: 0.8;
 }
 
 .opening-card h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 44px;
-  margin-bottom: 40px;
+  font-size: 34px;
+  margin-bottom: 30px;
 }
 
 /* ================= BUTTON ================= */
 
 .enter-btn {
-  padding: 18px 60px;
-  font-size: 16px;
+  padding: 15px 40px;
+  font-size: 14px;
   letter-spacing: 2px;
   background: linear-gradient(135deg, #d4af37, #f9e27d);
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
   cursor: pointer;
   color: black;
   font-weight: 600;
-  transition: 0.4s ease;
+  transition: 0.3s ease;
+}
+
+.enter-btn:active {
+  transform: scale(0.95);
 }
 
 .enter-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 40px rgba(212,175,55,0.7);
+  box-shadow: 0 0 30px rgba(212,175,55,0.6);
 }
 
 /* ================= MAIN CONTENT ================= */
 
 .main-content {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  padding: 100px 20px;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  padding: 80px 20px;
 }
 
 .main-content.show {
@@ -189,52 +190,37 @@ body::after {
 }
 
 section {
-  max-width: 900px;
-  margin: 140px auto;
+  max-width: 800px;
+  margin: 100px auto;
   text-align: center;
-}
-
-h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 36px;
-  margin-bottom: 20px;
 }
 
 .big-names {
   font-family: 'Playfair Display', serif;
-  font-size: 60px;
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-/* ================= 3D TILT ================= */
-
-.tilt {
-  transition: transform 0.1s ease;
-  transform-style: preserve-3d;
-}
-
-/* ================= COUNTDOWN ================= */
-
-#countdown {
-  font-size: 28px;
-  letter-spacing: 3px;
-  margin-top: 20px;
+p {
+  opacity: 0.8;
 }
 
 /* ================= MOBILE FIX ================= */
 
-@media (max-width: 768px) {
-
-  .opening-card {
-    padding: 40px 20px;
-  }
+@media (min-width: 768px) {
 
   .opening-card h1 {
-    font-size: 30px;
+    font-size: 44px;
   }
 
   .big-names {
-    font-size: 38px;
+    font-size: 60px;
   }
 
 }
@@ -250,16 +236,16 @@ h2 {
   <div class="light-orb orb2"></div>
 </div>
 
-<!-- OPENING SCREEN -->
+<!-- OPENING -->
 <div class="opening-screen" id="opening">
-  <div class="opening-card tilt">
+  <div class="opening-card">
     <h3>Bismillah-ir-Rahman-ir-Raheem</h3>
     <h1>You Are Invited</h1>
-    <button class="enter-btn" onclick="enterInvitation()">Enter Invitation</button>
+    <button class="enter-btn" id="enterBtn">Enter Invitation</button>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="main-content" id="mainContent">
 
   <section>
@@ -268,68 +254,31 @@ h2 {
     <p>With the blessings of Allah and our beloved parents</p>
   </section>
 
-  <section>
-    <h2>Countdown to the Big Day</h2>
-    <div id="countdown"></div>
-  </section>
-
 </div>
-
-<!-- AUDIO -->
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f83c60c28.mp3?filename=elegant-background-110624.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 
-/* ENTER TRANSITION FIX (NO EMPTY SCREEN BUG) */
-function enterInvitation() {
-  document.getElementById("opening").classList.add("fade-out");
+/* FIXED BUTTON WORKING EVERYWHERE */
 
-  setTimeout(() => {
-    document.getElementById("mainContent").classList.add("show");
-    document.getElementById("bgMusic").play().catch(()=>{});
-  }, 600);
-}
+document.getElementById("enterBtn").addEventListener("click", function() {
 
-/* 3D TILT EFFECT DESKTOP ONLY */
-if (window.innerWidth > 768) {
-  const tilt = document.querySelector('.tilt');
+  const opening = document.getElementById("opening");
+  const main = document.getElementById("mainContent");
 
-  tilt.addEventListener('mousemove', (e) => {
-    const rect = tilt.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  opening.classList.add("fade-out");
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+  setTimeout(function(){
+    opening.style.display = "none";
+    main.classList.add("show");
+    window.scrollTo(0,0);
+  }, 700);
 
-    const rotateX = -(y - centerY) / 20;
-    const rotateY = (x - centerX) / 20;
+});
 
-    tilt.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-
-  tilt.addEventListener('mouseleave', () => {
-    tilt.style.transform = "rotateX(0) rotateY(0)";
-  });
-}
-
-/* COUNTDOWN */
-const weddingDate = new Date("April 12, 2026 18:00:00").getTime();
-
-setInterval(() => {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-  document.getElementById("countdown").innerHTML =
-    days + " Days " + hours + " Hours " + minutes + " Minutes ";
-
-}, 1000);
+/* FORCE ANIMATION ON MOBILE LOAD */
+window.addEventListener("load", function(){
+  document.body.style.opacity = "1";
+});
 
 </script>
 

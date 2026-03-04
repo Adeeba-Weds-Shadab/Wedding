@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Royal Wedding Invitation</title>
+<title>Royal Palace Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -11,216 +11,220 @@
 
 /* ================= RESET ================= */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  background: #000;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#000;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* ================= BACKGROUND LAYERS ================= */
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 30% 20%, #1a1a1a, #000 70%);
-  z-index: -4;
+.bg-base{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 30% 20%, #1a1a1a, #000 70%);
+  z-index:-5;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(212,175,55,0.05),
-    transparent
-  );
-  animation: shimmer 18s linear infinite;
-  z-index: -3;
+.bg-pattern{
+  position:fixed;
+  inset:0;
+  background-image:url("https://www.transparenttextures.com/patterns/arabesque.png");
+  opacity:0.05;
+  z-index:-4;
 }
 
-@keyframes shimmer {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bg-shimmer{
+  position:fixed;
+  inset:-50%;
+  background:linear-gradient(120deg,transparent,rgba(212,175,55,0.05),transparent);
+  animation:shimmer 18s linear infinite;
+  z-index:-3;
 }
 
-/* ================= ISLAMIC PATTERN ================= */
-
-.pattern-overlay {
-  position: fixed;
-  inset: 0;
-  background-image: url("https://www.transparenttextures.com/patterns/arabesque.png");
-  opacity: 0.05;
-  z-index: -2;
+@keyframes shimmer{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
-/* ================= FLOATING LIGHT ================= */
+/* FLOATING ORBS */
 
-.luxury-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
+.bg-orbs{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  overflow:hidden;
 }
 
-.light-orb {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.25;
-  animation: float 20s infinite alternate ease-in-out;
+.orb{
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:0.25;
+  animation:float 20s infinite alternate ease-in-out;
 }
 
-.orb1 { background: #d4af37; top: -80px; left: -80px; }
-.orb2 { background: #7b5cff; bottom: -100px; right: -80px; animation-delay: 6s; }
+.orb1{background:#d4af37; top:-100px; left:-100px;}
+.orb2{background:#7b5cff; bottom:-120px; right:-100px; animation-delay:6s;}
 
-@keyframes float {
-  from { transform: translate(0,0); }
-  to { transform: translate(60px,40px); }
+@keyframes float{
+  from{transform:translate(0,0);}
+  to{transform:translate(70px,50px);}
 }
 
 /* ================= OPENING SCREEN ================= */
 
-.opening-screen {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px; /* breathing space mobile */
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.opening-screen{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  transition:opacity 1s ease, transform 1s ease;
 }
 
-.opening-screen.fade-out {
-  opacity: 0;
-  transform: scale(1.05);
-  pointer-events: none;
+.opening-screen.fade-out{
+  opacity:0;
+  transform:scale(1.1);
+  pointer-events:none;
 }
 
 /* ================= CARD ================= */
 
-.opening-card {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  padding: 50px 40px;
-  border-radius: 25px;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(15px);
-  text-align: center;
+.opening-card{
+  position:relative;
+  width:100%;
+  max-width:520px;
+  padding:60px 40px;
+  border-radius:30px;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(20px);
+  text-align:center;
+  box-shadow:0 0 60px rgba(212,175,55,0.15);
+  transition:transform 0.2s ease;
 }
 
-/* GOLD BORDER FRAME */
+/* GOLD ANIMATED BORDER */
 
-.opening-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 25px;
-  padding: 2px;
-  background: linear-gradient(45deg, #d4af37, #f9e27d, #d4af37);
+.opening-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:30px;
+  padding:2px;
+  background:linear-gradient(45deg,#d4af37,#f9e27d,#d4af37);
+  background-size:300% 300%;
+  animation:borderMove 4s linear infinite;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+}
+
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  100%{background-position:100% 50%;}
 }
 
 /* ================= TEXT ================= */
 
-.opening-card h3 {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 3px;
-  margin-bottom: 15px;
-  font-size: 14px;
-  opacity: 0.8;
+.opening-card h3{
+  font-family:'Cinzel',serif;
+  letter-spacing:3px;
+  font-size:14px;
+  margin-bottom:20px;
+  opacity:0.85;
 }
 
-.opening-card h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-  margin-bottom: 30px;
+.opening-card h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-bottom:35px;
 }
 
 /* ================= BUTTON ================= */
 
-.enter-btn {
-  padding: 15px 40px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #d4af37, #f9e27d);
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  color: black;
-  font-weight: 600;
-  transition: 0.3s ease;
+.enter-btn{
+  padding:16px 45px;
+  font-size:15px;
+  letter-spacing:2px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,#d4af37,#f9e27d);
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s ease;
+  box-shadow:0 0 20px rgba(212,175,55,0.4);
 }
 
-.enter-btn:active {
-  transform: scale(0.95);
+.enter-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 40px rgba(212,175,55,0.8);
 }
 
-.enter-btn:hover {
-  box-shadow: 0 0 30px rgba(212,175,55,0.6);
+.enter-btn:active{
+  transform:scale(0.95);
 }
 
 /* ================= MAIN CONTENT ================= */
 
-.main-content {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
-  padding: 80px 20px;
+.main-content{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 1.2s ease, transform 1.2s ease;
+  padding:100px 20px;
 }
 
-.main-content.show {
-  opacity: 1;
-  transform: translateY(0);
+.main-content.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-section {
-  max-width: 800px;
-  margin: 100px auto;
-  text-align: center;
+section{
+  max-width:900px;
+  margin:140px auto;
+  text-align:center;
 }
 
-.big-names {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin-bottom: 15px;
+h2{
+  font-family:'Cinzel',serif;
+  font-size:32px;
+  margin-bottom:20px;
 }
 
-h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 28px;
-  margin-bottom: 20px;
+.big-names{
+  font-family:'Playfair Display',serif;
+  font-size:60px;
+  margin-bottom:20px;
 }
 
-p {
-  opacity: 0.8;
-}
+p{opacity:0.8;}
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE ================= */
 
-@media (min-width: 768px) {
+@media(max-width:768px){
 
-  .opening-card h1 {
-    font-size: 44px;
+  .opening-card{
+    padding:45px 25px;
   }
 
-  .big-names {
-    font-size: 60px;
+  .opening-card h1{
+    font-size:28px;
+  }
+
+  .big-names{
+    font-size:38px;
   }
 
 }
@@ -229,16 +233,18 @@ p {
 </head>
 <body>
 
-<div class="pattern-overlay"></div>
+<div class="bg-base"></div>
+<div class="bg-pattern"></div>
+<div class="bg-shimmer"></div>
 
-<div class="luxury-bg">
-  <div class="light-orb orb1"></div>
-  <div class="light-orb orb2"></div>
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
 </div>
 
 <!-- OPENING -->
 <div class="opening-screen" id="opening">
-  <div class="opening-card">
+  <div class="opening-card" id="tiltCard">
     <h3>Bismillah-ir-Rahman-ir-Raheem</h3>
     <h1>You Are Invited</h1>
     <button class="enter-btn" id="enterBtn">Enter Invitation</button>
@@ -247,38 +253,55 @@ p {
 
 <!-- MAIN -->
 <div class="main-content" id="mainContent">
-
   <section>
     <h2>The Wedding Of</h2>
     <h1 class="big-names">Ahmed & Fatima</h1>
     <p>With the blessings of Allah and our beloved parents</p>
   </section>
-
 </div>
 
 <script>
 
-/* FIXED BUTTON WORKING EVERYWHERE */
+/* ================= BUTTON FIX (GUARANTEED WORKING) ================= */
 
-document.getElementById("enterBtn").addEventListener("click", function() {
+const enterBtn = document.getElementById("enterBtn");
+const opening = document.getElementById("opening");
+const mainContent = document.getElementById("mainContent");
 
-  const opening = document.getElementById("opening");
-  const main = document.getElementById("mainContent");
+enterBtn.addEventListener("click", function(){
 
   opening.classList.add("fade-out");
 
-  setTimeout(function(){
-    opening.style.display = "none";
-    main.classList.add("show");
+  setTimeout(()=>{
+    opening.style.display="none";
+    mainContent.classList.add("show");
     window.scrollTo(0,0);
-  }, 700);
+  },1000);
 
 });
 
-/* FORCE ANIMATION ON MOBILE LOAD */
-window.addEventListener("load", function(){
-  document.body.style.opacity = "1";
-});
+/* ================= 3D TILT DESKTOP ================= */
+
+if(window.innerWidth > 768){
+
+  const card = document.getElementById("tiltCard");
+
+  card.addEventListener("mousemove",(e)=>{
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = -(y - rect.height/2) / 20;
+    const rotateY = (x - rect.width/2) / 20;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave",()=>{
+    card.style.transform="rotateX(0deg) rotateY(0deg)";
+  });
+
+}
 
 </script>
 

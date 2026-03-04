@@ -1,154 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Wedding Invitation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f8f4f0, #efe2d1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .card {
-      background: white;
-      max-width: 420px;
-      width: 100%;
-      border-radius: 25px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 150%;
-      height: 150%;
-      background: radial-gradient(circle at top left, #d4af37 0%, transparent 40%);
-      top: -50%;
-      left: -50%;
-      opacity: 0.15;
-      transform: rotate(25deg);
-    }
+/* GOLD ANIMATION OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 60%);
+  animation: glow 6s linear infinite;
+}
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      margin-bottom: 15px;
-      color: #8b0000;
-    }
+@keyframes glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-    .subtitle {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 25px;
-    }
+.card {
+  width: 90%;
+  max-width: 400px;
+  background: #111;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+  border: 1px solid rgba(212,175,55,0.2);
+  position: relative;
+  z-index: 2;
+}
 
-    button {
-      padding: 12px 30px;
-      border-radius: 30px;
-      border: none;
-      background: linear-gradient(45deg, #8b0000, #b22222);
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      margin-bottom: 25px;
-    }
+h1 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
 
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(139,0,0,0.3);
-    }
+.subtitle {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
 
-    .section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.6s ease;
-      margin-top: 25px;
-      border-top: 1px solid #eee;
-      padding-top: 20px;
-    }
+button {
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: 1px solid #d4af37;
+  background: transparent;
+  color: #d4af37;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
 
-    .section.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+button:hover {
+  background: #d4af37;
+  color: black;
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+}
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #333;
-    }
+.section {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.8s ease;
+}
 
-    p {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-    }
+.section.show {
+  max-height: 500px;
+  margin-top: 30px;
+}
 
-    .divider {
-      height: 2px;
-      width: 50px;
-      background: #d4af37;
-      margin: 15px auto;
-      border-radius: 5px;
-    }
-  </style>
+.section h2 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #d4af37;
+  margin: 15px auto;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="card">
-  <h1>Bismillah</h1>
-  <p class="subtitle">You are invited to celebrate our special day</p>
 
-  <button onclick="openInvite()">Tap to Open</button>
+  <h1>BISMILLAH</h1>
+  <p class="subtitle">Together with our families, we invite you</p>
 
-  <div id="welcome" class="section">
+  <button onclick="openInvite()">Open Invitation</button>
+
+  <div id="content" class="section">
+    
+    <div class="divider"></div>
+
     <h2>Welcome</h2>
-    <div class="divider"></div>
-    <p>With the blessings of Allah, we invite you to join us in celebrating our Nikah ceremony.</p>
-  </div>
+    <p>With the blessings of Allah, we request the honor of your presence at our Nikah ceremony.</p>
 
-  <div id="details" class="section">
-    <h2>Wedding Details</h2>
     <div class="divider"></div>
+
+    <h2>Wedding Details</h2>
     <p><strong>Date:</strong> 15 May 2026</p>
     <p><strong>Venue:</strong> Royal Banquet Hall</p>
+
+    <div class="divider"></div>
+
+    <h2>Dua Request</h2>
+    <p>Your prayers and presence will complete our happiness.</p>
+
   </div>
 
-  <div id="dua" class="section">
-    <h2>Dua Request</h2>
-    <div class="divider"></div>
-    <p>Your presence and prayers mean the world to us.</p>
-  </div>
 </div>
 
 <script>
 function openInvite() {
-  document.getElementById("welcome").classList.add("active");
-  document.getElementById("details").classList.add("active");
-  document.getElementById("dua").classList.add("active");
+  document.getElementById("content").classList.toggle("show");
 }
 </script>
 

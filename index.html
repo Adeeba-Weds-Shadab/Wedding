@@ -20,10 +20,10 @@
 
 html,body{
   height:100%;
-  overflow:hidden;
   background:#0c0c0c;
   font-family:'Cinzel', serif;
   color:white;
+  overflow:hidden;
 }
 
 /* =============================
@@ -73,10 +73,9 @@ html,body{
 }
 
 /* =============================
-   FIRST PAGE
+   PAGE
 ============================= */
 .page{
-  position:relative;
   height:100vh;
   display:flex;
   justify-content:center;
@@ -89,12 +88,12 @@ html,body{
 }
 
 /* =============================
-   3D WRAPPER
+   3D CONTAINER
 ============================= */
 .perspective-wrapper{
-  perspective:1600px;
   width:100%;
   max-width:650px;
+  perspective:1800px;
 }
 
 /* =============================
@@ -107,16 +106,16 @@ html,body{
   border-radius:24px;
   text-align:center;
   transform-style:preserve-3d;
-  transition:transform .18s ease;
-  overflow:hidden;
+  transition:transform .15s ease;
+  will-change:transform;
 
   box-shadow:
-    0 50px 100px rgba(0,0,0,0.7),
-    0 0 80px rgba(212,175,55,0.08),
+    0 60px 120px rgba(0,0,0,0.75),
+    0 0 90px rgba(212,175,55,0.08),
     inset 0 0 40px rgba(255,215,0,0.03);
 }
 
-/* === Luxury Gold Animated Border === */
+/* Gold Animated Border */
 .invite-box::before{
   content:"";
   position:absolute;
@@ -182,8 +181,10 @@ html,body{
 }
 
 .enter-btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 40px rgba(212,175,55,0.35);
+  transform:translateY(-5px);
+  box-shadow:
+    0 20px 40px rgba(212,175,55,0.4),
+    0 0 20px rgba(255,215,0,0.6);
 }
 
 /* =============================
@@ -204,7 +205,7 @@ html,body{
 }
 
 /* =============================
-   MOBILE OPTIMIZATION
+   MOBILE
 ============================= */
 @media(max-width:768px){
 
@@ -243,9 +244,9 @@ html,body{
   <div class="loader-bar"></div>
 </div>
 
-<!-- FIRST PAGE -->
+<!-- PAGE -->
 <div class="page">
-  <div class="perspective-wrapper">
+  <div class="perspective-wrapper" id="tiltArea">
     <div class="invite-box fade-in" id="card">
 
       <div class="invite-title">YOU ARE INVITED</div>
@@ -265,7 +266,7 @@ html,body{
 
 <script>
 
-/* Loader Fade Out */
+/* Loader */
 window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.getElementById("loader").style.opacity="0";
@@ -275,40 +276,35 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* Stronger 3D Tilt (Desktop) */
+/* FIXED 3D TILT */
+const tiltArea = document.getElementById("tiltArea");
 const card = document.getElementById("card");
-const wrapper = document.querySelector(".perspective-wrapper");
 
-wrapper.addEventListener("mousemove",(e)=>{
-  const rect = wrapper.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const rotateX = ((y - rect.height/2) / rect.height) * 18;
-  const rotateY = ((x - rect.width/2) / rect.width) * 18;
-
+function handleTilt(x, y, rect, strength){
+  const rotateX = ((y - rect.height/2) / rect.height) * strength;
+  const rotateY = ((x - rect.width/2) / rect.width) * strength;
   card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+}
+
+/* Desktop */
+tiltArea.addEventListener("mousemove",(e)=>{
+  const rect = tiltArea.getBoundingClientRect();
+  handleTilt(e.clientX - rect.left, e.clientY - rect.top, rect, 22);
 });
 
-wrapper.addEventListener("mouseleave",()=>{
-  card.style.transform = "rotateX(0) rotateY(0)";
+tiltArea.addEventListener("mouseleave",()=>{
+  card.style.transform = "rotateX(0deg) rotateY(0deg)";
 });
 
-/* Stronger Touch Tilt (Mobile) */
-wrapper.addEventListener("touchmove",(e)=>{
+/* Mobile */
+tiltArea.addEventListener("touchmove",(e)=>{
+  const rect = tiltArea.getBoundingClientRect();
   const touch = e.touches[0];
-  const rect = wrapper.getBoundingClientRect();
-  const x = touch.clientX - rect.left;
-  const y = touch.clientY - rect.top;
+  handleTilt(touch.clientX - rect.left, touch.clientY - rect.top, rect, 18);
+},{passive:true});
 
-  const rotateX = ((y - rect.height/2) / rect.height) * 14;
-  const rotateY = ((x - rect.width/2) / rect.width) * 14;
-
-  card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-});
-
-wrapper.addEventListener("touchend",()=>{
-  card.style.transform = "rotateX(0) rotateY(0)";
+tiltArea.addEventListener("touchend",()=>{
+  card.style.transform = "rotateX(0deg) rotateY(0deg)";
 });
 
 </script>

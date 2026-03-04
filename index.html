@@ -1,48 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wedding Invitation</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Elegant Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f8f4f0, #efe2d1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at top left, #d4af37 0%, transparent 40%);
+      top: -50%;
+      left: -50%;
+      opacity: 0.15;
+      transform: rotate(25deg);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #8b0000;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(45deg, #8b0000, #b22222);
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin-bottom: 25px;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(139,0,0,0.3);
+    }
+
+    .section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.6s ease;
+      margin-top: 25px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    .section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 2px;
+      width: 50px;
+      background: #d4af37;
+      margin: 15px auto;
+      border-radius: 5px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- COVER CARD -->
-<div class="cover">
-    <div class="card">
-        <h1>Bismillah</h1>
-        <p>You are invited to the wedding</p>
-        <button onclick="openCard()">Tap to Open</button>
-    </div>
+<div class="card">
+  <h1>Bismillah</h1>
+  <p class="subtitle">You are invited to celebrate our special day</p>
+
+  <button onclick="openInvite()">Tap to Open</button>
+
+  <div id="welcome" class="section">
+    <h2>Welcome</h2>
+    <div class="divider"></div>
+    <p>With the blessings of Allah, we invite you to join us in celebrating our Nikah ceremony.</p>
+  </div>
+
+  <div id="details" class="section">
+    <h2>Wedding Details</h2>
+    <div class="divider"></div>
+    <p><strong>Date:</strong> 15 May 2026</p>
+    <p><strong>Venue:</strong> Royal Banquet Hall</p>
+  </div>
+
+  <div id="dua" class="section">
+    <h2>Dua Request</h2>
+    <div class="divider"></div>
+    <p>Your presence and prayers mean the world to us.</p>
+  </div>
 </div>
 
-<!-- MAIN INVITATION CARD -->
-<div class="content">
-    <div class="section">
-        <h2>Welcome</h2>
-        <p>With the blessings of Allah, we invite you to celebrate this joyous occasion.</p>
-    </div>
-
-    <div class="section">
-        <h2>Wedding Details</h2>
-        <p><strong>Date:</strong> 20th April 2026</p>
-        <p><strong>Venue:</strong> Royal Banquet Hall</p>
-    </div>
-
-    <div class="section">
-        <h2>Dua Request</h2>
-        <p>Your presence and prayers mean everything to us.</p>
-    </div>
-</div>
-
-<!-- JS -->
-<script src="script.js"></script>
+<script>
+function openInvite() {
+  document.getElementById("welcome").classList.add("active");
+  document.getElementById("details").classList.add("active");
+  document.getElementById("dua").classList.add("active");
+}
+</script>
 
 </body>
 </html>

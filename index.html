@@ -8,12 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 html,body{
   height:100%;
@@ -22,7 +17,7 @@ html,body{
   overflow-x:hidden;
 }
 
-/* ---------- PAGE SYSTEM ---------- */
+/* PAGE SYSTEM */
 .page{
   position:fixed;
   inset:0;
@@ -32,22 +27,18 @@ html,body{
   padding:40px 20px;
   transition:opacity 1s ease, transform 1s ease;
 }
-
 .hidden{
   opacity:0;
   pointer-events:none;
   transform:scale(1.05);
 }
-
-/* Page 2 scrollable */
 #page2{
   position:absolute;
   overflow-y:auto;
-  padding-top:120px;
-  padding-bottom:120px;
+  padding:120px 20px;
 }
 
-/* ---------- BACKGROUND ---------- */
+/* BACKGROUND */
 .bg-shimmer{
   position:absolute;
   inset:0;
@@ -56,9 +47,7 @@ html,body{
     radial-gradient(circle at 80% 70%, rgba(255,215,0,0.12), transparent 40%);
   animation: shimmerMove 15s linear infinite;
   z-index:-2;
-  will-change: transform;
 }
-
 @keyframes shimmerMove{
   0%{transform:translateX(-3%);}
   50%{transform:translateX(3%);}
@@ -73,71 +62,36 @@ html,body{
   z-index:-1;
 }
 
-/* ---------- 3D CARD ---------- */
+.gold-particles{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* 3D CARD */
 .perspective-wrapper{
   perspective:1200px;
   width:100%;
   max-width:650px;
 }
 
-
-
-  .invite-box{
+.invite-box{
   position:relative;
-  width:100%;
   padding:60px 40px;
   background:rgba(15,15,15,0.88);
   border-radius:20px;
   transform-style:preserve-3d;
   transition:transform 0.25s cubic-bezier(.23,1,.32,1);
   text-align:center;
-
   box-shadow:
     0 30px 60px rgba(0,0,0,0.6),
     0 0 80px rgba(212,175,55,0.15),
     inset 0 0 40px rgba(255,215,0,0.05);
 }
 
-  
-
-
-.invite-box::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:20px;
-  padding:2px;
-  background:linear-gradient(90deg,#ff00cc,#ff8800,#ffd700,#00ffff,#ff00cc);
-  background-size:300% 300%;
-  animation:borderFlow 6s linear infinite;
-  z-index:-1;
-}
-
-@keyframes borderFlow{
-  0%{background-position:0% 50%;}
-  100%{background-position:300% 50%;}
-}
-
-.invite-box::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  border-radius:18px;
-  background:rgba(15,15,15,0.95);
-  z-index:-1;
-}
-
-/* ---------- TEXT ---------- */
-.invite-box h1{
-  font-size:2.4rem;
-  color:#ffd700;
-  margin-bottom:20px;
-}
-
-.invite-box p{
-  color:#ccc;
-  margin-bottom:30px;
-}
+.invite-box h1{font-size:2.4rem;color:#ffd700;margin-bottom:20px;}
+.invite-box p{color:#ccc;margin-bottom:30px;}
 
 .enter-btn{
   padding:14px 40px;
@@ -145,16 +99,11 @@ html,body{
   border:none;
   border-radius:30px;
   cursor:pointer;
-  font-size:1rem;
-  transition:all 0.3s ease;
+  transition:all .3s ease;
 }
+.enter-btn:hover{transform:scale(1.1);box-shadow:0 0 20px gold;}
 
-.enter-btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px gold;
-}
-
-/* ---------- PAGE 2 CONTENT ---------- */
+/* PAGE 2 CONTENT */
 .invitation-content{
   text-align:center;
   max-width:900px;
@@ -163,163 +112,30 @@ html,body{
   transform:translateY(30px);
   transition:all 1.5s ease;
 }
-
-
-<!-- GRAND COUPLE REVEAL SECTION -->
-<section class="couple-section">
-  <div class="spotlight"></div>
-
-  <h2 class="celebration-text">Celebrating the Union of</h2>
-
-  <div class="names-wrapper">
-    <h1 class="bride-name">Adeeba</h1>
-    <div class="and-symbol">&</div>
-    <h1 class="groom-name">Shadab</h1>
-  </div>
-
-  <p class="family-side">
-    Cordially inviting you from the bride's family<br>
-    on the auspicious occasion of Barat
-  </p>
-</section>
-
-
-
-  /* COUPLE SECTION */
-.couple-section {
-  position: relative;
-  padding: 120px 20px;
-  text-align: center;
-  overflow: hidden;
-  background: radial-gradient(circle at center, rgba(212,175,55,0.08), transparent 60%);
-}
-
-.spotlight {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
-  transform: translate(-50%, -50%);
-  filter: blur(80px);
-  z-index: 0;
-}
-
-.celebration-text {
-  font-size: 22px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 40px;
-  color: #d4af37;
-  z-index: 1;
-  position: relative;
-}
-
-.names-wrapper {
-  position: relative;
-  z-index: 1;
-}
-
-.bride-name,
-.groom-name {
-  font-size: 64px;
-  font-family: 'Playfair Display', serif;
-  margin: 10px 0;
-  background: linear-gradient(45deg, #d4af37, #fff8dc, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 25px rgba(212,175,55,0.4);
-  animation: fadeUp 1.5s ease forwards;
-}
-
-.and-symbol {
-  font-size: 48px;
-  margin: 20px 0;
-  color: #d4af37;
-  animation: fadeUp 1.8s ease forwards;
-}
-
-.family-side {
-  margin-top: 40px;
-  font-size: 18px;
-  color: #ccc;
-  line-height: 1.8;
-  animation: fadeUp 2s ease forwards;
-}
-
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-  .bride-name,
-  .groom-name {
-    font-size: 42px;
-  }
-
-  .spotlight {
-    width: 400px;
-    height: 400px;
-  }
-}
-  
 .invitation-content.active{
   opacity:1;
   transform:translateY(0);
 }
 
-/* BISMILLAH */
 .bismillah{
   font-size:1.5rem;
   color:#d4af37;
   margin-bottom:40px;
   letter-spacing:3px;
-  animation:fadeIn 2s ease forwards;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-/* NAMES */
-.names{
-  margin-bottom:40px;
 }
 
 .names h2{
   font-size:2.7rem;
   color:#ffd700;
-  letter-spacing:3px;
   margin-bottom:10px;
-  animation:nameGlow 4s ease-in-out infinite alternate;
 }
+.ampersand{font-size:2rem;color:#aaa;margin:10px 0;}
 
-@keyframes nameGlow{
-  0%{text-shadow:0 0 10px rgba(255,215,0,0.4);}
-  100%{text-shadow:0 0 30px rgba(255,215,0,0.9);}
-}
-
-.ampersand{
-  font-size:2rem;
-  color:#aaa;
-  margin:10px 0;
-}
-
-.event-type{
-  font-size:1.2rem;
-  color:#ccc;
-  letter-spacing:2px;
-  margin-bottom:30px;
+.divider{
+  width:120px;
+  height:2px;
+  background:linear-gradient(to right, transparent, gold, transparent);
+  margin:50px auto;
 }
 
 .event-card{
@@ -331,125 +147,37 @@ html,body{
   background:rgba(255,215,0,0.05);
 }
 
-.event-card p{
-  margin:8px 0;
-  color:#ddd;
-}
-
-.divider{
-  width:120px;
-  height:2px;
-  background:linear-gradient(to right, transparent, gold, transparent);
-  margin:50px auto;
-}
-
-/* ---------- CENTERED TIMELINE ---------- */
+/* TIMELINE */
 .timeline{
   position:relative;
   max-width:700px;
   margin:80px auto;
-  padding-top:20px;
 }
-
 .timeline::before{
   content:"";
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  top:0;
-  bottom:0;
+  top:0;bottom:0;
   width:3px;
   background:linear-gradient(to bottom,gold,transparent);
-  box-shadow:0 0 15px gold;
 }
-
 .timeline-item{
   position:relative;
   width:50%;
   padding:20px 40px;
   opacity:0;
-  transition:all 1s ease;
+  transition:1s;
 }
+.timeline-item.visible{opacity:1;}
+.timeline-item:nth-child(odd){left:0;text-align:right;}
+.timeline-item:nth-child(even){left:50%;}
 
-.timeline-item.visible{
-  opacity:1;
-}
-
-.timeline-item:nth-child(odd){
-  left:0;
-  text-align:right;
-}
-
-.timeline-item:nth-child(even){
-  left:50%;
-  text-align:left;
-}
-
-.timeline-dot{
-  position:absolute;
-  top:30px;
-  width:18px;
-  height:18px;
-  background:gold;
-  border-radius:50%;
-  box-shadow:0 0 15px gold;
-}
-
-.timeline-item:nth-child(odd) .timeline-dot{
-  right:-9px;
-}
-
-.timeline-item:nth-child(even) .timeline-dot{
-  left:-9px;
-}
-
-.timeline-item h3{
-  color:#ffd700;
-  margin-bottom:8px;
-}
-
-.timeline-item p{
-  color:#ccc;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-.timeline::before{
-  left:10px;
-}
-
-.timeline-item{
-  width:100%;
-  padding-left:40px;
-  text-align:left !important;
-  left:0 !important;
-}
-
-.timeline-dot{
-  left:1px !important;
-}
-
-.invite-box{
-  padding:40px 25px;
-}
-
-}
-
-
-
- .luxury-section{
+/* LUXURY SECTIONS */
+.luxury-section{
   margin:100px auto;
   text-align:center;
 }
-
-.section-title{
-  font-size:2rem;
-  color:#d4af37;
-  letter-spacing:3px;
-  margin-bottom:40px;
-}
-
 .glass-card{
   max-width:600px;
   margin:auto;
@@ -458,9 +186,7 @@ html,body{
   backdrop-filter:blur(20px);
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(212,175,55,0.3);
-  box-shadow:0 30px 60px rgba(0,0,0,0.6);
 }
-
 .direction-btn{
   display:inline-block;
   margin-top:20px;
@@ -469,20 +195,16 @@ html,body{
   background:linear-gradient(45deg,#d4af37,#ffd700);
   text-decoration:none;
   color:black;
-  font-weight:bold;
-  transition:all 0.3s ease;
 }
-
-.direction-btn:hover{
-  transform:scale(1.1);
-  box-shadow:0 0 20px gold;
-} 
-  
-
-
-
-
-  
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:1.4s cubic-bezier(.23,1,.32,1);
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
 </style>
 </head>
 <body>
@@ -491,6 +213,7 @@ html,body{
 <div class="page" id="page1">
   <div class="bg-shimmer"></div>
   <div class="pattern"></div>
+  <canvas class="gold-particles"></canvas>
 
   <div class="perspective-wrapper">
     <div class="invite-box" id="card">
@@ -505,6 +228,7 @@ html,body{
 <div class="page hidden" id="page2">
   <div class="bg-shimmer"></div>
   <div class="pattern"></div>
+  <canvas class="gold-particles"></canvas>
 
   <div class="invitation-content" id="content2">
 
@@ -514,169 +238,99 @@ html,body{
       <h2>Adeeba</h2>
       <div class="ampersand">&</div>
       <h2>Shadab</h2>
-
-
-
-      
-<div class="divider"></div>
-
-<section class="luxury-section">
-  <h2 class="section-title">Event Details</h2>
-
-  <div class="glass-card">
-    <p><strong>Date:</strong> 1st April 2026</p>
-    <p><strong>Time:</strong> Day Ceremony</p>
-    <p><strong>Venue:</strong> M.A. Palace Banquet Hall</p>
-    <p>Meerut, Uttar Pradesh</p>
-    <a href="#" class="direction-btn">Get Directions</a>
-  </div>
-</section>
-
-
-
-      
-<div class="divider"></div>
-
-<section class="luxury-section">
-  <h2 class="section-title">RSVP</h2>
-
-  <div class="glass-card">
-    <p>Your presence is the greatest blessing for us.</p>
-    <button class="enter-btn">Confirm Attendance</button>
-  </div>
-</section>
-      
-
-      
-
-      
     </div>
-
-    <div class="event-type">Barat Reception Ceremony</div>
 
     <div class="divider"></div>
 
     <div class="event-card">
       <p><strong>Date:</strong> 1st April 2026</p>
       <p><strong>Time:</strong> Day Event</p>
-      <p><strong>Barat Arrival:</strong> To Be Announced</p>
-      <p><strong>Venue:</strong> M.A. Palace Banquet Hall</p>
-      <p>Meerut, Uttar Pradesh</p>
+      <p><strong>Venue:</strong> M.A. Palace Banquet Hall, Meerut</p>
     </div>
 
     <div class="divider"></div>
 
     <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>Welcome Reception</h3>
-        <p>Guests arrival and traditional welcome ceremony.</p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>Barat Arrival</h3>
-        <p>Grand arrival of the Barat procession. (Time to be updated)</p>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <h3>Lunch & Celebration</h3>
-        <p>Daytime feast followed by celebration and blessings.</p>
-      </div>
-
+      <div class="timeline-item"><h3>Welcome Reception</h3></div>
+      <div class="timeline-item"><h3>Barat Arrival</h3></div>
+      <div class="timeline-item"><h3>Lunch & Celebration</h3></div>
     </div>
+
+    <div class="divider"></div>
+
+    <section class="luxury-section reveal">
+      <h2>Event Details</h2>
+      <div class="glass-card">
+        <p>1st April 2026 — Day Ceremony</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=M.A.+Palace+Banquet+Hall+Meerut"
+           target="_blank"
+           class="direction-btn">Get Directions</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="luxury-section reveal">
+      <h2>RSVP</h2>
+      <div class="glass-card">
+        <p>Your presence is our greatest blessing.</p>
+        <button class="enter-btn">Confirm Attendance</button>
+      </div>
+    </section>
 
   </div>
 </div>
 
 <script>
-
 function enterInvitation(){
-  document.getElementById("page1").classList.add("hidden");
-  document.getElementById("page2").classList.remove("hidden");
-
+  const page1=document.getElementById("page1");
+  const page2=document.getElementById("page2");
+  page1.style.transform="scale(1.1)";
+  page1.style.opacity="0";
+  setTimeout(()=>{
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+  },800);
   setTimeout(()=>{
     document.getElementById("content2").classList.add("active");
-  },400);
+  },1200);
 }
 
-const items = document.querySelectorAll(".timeline-item");
-
+/* Timeline */
+const items=document.querySelectorAll(".timeline-item");
 window.addEventListener("scroll",()=>{
   items.forEach(item=>{
-    const rect = item.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
+    if(item.getBoundingClientRect().top<window.innerHeight-100){
       item.classList.add("visible");
     }
   });
 });
 
-
-/* ===============================
-   REAL 3D TILT FIX
-================================= */
-
-const card = document.getElementById("card");
-const wrapper = document.querySelector(".perspective-wrapper");
-
-wrapper.addEventListener("mousemove", (e) => {
-  const rect = wrapper.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-
-  const rotateX = ((y - centerY) / centerY) * 12;
-  const rotateY = ((x - centerX) / centerX) * 12;
-
-  card.style.transform = `
-    rotateX(${-rotateX}deg)
-    rotateY(${rotateY}deg)
-    scale(1.03)
-  `;
-});
-
-wrapper.addEventListener("mouseleave", () => {
-  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-});
-
-/* Mobile Touch Tilt */
-wrapper.addEventListener("touchmove", (e) => {
-  const touch = e.touches[0];
-  const rect = wrapper.getBoundingClientRect();
-
-  const x = touch.clientX - rect.left;
-  const y = touch.clientY - rect.top;
-
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-
-  const rotateX = ((y - centerY) / centerY) * 10;
-  const rotateY = ((x - centerX) / centerX) * 10;
-
-  card.style.transform = `
-    rotateX(${-rotateX}deg)
-    rotateY(${rotateY}deg)
-    scale(1.02)
-  `;
-});
-  
-  
-window.addEventListener("mousemove", (e)=>{
-  const moveX = (e.clientX / window.innerWidth - 0.5) * 20;
-  const moveY = (e.clientY / window.innerHeight - 0.5) * 20;
-
-  document.querySelectorAll(".bg-shimmer").forEach(bg=>{
-    bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+/* Scroll Reveal */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(section=>{
+    if(section.getBoundingClientRect().top<window.innerHeight-120){
+      section.classList.add("active");
+    }
   });
 });
-  
-  
-</script>
 
-  
+/* 3D Tilt */
+const card=document.getElementById("card");
+const wrapper=document.querySelector(".perspective-wrapper");
+
+wrapper.addEventListener("mousemove",(e)=>{
+  const rect=wrapper.getBoundingClientRect();
+  const x=e.clientX-rect.left;
+  const y=e.clientY-rect.top;
+  const rotateX=((y-rect.height/2)/(rect.height/2))*12;
+  const rotateY=((x-rect.width/2)/(rect.width/2))*12;
+  card.style.transform=`rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+});
+wrapper.addEventListener("mouseleave",()=>{
+  card.style.transform="rotateX(0) rotateY(0) scale(1)";
+});
+</script>
 </body>
 </html>

@@ -56,6 +56,7 @@ html,body{
     radial-gradient(circle at 80% 70%, rgba(255,215,0,0.12), transparent 40%);
   animation: shimmerMove 15s linear infinite;
   z-index:-2;
+  will-change: transform;
 }
 
 @keyframes shimmerMove{
@@ -79,17 +80,26 @@ html,body{
   max-width:650px;
 }
 
-.invite-box{
+
+
+  .invite-box{
   position:relative;
   width:100%;
   padding:60px 40px;
-  background:rgba(15,15,15,0.95);
+  background:rgba(15,15,15,0.88);
   border-radius:20px;
   transform-style:preserve-3d;
-  transition:transform 0.2s ease;
+  transition:transform 0.25s cubic-bezier(.23,1,.32,1);
   text-align:center;
-  box-shadow:0 0 40px rgba(255,215,0,0.08);
+
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.6),
+    0 0 80px rgba(212,175,55,0.15),
+    inset 0 0 40px rgba(255,215,0,0.05);
 }
+
+  
+
 
 .invite-box::before{
   content:"";
@@ -426,6 +436,53 @@ html,body{
 
 }
 
+
+
+ .luxury-section{
+  margin:100px auto;
+  text-align:center;
+}
+
+.section-title{
+  font-size:2rem;
+  color:#d4af37;
+  letter-spacing:3px;
+  margin-bottom:40px;
+}
+
+.glass-card{
+  max-width:600px;
+  margin:auto;
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(212,175,55,0.3);
+  box-shadow:0 30px 60px rgba(0,0,0,0.6);
+}
+
+.direction-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  border-radius:30px;
+  background:linear-gradient(45deg,#d4af37,#ffd700);
+  text-decoration:none;
+  color:black;
+  font-weight:bold;
+  transition:all 0.3s ease;
+}
+
+.direction-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px gold;
+} 
+  
+
+
+
+
+  
 </style>
 </head>
 <body>
@@ -457,6 +514,42 @@ html,body{
       <h2>Adeeba</h2>
       <div class="ampersand">&</div>
       <h2>Shadab</h2>
+
+
+
+      
+<div class="divider"></div>
+
+<section class="luxury-section">
+  <h2 class="section-title">Event Details</h2>
+
+  <div class="glass-card">
+    <p><strong>Date:</strong> 1st April 2026</p>
+    <p><strong>Time:</strong> Day Ceremony</p>
+    <p><strong>Venue:</strong> M.A. Palace Banquet Hall</p>
+    <p>Meerut, Uttar Pradesh</p>
+    <a href="#" class="direction-btn">Get Directions</a>
+  </div>
+</section>
+
+
+
+      
+<div class="divider"></div>
+
+<section class="luxury-section">
+  <h2 class="section-title">RSVP</h2>
+
+  <div class="glass-card">
+    <p>Your presence is the greatest blessing for us.</p>
+    <button class="enter-btn">Confirm Attendance</button>
+  </div>
+</section>
+      
+
+      
+
+      
     </div>
 
     <div class="event-type">Barat Reception Ceremony</div>
@@ -520,6 +613,67 @@ window.addEventListener("scroll",()=>{
   });
 });
 
+
+/* ===============================
+   REAL 3D TILT FIX
+================================= */
+
+const card = document.getElementById("card");
+const wrapper = document.querySelector(".perspective-wrapper");
+
+wrapper.addEventListener("mousemove", (e) => {
+  const rect = wrapper.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const rotateX = ((y - centerY) / centerY) * 12;
+  const rotateY = ((x - centerX) / centerX) * 12;
+
+  card.style.transform = `
+    rotateX(${-rotateX}deg)
+    rotateY(${rotateY}deg)
+    scale(1.03)
+  `;
+});
+
+wrapper.addEventListener("mouseleave", () => {
+  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+});
+
+/* Mobile Touch Tilt */
+wrapper.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  const rect = wrapper.getBoundingClientRect();
+
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const rotateX = ((y - centerY) / centerY) * 10;
+  const rotateY = ((x - centerX) / centerX) * 10;
+
+  card.style.transform = `
+    rotateX(${-rotateX}deg)
+    rotateY(${rotateY}deg)
+    scale(1.02)
+  `;
+});
+  
+  
+window.addEventListener("mousemove", (e)=>{
+  const moveX = (e.clientX / window.innerWidth - 0.5) * 20;
+  const moveY = (e.clientY / window.innerHeight - 0.5) * 20;
+
+  document.querySelectorAll(".bg-shimmer").forEach(bg=>{
+    bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+});
+  
   
 </script>
 

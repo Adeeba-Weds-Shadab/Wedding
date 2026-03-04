@@ -9,14 +9,8 @@
 
 <style>
 
-/* =============================
-   GLOBAL RESET
-============================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
 
 html,body{
   height:100%;
@@ -26,9 +20,7 @@ html,body{
   overflow:hidden;
 }
 
-/* =============================
-   LOADER (UNCHANGED)
-============================= */
+/* LOADER (UNCHANGED) */
 .loader{
   position:fixed;
   inset:0;
@@ -40,7 +32,6 @@ html,body{
   z-index:9999;
   transition:opacity 1s ease;
 }
-
 .loader-text{
   font-family:'Playfair Display', serif;
   font-size:22px;
@@ -48,7 +39,6 @@ html,body{
   color:#d4af37;
   margin-bottom:30px;
 }
-
 .loader-bar{
   width:200px;
   height:2px;
@@ -56,7 +46,6 @@ html,body{
   overflow:hidden;
   position:relative;
 }
-
 .loader-bar::after{
   content:"";
   position:absolute;
@@ -66,56 +55,45 @@ html,body{
   background:linear-gradient(90deg, transparent, gold, transparent);
   animation:loading 2s infinite;
 }
-
 @keyframes loading{
   0%{left:-100%;}
   100%{left:100%;}
 }
 
-/* =============================
-   PAGE
-============================= */
+/* PAGE */
 .page{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
   padding:20px;
+  perspective:2000px;
   background:
     radial-gradient(circle at 30% 20%, rgba(255,215,0,0.05), transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05), transparent 40%),
     #0c0c0c;
 }
 
-/* =============================
-   3D CONTAINER
-============================= */
-.perspective-wrapper{
+/* CARD */
+.invite-box{
   width:100%;
   max-width:650px;
-  perspective:1800px;
-}
-
-/* =============================
-   INVITE BOX
-============================= */
-.invite-box{
   position:relative;
-  background:rgba(20,20,20,0.96);
+  background:rgba(20,20,20,0.97);
   padding:70px 50px;
   border-radius:24px;
   text-align:center;
   transform-style:preserve-3d;
-  transition:transform .15s ease;
+  transition:transform .08s ease, box-shadow .08s ease;
   will-change:transform;
 
   box-shadow:
     0 60px 120px rgba(0,0,0,0.75),
-    0 0 90px rgba(212,175,55,0.08),
+    0 0 80px rgba(212,175,55,0.08),
     inset 0 0 40px rgba(255,215,0,0.03);
 }
 
-/* Gold Animated Border */
+/* GOLD BORDER */
 .invite-box::before{
   content:"";
   position:absolute;
@@ -131,7 +109,6 @@ html,body{
     #d4af37,
     #7a5a00
   );
-
   background-size:300% 300%;
   animation:goldFlow 6s ease infinite;
 
@@ -141,23 +118,19 @@ html,body{
   -webkit-mask-composite:xor;
           mask-composite:exclude;
 }
-
 @keyframes goldFlow{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* =============================
-   TEXT
-============================= */
+/* TEXT */
 .invite-title{
   font-size:2.6rem;
   letter-spacing:4px;
   color:#f5e6b3;
   margin-bottom:30px;
 }
-
 .invite-subtitle{
   font-family:'Playfair Display', serif;
   font-size:18px;
@@ -166,9 +139,7 @@ html,body{
   margin-bottom:50px;
 }
 
-/* =============================
-   BUTTON
-============================= */
+/* BUTTON */
 .enter-btn{
   padding:14px 45px;
   font-size:15px;
@@ -179,88 +150,50 @@ html,body{
   cursor:pointer;
   transition:.3s;
 }
-
 .enter-btn:hover{
   transform:translateY(-5px);
   box-shadow:
-    0 20px 40px rgba(212,175,55,0.4),
-    0 0 20px rgba(255,215,0,0.6);
+    0 25px 50px rgba(212,175,55,0.5),
+    0 0 25px rgba(255,215,0,0.7);
 }
 
-/* =============================
-   FADE IN
-============================= */
+/* FADE */
 .fade-in{
   opacity:0;
   transform:translateY(30px);
   animation:fadeUp 1.8s ease forwards;
   animation-delay:2s;
 }
-
 @keyframes fadeUp{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  to{opacity:1;transform:translateY(0);}
 }
 
-/* =============================
-   MOBILE
-============================= */
+/* MOBILE */
 @media(max-width:768px){
-
-  html,body{
-    overflow:auto;
-  }
-
-  .invite-box{
-    padding:60px 28px;
-  }
-
-  .invite-title{
-    font-size:1.9rem;
-    letter-spacing:3px;
-  }
-
-  .invite-subtitle{
-    font-size:16px;
-    line-height:1.75;
-  }
-
-  .enter-btn{
-    width:100%;
-    padding:16px;
-  }
-
+  html,body{overflow:auto;}
+  .invite-box{padding:60px 28px;}
+  .invite-title{font-size:1.9rem;}
+  .invite-subtitle{font-size:16px;}
+  .enter-btn{width:100%;padding:16px;}
 }
 
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
   <div class="loader-text">Preparing Invitation</div>
   <div class="loader-bar"></div>
 </div>
 
-<!-- PAGE -->
 <div class="page">
-  <div class="perspective-wrapper" id="tiltArea">
-    <div class="invite-box fade-in" id="card">
-
-      <div class="invite-title">YOU ARE INVITED</div>
-
-      <div class="invite-subtitle">
-        With gratitude and joy, we request the honour of your presence
-        at a sacred celebration of love and unity.
-      </div>
-
-      <button class="enter-btn">
-        Enter
-      </button>
-
+  <div class="invite-box fade-in" id="card">
+    <div class="invite-title">YOU ARE INVITED</div>
+    <div class="invite-subtitle">
+      With gratitude and joy, we request the honour of your presence
+      at a sacred celebration of love and unity.
     </div>
+    <button class="enter-btn">Enter</button>
   </div>
 </div>
 
@@ -276,36 +209,49 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* FIXED 3D TILT */
-const tiltArea = document.getElementById("tiltArea");
+/* REAL WORKING 3D TILT */
 const card = document.getElementById("card");
 
-function handleTilt(x, y, rect, strength){
-  const rotateX = ((y - rect.height/2) / rect.height) * strength;
-  const rotateY = ((x - rect.width/2) / rect.width) * strength;
-  card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+function tilt(e, isTouch=false){
+  const rect = card.getBoundingClientRect();
+  const x = isTouch ? e.touches[0].clientX : e.clientX;
+  const y = isTouch ? e.touches[0].clientY : e.clientY;
+
+  const centerX = rect.left + rect.width/2;
+  const centerY = rect.top + rect.height/2;
+
+  const percentX = (x - centerX) / (rect.width/2);
+  const percentY = (y - centerY) / (rect.height/2);
+
+  const rotateY = percentX * 25; 
+  const rotateX = -percentY * 25;
+
+  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+
+  card.style.boxShadow = `
+    ${-rotateY*2}px ${rotateX*2}px 120px rgba(0,0,0,0.8),
+    0 0 90px rgba(212,175,55,0.12),
+    inset 0 0 40px rgba(255,215,0,0.03)
+  `;
 }
 
-/* Desktop */
-tiltArea.addEventListener("mousemove",(e)=>{
-  const rect = tiltArea.getBoundingClientRect();
-  handleTilt(e.clientX - rect.left, e.clientY - rect.top, rect, 22);
-});
+function resetTilt(){
+  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  card.style.boxShadow = `
+    0 60px 120px rgba(0,0,0,0.75),
+    0 0 80px rgba(212,175,55,0.08),
+    inset 0 0 40px rgba(255,215,0,0.03)
+  `;
+}
 
-tiltArea.addEventListener("mouseleave",()=>{
-  card.style.transform = "rotateX(0deg) rotateY(0deg)";
-});
+card.addEventListener("mousemove", tilt);
+card.addEventListener("mouseleave", resetTilt);
 
-/* Mobile */
-tiltArea.addEventListener("touchmove",(e)=>{
-  const rect = tiltArea.getBoundingClientRect();
-  const touch = e.touches[0];
-  handleTilt(touch.clientX - rect.left, touch.clientY - rect.top, rect, 18);
+card.addEventListener("touchmove", function(e){
+  tilt(e, true);
 },{passive:true});
 
-tiltArea.addEventListener("touchend",()=>{
-  card.style.transform = "rotateX(0deg) rotateY(0deg)";
-});
+card.addEventListener("touchend", resetTilt);
 
 </script>
 

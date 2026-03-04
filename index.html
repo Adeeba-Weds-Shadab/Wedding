@@ -9,110 +9,114 @@
 
 <style>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #1a1a1a, #000000);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow-x: hidden;
+  font-family:'Poppins',sans-serif;
+  background:#000;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-/* GOLD ANIMATION OVERLAY */
+/* Subtle Gold Texture Glow */
 body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 60%);
-  animation: glow 6s linear infinite;
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 60%);
+  animation:rotateGlow 10s linear infinite;
 }
 
-@keyframes glow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes rotateGlow {
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
 }
 
 .card {
-  width: 90%;
-  max-width: 400px;
-  background: #111;
-  padding: 40px 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
-  border: 1px solid rgba(212,175,55,0.2);
-  position: relative;
-  z-index: 2;
+  width:90%;
+  max-width:420px;
+  background:#111;
+  padding:40px 30px;
+  border-radius:20px;
+  text-align:center;
+  border:1px solid rgba(212,175,55,0.3);
+  box-shadow:0 30px 80px rgba(0,0,0,0.8);
+  position:relative;
+  z-index:2;
 }
 
 h1 {
-  font-family: 'Cinzel', serif;
-  color: #d4af37;
-  font-size: 28px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  font-family:'Cinzel',serif;
+  color:#d4af37;
+  font-size:28px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.names {
+  font-family:'Cinzel',serif;
+  font-size:24px;
+  color:#fff;
+  margin-bottom:10px;
 }
 
 .subtitle {
-  color: #aaa;
-  font-size: 13px;
-  margin-bottom: 25px;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:25px;
 }
 
 button {
-  padding: 12px 28px;
-  border-radius: 40px;
-  border: 1px solid #d4af37;
-  background: transparent;
-  color: #d4af37;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.4s ease;
+  padding:12px 26px;
+  border-radius:40px;
+  border:1px solid #d4af37;
+  background:transparent;
+  color:#d4af37;
+  font-size:13px;
+  cursor:pointer;
+  transition:0.4s;
+  margin:8px 5px;
 }
 
 button:hover {
-  background: #d4af37;
-  color: black;
-  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+  background:#d4af37;
+  color:black;
+  box-shadow:0 0 15px rgba(212,175,55,0.6);
 }
 
 .section {
-  max-height: 0;
-  overflow: hidden;
-  transition: 0.8s ease;
+  max-height:0;
+  overflow:hidden;
+  transition:0.8s ease;
 }
 
 .section.show {
-  max-height: 500px;
-  margin-top: 30px;
-}
-
-.section h2 {
-  font-family: 'Cinzel', serif;
-  color: #d4af37;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.section p {
-  color: #ccc;
-  font-size: 14px;
-  line-height: 1.7;
+  max-height:800px;
+  margin-top:30px;
 }
 
 .divider {
-  width: 60px;
-  height: 2px;
-  background: #d4af37;
-  margin: 15px auto;
+  width:60px;
+  height:2px;
+  background:#d4af37;
+  margin:15px auto;
+}
+
+.countdown {
+  margin-top:20px;
+  font-size:14px;
+  color:#ccc;
+}
+
+.details p {
+  margin:5px 0;
+  font-size:14px;
+  color:#ccc;
 }
 
 </style>
@@ -123,36 +127,64 @@ button:hover {
 <div class="card">
 
   <h1>BISMILLAH</h1>
+  <div class="names">Ahmed & Fatima</div>
   <p class="subtitle">Together with our families, we invite you</p>
 
   <button onclick="openInvite()">Open Invitation</button>
 
   <div id="content" class="section">
-    
-    <div class="divider"></div>
-
-    <h2>Welcome</h2>
-    <p>With the blessings of Allah, we request the honor of your presence at our Nikah ceremony.</p>
 
     <div class="divider"></div>
 
-    <h2>Wedding Details</h2>
-    <p><strong>Date:</strong> 15 May 2026</p>
-    <p><strong>Venue:</strong> Royal Banquet Hall</p>
+    <h2 style="color:#d4af37;font-family:'Cinzel',serif;">Nikah Ceremony</h2>
+
+    <div class="details">
+      <p><strong>Date:</strong> 15 May 2026</p>
+      <p><strong>Venue:</strong> Royal Banquet Hall</p>
+    </div>
+
+    <div class="countdown" id="countdown"></div>
 
     <div class="divider"></div>
 
-    <h2>Dua Request</h2>
-    <p>Your prayers and presence will complete our happiness.</p>
+    <button onclick="openMap()">View Location</button>
+    <button onclick="rsvp()">RSVP on WhatsApp</button>
 
   </div>
 
 </div>
 
 <script>
-function openInvite() {
+
+function openInvite(){
   document.getElementById("content").classList.toggle("show");
 }
+
+/* Countdown */
+const eventDate = new Date("May 15, 2026 18:00:00").getTime();
+const timer = setInterval(function(){
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+
+  document.getElementById("countdown").innerHTML =
+    days+" Days | "+hours+" Hours | "+minutes+" Minutes Remaining";
+
+},1000);
+
+/* Map Button */
+function openMap(){
+  window.open("https://maps.google.com","_blank");
+}
+
+/* WhatsApp RSVP */
+function rsvp(){
+  window.open("https://wa.me/919999999999","_blank");
+}
+
 </script>
 
 </body>

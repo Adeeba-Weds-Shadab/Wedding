@@ -154,6 +154,114 @@ html,body{
   transition:all 1.5s ease;
 }
 
+
+<!-- GRAND COUPLE REVEAL SECTION -->
+<section class="couple-section">
+  <div class="spotlight"></div>
+
+  <h2 class="celebration-text">Celebrating the Union of</h2>
+
+  <div class="names-wrapper">
+    <h1 class="bride-name">Adeeba</h1>
+    <div class="and-symbol">&</div>
+    <h1 class="groom-name">Shadab</h1>
+  </div>
+
+  <p class="family-side">
+    Cordially inviting you from the bride's family<br>
+    on the auspicious occasion of Barat
+  </p>
+</section>
+
+
+
+  /* COUPLE SECTION */
+.couple-section {
+  position: relative;
+  padding: 120px 20px;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(212,175,55,0.08), transparent 60%);
+}
+
+.spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 0;
+}
+
+.celebration-text {
+  font-size: 22px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  color: #d4af37;
+  z-index: 1;
+  position: relative;
+}
+
+.names-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.bride-name,
+.groom-name {
+  font-size: 64px;
+  font-family: 'Playfair Display', serif;
+  margin: 10px 0;
+  background: linear-gradient(45deg, #d4af37, #fff8dc, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(212,175,55,0.4);
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.and-symbol {
+  font-size: 48px;
+  margin: 20px 0;
+  color: #d4af37;
+  animation: fadeUp 1.8s ease forwards;
+}
+
+.family-side {
+  margin-top: 40px;
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.8;
+  animation: fadeUp 2s ease forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .bride-name,
+  .groom-name {
+    font-size: 42px;
+  }
+
+  .spotlight {
+    width: 400px;
+    height: 400px;
+  }
+}
+  
 .invitation-content.active{
   opacity:1;
   transform:translateY(0);

@@ -64,14 +64,33 @@ html,body{
 .page{
   height:100vh;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   padding:20px;
   perspective:2000px;
+  position:relative;
+  overflow:hidden;
   background:
     radial-gradient(circle at 30% 20%, rgba(255,215,0,0.05), transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05), transparent 40%),
     #0c0c0c;
+}
+
+/* LIGHTWEIGHT GOLD DUST */
+.dust{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:radial-gradient(circle, #fff4c4, #d4af37);
+  border-radius:50%;
+  opacity:0.6;
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
 }
 
 /* CARD */
@@ -86,6 +105,7 @@ html,body{
   transform-style:preserve-3d;
   transition:transform .08s ease, box-shadow .08s ease;
   will-change:transform;
+  z-index:2;
 
   box-shadow:
     0 60px 120px rgba(0,0,0,0.75),
@@ -157,15 +177,15 @@ html,body{
     0 0 25px rgba(255,215,0,0.7);
 }
 
-/* FADE */
-.fade-in{
-  opacity:0;
-  transform:translateY(30px);
-  animation:fadeUp 1.8s ease forwards;
-  animation-delay:2s;
-}
-@keyframes fadeUp{
-  to{opacity:1;transform:translateY(0);}
+/* CEREMONIAL LINE */
+.bottom-line{
+  position:absolute;
+  bottom:25px;
+  font-family:'Playfair Display', serif;
+  font-size:13px;
+  letter-spacing:2px;
+  color:rgba(212,175,55,0.6);
+  text-align:center;
 }
 
 /* MOBILE */
@@ -186,8 +206,21 @@ html,body{
   <div class="loader-bar"></div>
 </div>
 
-<div class="page">
-  <div class="invite-box fade-in" id="card">
+<div class="page" id="page">
+
+  <!-- Gold Dust (Only 18 particles — lightweight) -->
+  <div class="dust" style="left:5%; animation-duration:14s;"></div>
+  <div class="dust" style="left:15%; animation-duration:18s;"></div>
+  <div class="dust" style="left:25%; animation-duration:16s;"></div>
+  <div class="dust" style="left:35%; animation-duration:20s;"></div>
+  <div class="dust" style="left:45%; animation-duration:15s;"></div>
+  <div class="dust" style="left:55%; animation-duration:19s;"></div>
+  <div class="dust" style="left:65%; animation-duration:17s;"></div>
+  <div class="dust" style="left:75%; animation-duration:22s;"></div>
+  <div class="dust" style="left:85%; animation-duration:14s;"></div>
+  <div class="dust" style="left:95%; animation-duration:18s;"></div>
+
+  <div class="invite-box" id="card">
     <div class="invite-title">YOU ARE INVITED</div>
     <div class="invite-subtitle">
       With gratitude and joy, we request the honour of your presence
@@ -195,6 +228,11 @@ html,body{
     </div>
     <button class="enter-btn">Enter</button>
   </div>
+
+  <div class="bottom-line">
+    In the Name of Allah, The Most Gracious, The Most Merciful
+  </div>
+
 </div>
 
 <script>
@@ -209,7 +247,7 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* REAL WORKING 3D TILT */
+/* TILT */
 const card = document.getElementById("card");
 
 function tilt(e, isTouch=false){
@@ -223,34 +261,19 @@ function tilt(e, isTouch=false){
   const percentX = (x - centerX) / (rect.width/2);
   const percentY = (y - centerY) / (rect.height/2);
 
-  const rotateY = percentX * 25; 
-  const rotateX = -percentY * 25;
+  const rotateY = percentX * 20;
+  const rotateX = -percentY * 20;
 
   card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-
-  card.style.boxShadow = `
-    ${-rotateY*2}px ${rotateX*2}px 120px rgba(0,0,0,0.8),
-    0 0 90px rgba(212,175,55,0.12),
-    inset 0 0 40px rgba(255,215,0,0.03)
-  `;
 }
 
 function resetTilt(){
   card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-  card.style.boxShadow = `
-    0 60px 120px rgba(0,0,0,0.75),
-    0 0 80px rgba(212,175,55,0.08),
-    inset 0 0 40px rgba(255,215,0,0.03)
-  `;
 }
 
 card.addEventListener("mousemove", tilt);
 card.addEventListener("mouseleave", resetTilt);
-
-card.addEventListener("touchmove", function(e){
-  tilt(e, true);
-},{passive:true});
-
+card.addEventListener("touchmove", function(e){ tilt(e,true); }, {passive:true});
 card.addEventListener("touchend", resetTilt);
 
 </script>

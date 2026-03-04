@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Royal Invitation</title>
+<title>Adeeba & Shadab - Barat Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
 
@@ -140,7 +140,7 @@ html,body{
 /* ---------- PAGE 2 CONTENT ---------- */
 .invitation-content{
   text-align:center;
-  max-width:700px;
+  max-width:800px;
   opacity:0;
   transform:translateY(30px);
   transition:all 1.5s ease;
@@ -151,34 +151,60 @@ html,body{
   transform:translateY(0);
 }
 
-.invitation-content h2{
-  font-size:2.2rem;
-  color:#ffd700;
-  margin-bottom:20px;
-  letter-spacing:2px;
+/* Bride Groom Reveal */
+.names{
+  margin-top:30px;
+  margin-bottom:40px;
 }
 
-.date-location{
+.names h2{
+  font-size:2.5rem;
+  color:#ffd700;
+  letter-spacing:3px;
+  margin-bottom:10px;
+  animation:nameGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow{
+  0%{text-shadow:0 0 10px rgba(255,215,0,0.4);}
+  100%{text-shadow:0 0 25px rgba(255,215,0,0.9);}
+}
+
+.ampersand{
+  font-size:2rem;
+  color:#aaa;
+  margin:10px 0;
+}
+
+.event-type{
+  font-size:1.2rem;
+  color:#ccc;
+  letter-spacing:2px;
+  margin-bottom:30px;
+}
+
+/* Event Card */
+.event-card{
   margin:30px 0;
-  padding:25px;
+  padding:30px;
   border:1px solid rgba(255,215,0,0.3);
   border-radius:15px;
   background:rgba(255,215,0,0.05);
 }
 
-.date-location p{
+.event-card p{
   margin:8px 0;
   color:#ddd;
 }
 
 .divider{
-  width:80px;
+  width:100px;
   height:2px;
   background:linear-gradient(to right, transparent, gold, transparent);
   margin:30px auto;
 }
 
-.poetic{
+.note{
   font-style:italic;
   color:#bbb;
   margin-top:20px;
@@ -203,7 +229,7 @@ html,body{
   <div class="perspective-wrapper">
     <div class="invite-box" id="card">
       <h1>You Are Invited</h1>
-      <p>To witness a moment of elegance and grace.</p>
+      <p>With joy and gratitude, we invite you to the Barat celebration.</p>
       <button class="enter-btn" onclick="enterInvitation()">Enter Invitation</button>
     </div>
   </div>
@@ -215,23 +241,33 @@ html,body{
   <div class="pattern"></div>
 
   <div class="invitation-content" id="content2">
-    <h2>The Grand Celebration</h2>
+
+    <div class="names">
+      <h2>Adeeba</h2>
+      <div class="ampersand">&</div>
+      <h2>Shadab</h2>
+    </div>
+
+    <div class="event-type">
+      Barat Reception Ceremony
+    </div>
 
     <div class="divider"></div>
 
-    <div class="date-location">
-      <p><strong>Date:</strong> 20th December 2026</p>
-      <p><strong>Time:</strong> 7:00 PM Onwards</p>
-      <p><strong>Venue:</strong> Royal Palace Banquet Hall</p>
+    <div class="event-card">
+      <p><strong>Date:</strong> 1st April 2026</p>
+      <p><strong>Time:</strong> Day Event</p>
+      <p><strong>Barat Arrival:</strong> To Be Announced</p>
+      <p><strong>Venue:</strong> M.A. Palace Banquet Hall</p>
       <p>Meerut, Uttar Pradesh</p>
     </div>
 
     <div class="divider"></div>
 
-    <p class="poetic">
-      “An evening where hearts unite,  
-      where elegance meets destiny.”
+    <p class="note">
+      “A new journey begins with prayers, love and celebration.”
     </p>
+
   </div>
 </div>
 

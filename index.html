@@ -39,6 +39,14 @@ html,body{
   transform:scale(1.05);
 }
 
+/* Page 2 becomes scrollable */
+#page2{
+  position:absolute;
+  overflow-y:auto;
+  padding-top:120px;
+  padding-bottom:120px;
+}
+
 /* ---------- BACKGROUND ---------- */
 .bg-shimmer{
   position:absolute;
@@ -141,6 +149,7 @@ html,body{
 .invitation-content{
   text-align:center;
   max-width:800px;
+  margin:auto;
   opacity:0;
   transform:translateY(30px);
   transition:all 1.5s ease;
@@ -183,7 +192,6 @@ html,body{
   margin-bottom:30px;
 }
 
-/* Event Card */
 .event-card{
   margin:30px 0;
   padding:30px;
@@ -201,13 +209,59 @@ html,body{
   width:100px;
   height:2px;
   background:linear-gradient(to right, transparent, gold, transparent);
-  margin:30px auto;
+  margin:40px auto;
 }
 
-.note{
-  font-style:italic;
-  color:#bbb;
-  margin-top:20px;
+/* ---------- TIMELINE ---------- */
+.timeline{
+  position:relative;
+  max-width:700px;
+  margin:60px auto;
+  padding-left:30px;
+  text-align:left;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:15px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom, gold, transparent);
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:50px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+.timeline-item.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.timeline-dot{
+  position:absolute;
+  left:-4px;
+  top:5px;
+  width:15px;
+  height:15px;
+  background:gold;
+  border-radius:50%;
+  box-shadow:0 0 15px gold;
+}
+
+.timeline-item h3{
+  color:#ffd700;
+  margin-bottom:8px;
+}
+
+.timeline-item p{
+  color:#ccc;
 }
 
 /* MOBILE */
@@ -264,9 +318,28 @@ html,body{
 
     <div class="divider"></div>
 
-    <p class="note">
-      “A new journey begins with prayers, love and celebration.”
-    </p>
+    <!-- TIMELINE SECTION -->
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Welcome Reception</h3>
+        <p>Guests arrival and traditional welcome ceremony.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Barat Arrival</h3>
+        <p>Grand arrival of the Barat procession. (Time to be updated)</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <h3>Lunch & Celebration</h3>
+        <p>Daytime feast followed by celebration and blessings.</p>
+      </div>
+
+    </div>
 
   </div>
 </div>
@@ -316,6 +389,18 @@ wrapper.addEventListener("touchmove",(e)=>{
 
 wrapper.addEventListener("touchend",()=>{
   card.style.transform = "rotateX(0) rotateY(0)";
+});
+
+/* Scroll Reveal Animation */
+const items = document.querySelectorAll(".timeline-item");
+
+window.addEventListener("scroll",()=>{
+  items.forEach(item=>{
+    const rect = item.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      item.classList.add("visible");
+    }
+  });
 });
 
 </script>

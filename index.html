@@ -27,7 +27,7 @@ html,body{
 }
 
 /* =============================
-   LOADER
+   LOADER (UNCHANGED)
 ============================= */
 .loader{
   position:fixed;
@@ -81,6 +81,7 @@ html,body{
   display:flex;
   justify-content:center;
   align-items:center;
+  padding:20px;
   background:
     radial-gradient(circle at 30% 20%, rgba(255,215,0,0.05), transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05), transparent 40%),
@@ -88,46 +89,58 @@ html,body{
 }
 
 /* =============================
-   3D PERSPECTIVE WRAPPER
+   3D WRAPPER
 ============================= */
 .perspective-wrapper{
   perspective:1400px;
-  width:90%;
+  width:100%;
   max-width:650px;
 }
 
 /* =============================
-   INVITATION CARD
+   INVITE BOX
 ============================= */
 .invite-box{
+  position:relative;
   background:rgba(20,20,20,0.95);
   padding:70px 50px;
   border-radius:24px;
   text-align:center;
   transform-style:preserve-3d;
   transition:transform .25s ease;
-  position:relative;
-
-  border:1px solid rgba(212,175,55,0.3);
+  overflow:hidden;
 
   box-shadow:
     0 40px 80px rgba(0,0,0,0.6),
-    0 0 60px rgba(212,175,55,0.1),
+    0 0 60px rgba(212,175,55,0.08),
     inset 0 0 40px rgba(255,215,0,0.03);
 }
 
-/* Soft outer glow */
+/* === Animated Hue Border === */
 .invite-box::before{
   content:"";
   position:absolute;
-  inset:-2px;
+  inset:0;
+  padding:2px;
   border-radius:24px;
-  background:linear-gradient(45deg,#d4af37,#8f6b1c,#d4af37);
-  opacity:0.15;
-  z-index:-1;
+  background:linear-gradient(45deg, red, gold, lime, cyan, blue, magenta, red);
+  background-size:400% 400%;
+  animation:hueRotate 8s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
 }
 
-/* Title */
+@keyframes hueRotate{
+  0%{background-position:0% 50%;}
+  100%{background-position:400% 50%;}
+}
+
+/* =============================
+   TEXT
+============================= */
 .invite-title{
   font-size:2.6rem;
   letter-spacing:4px;
@@ -135,7 +148,6 @@ html,body{
   margin-bottom:30px;
 }
 
-/* Subtitle */
 .invite-subtitle{
   font-family:'Playfair Display', serif;
   font-size:18px;
@@ -144,7 +156,9 @@ html,body{
   margin-bottom:50px;
 }
 
-/* Button */
+/* =============================
+   BUTTON
+============================= */
 .enter-btn{
   padding:14px 45px;
   font-size:15px;
@@ -161,7 +175,9 @@ html,body{
   box-shadow:0 15px 30px rgba(212,175,55,0.3);
 }
 
-/* Smooth Fade In */
+/* =============================
+   FADE IN
+============================= */
 .fade-in{
   opacity:0;
   transform:translateY(30px);
@@ -174,6 +190,36 @@ html,body{
     opacity:1;
     transform:translateY(0);
   }
+}
+
+/* =============================
+   MOBILE OPTIMIZATION
+============================= */
+@media(max-width:768px){
+
+  html,body{
+    overflow:auto;
+  }
+
+  .invite-box{
+    padding:55px 25px;
+  }
+
+  .invite-title{
+    font-size:1.8rem;
+    letter-spacing:3px;
+  }
+
+  .invite-subtitle{
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  .enter-btn{
+    width:100%;
+    padding:16px;
+  }
+
 }
 
 </style>
@@ -218,7 +264,7 @@ window.addEventListener("load",()=>{
   },2000);
 });
 
-/* 3D Tilt Effect */
+/* 3D Tilt (Desktop) */
 const card = document.getElementById("card");
 const wrapper = document.querySelector(".perspective-wrapper");
 
@@ -227,13 +273,30 @@ wrapper.addEventListener("mousemove",(e)=>{
   const x = e.clientX - rect.left;
   const y = e.clientY - rect.top;
 
-  const rotateX = ((y - rect.height/2) / rect.height) * 15;
-  const rotateY = ((x - rect.width/2) / rect.width) * 15;
+  const rotateX = ((y - rect.height/2) / rect.height) * 12;
+  const rotateY = ((x - rect.width/2) / rect.width) * 12;
 
   card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
 });
 
 wrapper.addEventListener("mouseleave",()=>{
+  card.style.transform = "rotateX(0) rotateY(0)";
+});
+
+/* Subtle Touch Tilt (Mobile) */
+wrapper.addEventListener("touchmove",(e)=>{
+  const touch = e.touches[0];
+  const rect = wrapper.getBoundingClientRect();
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+
+  const rotateX = ((y - rect.height/2) / rect.height) * 8;
+  const rotateY = ((x - rect.width/2) / rect.width) * 8;
+
+  card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+wrapper.addEventListener("touchend",()=>{
   card.style.transform = "rotateX(0) rotateY(0)";
 });
 

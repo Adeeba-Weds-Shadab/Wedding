@@ -1,4 +1,4 @@
 function openCard() {
-    document.getElementById("cover").classList.add("hide");
-    document.getElementById("content").classList.add("show");
+    document.querySelector(".cover").style.display = "none";
+    document.querySelector(".content").classList.add("show");
 }

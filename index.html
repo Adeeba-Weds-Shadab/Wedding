@@ -29,8 +29,8 @@ html,body{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:30px 20px;
-  transition:opacity 0.8s ease, transform 0.8s ease;
+  padding:40px 20px;
+  transition:opacity 1s ease, transform 1s ease;
 }
 
 .hidden{
@@ -39,14 +39,14 @@ html,body{
   transform:scale(1.05);
 }
 
-/* ---------- BACKGROUND SHIMMER ---------- */
+/* ---------- BACKGROUND ---------- */
 .bg-shimmer{
   position:absolute;
   inset:0;
   background:
     radial-gradient(circle at 30% 30%, rgba(255,215,0,0.12), transparent 40%),
     radial-gradient(circle at 70% 70%, rgba(255,215,0,0.12), transparent 40%);
-  animation: shimmerMove 10s linear infinite;
+  animation: shimmerMove 12s linear infinite;
   z-index:-2;
 }
 
@@ -56,7 +56,6 @@ html,body{
   100%{transform:translateX(-5%);}
 }
 
-/* ---------- GEOMETRIC OVERLAY ---------- */
 .pattern{
   position:absolute;
   inset:0;
@@ -65,14 +64,14 @@ html,body{
   z-index:-1;
 }
 
-/* ---------- 3D CONTAINER ---------- */
+/* ---------- 3D PERSPECTIVE ---------- */
 .perspective-wrapper{
   perspective:1200px;
   width:100%;
   max-width:650px;
 }
 
-/* ---------- INVITE BOX ---------- */
+/* ---------- CARD ---------- */
 .invite-box{
   position:relative;
   width:100%;
@@ -81,10 +80,10 @@ html,body{
   border-radius:20px;
   transform-style:preserve-3d;
   transition:transform 0.2s ease;
+  text-align:center;
   box-shadow:0 0 40px rgba(255,215,0,0.08);
 }
 
-/* ---------- TRUE EDGE ANIMATED BORDER ---------- */
 .invite-box::before{
   content:"";
   position:absolute;
@@ -102,7 +101,6 @@ html,body{
   100%{background-position:300% 50%;}
 }
 
-/* Real inner background to keep border-only look */
 .invite-box::after{
   content:"";
   position:absolute;
@@ -124,7 +122,6 @@ html,body{
   margin-bottom:30px;
 }
 
-/* ---------- BUTTON ---------- */
 .enter-btn{
   padding:14px 40px;
   background:linear-gradient(45deg,#d4af37,#ffd700);
@@ -140,18 +137,54 @@ html,body{
   box-shadow:0 0 20px gold;
 }
 
-/* ---------- NEXT PAGE ---------- */
-.next-content{
-  max-width:650px;
+/* ---------- PAGE 2 CONTENT ---------- */
+.invitation-content{
   text-align:center;
+  max-width:700px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1.5s ease;
 }
 
-.next-content h2{
+.invitation-content.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.invitation-content h2{
+  font-size:2.2rem;
   color:#ffd700;
   margin-bottom:20px;
+  letter-spacing:2px;
 }
 
-/* ---------- MOBILE FIX ---------- */
+.date-location{
+  margin:30px 0;
+  padding:25px;
+  border:1px solid rgba(255,215,0,0.3);
+  border-radius:15px;
+  background:rgba(255,215,0,0.05);
+}
+
+.date-location p{
+  margin:8px 0;
+  color:#ddd;
+}
+
+.divider{
+  width:80px;
+  height:2px;
+  background:linear-gradient(to right, transparent, gold, transparent);
+  margin:30px auto;
+}
+
+.poetic{
+  font-style:italic;
+  color:#bbb;
+  margin-top:20px;
+}
+
+/* MOBILE */
 @media(max-width:768px){
   .invite-box{
     padding:40px 25px;
@@ -181,21 +214,40 @@ html,body{
   <div class="bg-shimmer"></div>
   <div class="pattern"></div>
 
-  <div class="next-content">
-    <h2>The Celebration Awaits</h2>
-    <p>This page now keeps full animated background and environment.</p>
+  <div class="invitation-content" id="content2">
+    <h2>The Grand Celebration</h2>
+
+    <div class="divider"></div>
+
+    <div class="date-location">
+      <p><strong>Date:</strong> 20th December 2026</p>
+      <p><strong>Time:</strong> 7:00 PM Onwards</p>
+      <p><strong>Venue:</strong> Royal Palace Banquet Hall</p>
+      <p>Meerut, Uttar Pradesh</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="poetic">
+      “An evening where hearts unite,  
+      where elegance meets destiny.”
+    </p>
   </div>
 </div>
 
 <script>
 
-/* ---------- PAGE TRANSITION ---------- */
+/* PAGE TRANSITION */
 function enterInvitation(){
   document.getElementById("page1").classList.add("hidden");
   document.getElementById("page2").classList.remove("hidden");
+
+  setTimeout(()=>{
+    document.getElementById("content2").classList.add("active");
+  },400);
 }
 
-/* ---------- TRUE 3D TILT ---------- */
+/* 3D TILT */
 const card = document.getElementById("card");
 const wrapper = document.querySelector(".perspective-wrapper");
 
@@ -214,7 +266,6 @@ wrapper.addEventListener("mouseleave",()=>{
   card.style.transform = "rotateX(0) rotateY(0)";
 });
 
-/* TOUCH SUPPORT */
 wrapper.addEventListener("touchmove",(e)=>{
   const touch = e.touches[0];
   const rect = wrapper.getBoundingClientRect();

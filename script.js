@@ -66,6 +66,7 @@ card.style.transform="rotateY(0) rotateX(0)";
 
 });
 
+  
 
 /* PAGE 3 FADE REVEAL */
 

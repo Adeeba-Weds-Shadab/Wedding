@@ -365,6 +365,18 @@ animation:scrollPulse 2s infinite;
 
 
 
+html{
+scroll-behavior:smooth;
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,27 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adeeba & Shadab Wedding</title>
+
+<title>Adeeba & Shadab</title>
 
 <style>
 
 body{
 margin:0;
-font-family: 'Georgia', serif;
-background:black;
+background:#000;
+font-family:Georgia, serif;
 color:white;
 overflow-x:hidden;
 }
 
-/* -------- GOLD VARIABLES -------- */
-
-:root{
---gold1:#c6a85a;
---gold2:#e6d08f;
---gold3:#8d742f;
-}
-
-/* -------- PAGE SYSTEM -------- */
+/* ---------------- PAGE SYSTEM ---------------- */
 
 .page{
 min-height:100vh;
@@ -31,9 +24,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-padding:20px;
-text-align:center;
-transition:opacity 0.8s ease;
+transition:opacity .8s ease;
 }
 
 .hidden{
@@ -45,7 +36,7 @@ left:0;
 width:100%;
 }
 
-/* -------- DUST PARTICLES -------- */
+/* ---------------- DUST ---------------- */
 
 #dust{
 position:fixed;
@@ -62,37 +53,33 @@ position:absolute;
 width:2px;
 height:2px;
 background:white;
-opacity:0.15;
-animation:float 12s linear infinite;
+opacity:0.2;
+animation:dustFloat linear infinite;
 }
 
-@keyframes float{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-120vh);}
+@keyframes dustFloat{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
-/* -------- INVITE BOX -------- */
+/* ---------------- INVITE BOX ---------------- */
 
 .invite-box{
 
 position:relative;
-z-index:2;
+z-index:5;
 
-border:2px solid transparent;
-border-radius:20px;
 padding:50px 30px;
-
 max-width:420px;
 width:90%;
 
-background:rgba(0,0,0,0.6);
+border-radius:20px;
 
-background-image:
-linear-gradient(black,black),
-linear-gradient(120deg,var(--gold1),var(--gold2),var(--gold3));
+border:2px solid transparent;
 
-background-origin:border-box;
-background-clip:padding-box,border-box;
+background:
+linear-gradient(#000,#000) padding-box,
+linear-gradient(120deg,#8d742f,#e6d08f,#c6a85a,#8d742f) border-box;
 
 transition:transform .25s ease;
 
@@ -101,105 +88,129 @@ transition:transform .25s ease;
 /* tilt */
 
 .invite-box:hover{
-transform:rotateX(4deg) rotateY(-4deg);
+transform:rotateX(3deg) rotateY(-3deg);
 }
 
-/* -------- TEXT -------- */
+/* ---------------- TEXT ---------------- */
 
 .invited{
+
 font-size:22px;
-letter-spacing:3px;
-margin-bottom:20px;
-color:var(--gold2);
+letter-spacing:4px;
+color:#e6d08f;
+margin-bottom:25px;
+
 }
 
 .quran{
+
 font-size:14px;
-opacity:0.8;
+opacity:.85;
+line-height:1.6;
 margin-bottom:25px;
-line-height:1.5;
+
 }
 
-/* -------- ENTER BUTTON -------- */
+/* ---------------- ENTER BUTTON ---------------- */
 
 .enter-btn{
 
-margin-top:10px;
 padding:12px 34px;
+
 border-radius:30px;
 
-border:1px solid var(--gold1);
-background:transparent;
-color:var(--gold2);
+border:1px solid #c6a85a;
 
-font-size:16px;
+background:transparent;
+
+color:#e6d08f;
+
+font-size:15px;
 letter-spacing:2px;
 
 cursor:pointer;
 
-transition:all .3s ease;
+transition:.3s;
+
 }
+
+/* GOLD GLOW */
 
 .enter-btn:hover{
 
 box-shadow:
-0 0 12px rgba(198,168,90,0.5),
-0 0 25px rgba(198,168,90,0.4);
+0 0 8px rgba(198,168,90,.5),
+0 0 18px rgba(198,168,90,.35);
+
+transform:translateY(-2px);
 
 }
 
-/* -------- PAGE 2 -------- */
+/* ---------------- PAGE 2 ---------------- */
+
+.page2-content{
+
+text-align:center;
+max-width:600px;
+padding:30px;
+
+}
 
 .names{
 
-font-size:48px;
+font-size:46px;
 letter-spacing:3px;
-margin-bottom:20px;
+margin-bottom:15px;
 
-background:linear-gradient(var(--gold2),var(--gold1));
+background:linear-gradient(#e6d08f,#c6a85a);
 -webkit-background-clip:text;
 color:transparent;
 
 opacity:0;
-transform:translateY(20px);
+transform:translateY(30px);
+
 animation:fadeUp 1.2s forwards;
+
 }
 
 @keyframes fadeUp{
+
 to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 .details{
 
-font-size:16px;
+font-size:17px;
 line-height:1.8;
-max-width:500px;
-margin-top:10px;
+
 opacity:0;
 animation:fadeUp 1.4s forwards;
-animation-delay:.3s;
+animation-delay:.4s;
+
 }
 
 .date{
-margin-top:20px;
+
+margin-top:18px;
 font-size:18px;
-color:var(--gold2);
-letter-spacing:1px;
+color:#e6d08f;
+
 }
 
-/* -------- MOBILE -------- */
+/* ---------------- MOBILE ---------------- */
 
 @media(max-width:600px){
 
-.names{
-font-size:36px;
-}
-
 .invite-box{
 padding:40px 20px;
+}
+
+.names{
+font-size:34px;
 }
 
 }
@@ -234,9 +245,12 @@ ENTER
 
 </section>
 
+
 <!-- PAGE 2 -->
 
 <section id="page2" class="page hidden">
+
+<div class="page2-content">
 
 <div class="names">
 Adeeba & Shadab
@@ -264,41 +278,47 @@ Meerut, U.P. 250002
 
 </div>
 
+</div>
+
 </section>
 
 <script>
 
-/* OPEN PAGE 2 */
+/* ---------- PAGE TRANSITION ---------- */
 
 function openInvite(){
 
-document.getElementById("page1").style.opacity="0";
+const p1=document.getElementById("page1")
+const p2=document.getElementById("page2")
+
+p1.style.opacity="0"
 
 setTimeout(function(){
 
-document.getElementById("page1").classList.add("hidden");
-document.getElementById("page2").classList.remove("hidden");
-document.getElementById("page2").style.opacity="1";
+p1.style.display="none"
 
-},600)
+p2.classList.remove("hidden")
+p2.style.opacity="1"
+
+},700)
 
 }
 
-/* DUST PARTICLES */
+/* ---------- DUST ---------- */
 
-const dustContainer=document.getElementById("dust");
+const dust=document.getElementById("dust")
 
 for(let i=0;i<40;i++){
 
-const d=document.createElement("div");
+const d=document.createElement("div")
 
-d.classList.add("dust");
+d.className="dust"
 
-d.style.left=Math.random()*100+"%";
-d.style.bottom=Math.random()*100+"%";
-d.style.animationDuration=8+Math.random()*6+"s";
+d.style.left=Math.random()*100+"%"
+d.style.bottom=Math.random()*100+"%"
+d.style.animationDuration=8+Math.random()*6+"s"
 
-dustContainer.appendChild(d);
+dust.appendChild(d)
 
 }
 

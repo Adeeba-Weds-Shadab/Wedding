@@ -100,8 +100,9 @@ to{transform:translateY(-10vh);}
 
 .section1.fade-out{
 opacity:0;
-pointer-events:none;
 }
+
+/* INVITE BOX */
 
 .invite-box{
 width:100%;
@@ -199,28 +200,14 @@ box-shadow:0 0 10px rgba(212,175,55,0.6);
 .section2{
 background:#0c0c0c;
 opacity:0;
-pointer-events:none;
-z-index:3;
-display:flex;
+z-index:1;
 flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:40px 20px;
-}
-
-.section2::before{
-content:"";
-position:absolute;
-inset:0;
-background-image:
-linear-gradient(45deg,rgba(212,175,55,0.07) 1px,transparent 1px),
-linear-gradient(-45deg,rgba(212,175,55,0.07) 1px,transparent 1px);
-background-size:70px 70px;
-z-index:-1;
+pointer-events:none;
 }
 
 .section2.active{
 opacity:1;
+z-index:3;
 pointer-events:auto;
 }
 
@@ -394,20 +381,18 @@ document.getElementById("loader").style.display="none";
 },1800);
 });
 
-/* page switch FIX */
+/* PAGE SWITCH */
 
-const enterBtn=document.getElementById("enterBtn");
+document.getElementById("enterBtn").addEventListener("click",()=>{
+
 const page1=document.getElementById("page1");
 const page2=document.getElementById("page2");
 
-enterBtn.addEventListener("click",()=>{
-
-page1.classList.add("fade-out");
+page2.classList.add("active");
 
 setTimeout(()=>{
-page1.style.display="none";
-page2.classList.add("active");
-},800);
+page1.classList.add("fade-out");
+},100);
 
 });
 

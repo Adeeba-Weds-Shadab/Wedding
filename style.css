@@ -495,33 +495,33 @@ margin-top:10px;
 
 }
 
+
+
 .event-day{
-
-font-size:18px;
-
+font-size:14px;
 color:#d4af37;
-
+letter-spacing:1px;
 }
 
 .event-date{
+font-size:15px;
+color:#e6e6e6;
+}
 
-font-size:20px;
-
-color:#f5e6b3;
-
+.event-time{
+font-size:14px;
+color:#d4af37;
 }
 
 .venue{
-
 font-family:'Playfair Display',serif;
-
-font-size:17px;
-
-line-height:1.8;
-
-color:#d6d6d6;
-
+font-size:14px;
+line-height:1.7;
+color:#cfcfcf;
 }
+
+
+
 
 /* MOBILE */
 

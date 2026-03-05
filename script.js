@@ -82,6 +82,7 @@ if(top < trigger){
 
 page3.classList.add("show");
 
+
 }
 
 }

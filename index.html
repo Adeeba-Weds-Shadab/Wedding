@@ -3,201 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adeeba & Shadab Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<title>Adeeba & Shadab Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-html,body{
-height:100%;
+body{
+font-family:'Poppins',sans-serif;
 background:#0c0c0c;
-font-family:'Cinzel',serif;
 color:white;
 overflow:hidden;
 }
 
-/* LOADER */
+/* LOADING BAR */
 
-.loader{
+#loader{
 position:fixed;
-inset:0;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-transition:opacity 1s ease;
-}
-
-.loader-text{
-font-family:'Playfair Display',serif;
-font-size:22px;
-letter-spacing:3px;
-color:#d4af37;
-margin-bottom:30px;
-}
-
-.loader-bar{
-width:200px;
-height:2px;
-background:rgba(255,215,0,0.2);
-overflow:hidden;
-position:relative;
-}
-
-.loader-bar::after{
-content:"";
-position:absolute;
-left:-100%;
+top:0;
+left:0;
 width:100%;
+height:4px;
+background:#111;
+z-index:1000;
+}
+
+#loader-bar{
 height:100%;
-background:linear-gradient(90deg,transparent,gold,transparent);
-animation:loading 2s infinite;
+width:0%;
+background:linear-gradient(90deg,#d4af37,#fff2b2,#d4af37);
+animation:load 2s forwards;
 }
 
-@keyframes loading{
-0%{left:-100%;}
-100%{left:100%;}
-}
-
-/* SECTIONS */
-
-.section{
-position:fixed;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
-transition:opacity 1s ease;
-}
-
-/* DUST */
-
-.dust{
-position:absolute;
-width:5px;
-height:5px;
-background:radial-gradient(circle,#fff4c4,#d4af37);
-border-radius:50%;
-opacity:0.7;
-animation:float linear infinite;
-}
-
-@keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
+@keyframes load{
+to{width:100%}
 }
 
 /* PAGE 1 */
 
-.section1{z-index:2;}
-
-.section1.fade-out{
-opacity:0;
-pointer-events:none;
+.section1{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+text-align:center;
+transition:opacity 1s ease;
 }
+
+/* INVITATION BOX */
 
 .invite-box{
+
+padding:40px 35px;
+border-radius:18px;
+border:2px solid transparent;
+
+background:
+linear-gradient(#0c0c0c,#0c0c0c) padding-box,
+linear-gradient(120deg,#d4af37,#fff3c4,#d4af37) border-box;
+
+max-width:340px;
 width:100%;
-max-width:650px;
-background:rgba(20,20,20,0.96);
-padding:70px 50px;
-border-radius:24px;
-position:relative;
-transform-style:preserve-3d;
-transition:transform .15s ease;
-box-shadow:
-0 60px 120px rgba(0,0,0,0.8),
-0 0 60px rgba(212,175,55,0.08);
+
+transition:transform .3s ease;
+
 }
 
-.invite-box::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:24px;
-background:linear-gradient(120deg,#7a5a00,#d4af37,#fff2b0,#d4af37,#7a5a00);
-background-size:300% 300%;
-animation:goldFlow 6s ease infinite;
+/* TILT EFFECT */
 
--webkit-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
--webkit-mask-composite:xor;
-mask-composite:exclude;
+.invite-box:hover{
+transform:rotateX(8deg) rotateY(-8deg);
 }
 
-@keyframes goldFlow{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+/* TEXT */
 
 .invite-title{
-font-size:2.6rem;
-letter-spacing:4px;
-color:#f5e6b3;
-margin-bottom:25px;
+font-family:'Cinzel',serif;
+font-size:28px;
+letter-spacing:2px;
+margin-bottom:20px;
 }
 
-.invite-subtitle{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.8;
-color:#d6d6d6;
-margin-bottom:25px;
-}
-
-.quran-line{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:rgba(212,175,55,0.75);
-margin-bottom:5px;
-}
-
-.quran-ref{
-font-family:'Playfair Display',serif;
-font-size:13px;
-color:rgba(212,175,55,0.55);
-margin-bottom:40px;
-}
+/* ENTER BUTTON */
 
 .enter-btn{
-padding:14px 45px;
-font-size:15px;
-letter-spacing:2px;
-background:linear-gradient(45deg,#d4af37,#f1c94a);
+
+margin-top:10px;
+padding:12px 30px;
+
 border:none;
 border-radius:40px;
+
+background:#d4af37;
+color:black;
+
+font-weight:600;
 cursor:pointer;
+
 transition:.3s;
 }
 
 .enter-btn:hover{
-transform:translateY(-3px);
+
 box-shadow:
-0 0 12px rgba(212,175,55,0.55),
-0 10px 25px rgba(212,175,55,0.35);
+0 0 12px rgba(212,175,55,.6),
+0 10px 20px rgba(212,175,55,.3);
+
+}
+
+/* QURAN QUOTE */
+
+.quran-quote{
+
+margin-top:30px;
+font-size:14px;
+max-width:320px;
+opacity:.75;
+line-height:1.6;
+
+}
+
+/* DUST PARTICLES */
+
+canvas{
+position:fixed;
+inset:0;
+z-index:-1;
 }
 
 /* PAGE 2 */
 
 .section2{
-background:#0c0c0c;
-opacity:0;
-pointer-events:none;
-z-index:3;
+
+position:fixed;
+inset:0;
+
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+
+padding:40px 20px;
+
+text-align:center;
+
+background:#0c0c0c;
+
+opacity:0;
+pointer-events:none;
+
+transition:opacity 1.2s ease;
+
 }
 
 .section2.active{
@@ -205,100 +171,138 @@ opacity:1;
 pointer-events:auto;
 }
 
-/* COUPLE */
+/* INVITE TEXT */
 
-.name-left,
-.name-right{
-font-size:3rem;
-letter-spacing:4px;
-color:#f5e6b3;
-opacity:0;
-transition:all 1.2s ease;
+.invite-text{
+
+font-size:15px;
+letter-spacing:1px;
+opacity:.8;
+margin-bottom:25px;
+
 }
+
+/* NAMES */
+
+.names{
+
+font-family:'Cinzel',serif;
+
+font-size:40px;
+
+display:flex;
+align-items:center;
+gap:18px;
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+/* NAME ANIMATION */
 
 .name-left{
-transform:translateX(-60px);
+
+opacity:0;
+transform:translateX(-40px);
+
+animation:leftReveal 1.2s forwards .5s;
+
 }
 
 .name-right{
-transform:translateX(60px);
+
+opacity:0;
+transform:translateX(40px);
+
+animation:rightReveal 1.2s forwards .5s;
+
 }
 
-.section2.active .name-left,
-.section2.active .name-right{
+@keyframes leftReveal{
+to{
 opacity:1;
 transform:translateX(0);
 }
+}
+
+@keyframes rightReveal{
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
 
 .amp{
-font-family:'Playfair Display',serif;
-font-size:2rem;
+
+font-size:28px;
 color:#d4af37;
-margin:15px 0;
+
 opacity:0;
-transition:opacity 1s ease 0.8s;
+
+animation:fadeAmp 1s forwards 1.2s;
+
 }
 
-.section2.active .amp{
-opacity:1;
+@keyframes fadeAmp{
+to{opacity:1}
 }
+
+/* DIVIDER */
 
 .gold-divider{
-width:150px;
+
+width:70px;
 height:1px;
-background:linear-gradient(to right,transparent,#d4af37,transparent);
-margin:40px 0;
+background:#d4af37;
+
+margin:25px 0;
+
 }
 
-/* CEREMONY TEXT */
-
-.ceremony-text{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.9;
-max-width:620px;
-color:#d6d6d6;
-margin-bottom:30px;
-}
+/* EVENT TEXT */
 
 .event{
-color:#d4af37;
-font-size:20px;
-margin-bottom:15px;
+
+font-size:18px;
+margin-bottom:10px;
+
 }
 
 .date{
-font-size:17px;
-margin-bottom:35px;
+
+font-size:16px;
+opacity:.85;
+margin-bottom:10px;
+
+}
+
+.venue{
+
+font-size:16px;
+opacity:.85;
+margin-bottom:20px;
+
 }
 
 .host{
-font-family:'Playfair Display',serif;
-font-size:16px;
-color:#d4af37;
-}
 
-.host-detail{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:#d6d6d6;
+font-size:13px;
+opacity:.7;
+
 }
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:600px){
 
-.invite-box{padding:60px 28px;}
+.invite-title{
+font-size:24px;
+}
 
-.invite-title{font-size:1.9rem;}
-
-.invite-subtitle{font-size:16px;}
-
-.enter-btn{width:100%;}
-
-.name-left,.name-right{font-size:2rem;}
-
-.ceremony-text{font-size:15px;}
+.names{
+font-size:32px;
+}
 
 }
 
@@ -307,124 +311,143 @@ color:#d6d6d6;
 
 <body>
 
-<div class="loader" id="loader">
-<div class="loader-text">Preparing Invitation</div>
-<div class="loader-bar"></div>
+<div id="loader">
+<div id="loader-bar"></div>
 </div>
+
+<canvas id="dust"></canvas>
 
 <!-- PAGE 1 -->
 
-<section class="section section1" id="page1">
+<section class="section1" id="page1">
 
-<div class="dust" style="left:20%;animation-duration:14s;"></div>
-<div class="dust" style="left:40%;animation-duration:16s;"></div>
-<div class="dust" style="left:60%;animation-duration:13s;"></div>
-<div class="dust" style="left:80%;animation-duration:15s;"></div>
+<div class="invite-box">
 
-<div class="invite-box" id="card">
-
-<div class="invite-title">YOU ARE INVITED</div>
-
-<div class="invite-subtitle">
-With gratitude and joy, we request the honour of your presence
-at a sacred celebration of love and unity.
+<div class="invite-title">
+YOU ARE INVITED
 </div>
 
-<div class="quran-line">
-“And We created you in pairs.”
-</div>
-
-<div class="quran-ref">
-— Qur’an 78:8
-</div>
-
-<button class="enter-btn" onclick="goToPage2()">Enter</button>
+<button class="enter-btn" onclick="goToPage2()">
+Enter
+</button>
 
 </div>
+
+<div class="quran-quote">
+
+“And among His signs is that He created for you spouses so that you may find tranquility in them, and He placed between you affection and mercy.”  
+(Qur'an 30:21)
+
+</div>
+
 </section>
 
 <!-- PAGE 2 -->
 
-<section class="section section2" id="page2">
+<section class="section2" id="page2">
 
-<div class="name-left">Adeeba</div>
-<div class="amp">&</div>
-<div class="name-right">Shadab</div>
+<div class="invite-text">
+You are cordially invited to the
+</div>
+
+<div class="names">
+
+<span class="name-left">Adeeba</span>
+
+<span class="amp">&</span>
+
+<span class="name-right">Shadab</span>
+
+</div>
 
 <div class="gold-divider"></div>
 
-<div class="event">Nikah Ceremony</div>
-
-<div class="ceremony-text">
-The family of the bride joyfully invites you to witness
-the sacred union and blessings of marriage.
-Your presence will honour this beautiful beginning.
+<div class="event">
+Nikah Ceremony
 </div>
 
 <div class="date">
-Wednesday<br>
-1st April 2026
+1st April 2026 • Day Event
+</div>
+
+<div class="venue">
+M.A. Palace
 </div>
 
 <div class="host">
-Hosted by
-</div>
-
-<div class="host-detail">
-Mohammad Arshad<br>
-Meerut, Uttar Pradesh 250002
+Hosted by Mohammad Arshad • Meerut, UP
 </div>
 
 </section>
 
 <script>
 
-window.addEventListener("load",()=>{
-setTimeout(()=>{
-document.getElementById("loader").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},1000);
-},1800);
-});
+/* PAGE TRANSITION */
 
 function goToPage2(){
 
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
-
-page1.classList.add("fade-out");
+document.getElementById("page1").style.opacity="0";
 
 setTimeout(()=>{
-page2.classList.add("active");
-},600);
+document.getElementById("page2").classList.add("active");
+},600)
 
 }
 
-/* TILT */
+/* DUST PARTICLES */
 
-const card=document.getElementById("card");
+const canvas=document.getElementById("dust");
+const ctx=canvas.getContext("2d");
 
-function tilt(e){
+let particles=[];
 
-const rect=card.getBoundingClientRect();
+function resize(){
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
 
-const centerX=rect.left+rect.width/2;
-const centerY=rect.top+rect.height/2;
+for(let i=0;i<60;i++){
 
-const rotateY=((e.clientX-centerX)/rect.width)*10;
-const rotateX=((e.clientY-centerY)/rect.height)*-10;
+particles.push({
 
-card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+r:Math.random()*1.5,
+
+vx:(Math.random()-.5)*.2,
+vy:(Math.random()-.5)*.2
+
+})
 
 }
 
-function resetTilt(){
-card.style.transform="rotateX(0) rotateY(0)";
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="rgba(255,255,255,.3)";
+ctx.fill();
+
+})
+
+requestAnimationFrame(animate);
+
 }
 
-card.addEventListener("mousemove",tilt);
-card.addEventListener("mouseleave",resetTilt);
+animate();
 
 </script>
 

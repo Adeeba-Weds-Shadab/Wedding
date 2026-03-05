@@ -553,3 +553,21 @@ font-size:26px;
 }
 
 }
+
+
+
+
+
+
+/* ============================= */
+/* SCROLL ARCHITECTURE FIX */
+/* ============================= */
+
+/* Only the intro page stays fixed */
+
+.section:not(.section1){
+position:relative;
+inset:auto;
+min-height:100vh;
+width:100%;
+}

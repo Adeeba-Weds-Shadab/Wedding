@@ -69,9 +69,9 @@ card.style.transform="rotateY(0) rotateX(0)";
   
 
   
-/* GLOBAL SCROLL REVEAL SYSTEM */
+/* GLOBAL CONTENT REVEAL SYSTEM */
 
-const reveals = document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal-content");
 
 const observer = new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
@@ -86,7 +86,6 @@ threshold:0.25
 reveals.forEach(el=>{
 observer.observe(el);
 });
-  
 
 
 

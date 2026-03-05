@@ -3,295 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adeeba & Shadab Wedding Invitation</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<title>Adeeba & Shadab Wedding</title>
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html,body{
-height:100%;
-background:#0c0c0c;
-font-family:'Cinzel',serif;
-color:white;
-overflow:hidden;
-}
-
-/* LOADER */
-
-.loader{
-position:fixed;
-inset:0;
+body{
+margin:0;
+font-family: 'Georgia', serif;
 background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* -------- GOLD VARIABLES -------- */
+
+:root{
+--gold1:#c6a85a;
+--gold2:#e6d08f;
+--gold3:#8d742f;
+}
+
+/* -------- PAGE SYSTEM -------- */
+
+.page{
+min-height:100vh;
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
-z-index:9999;
-transition:opacity 1s ease;
+justify-content:center;
+flex-direction:column;
+padding:20px;
+text-align:center;
+transition:opacity 0.8s ease;
 }
 
-.loader-text{
-font-family:'Playfair Display',serif;
-font-size:22px;
-letter-spacing:3px;
-color:#d4af37;
-margin-bottom:30px;
-}
-
-.loader-bar{
-width:200px;
-height:2px;
-background:rgba(255,215,0,0.2);
-overflow:hidden;
-position:relative;
-}
-
-.loader-bar::after{
-content:"";
+.hidden{
+opacity:0;
+pointer-events:none;
 position:absolute;
-left:-100%;
+top:0;
+left:0;
+width:100%;
+}
+
+/* -------- DUST PARTICLES -------- */
+
+#dust{
+position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
-background:linear-gradient(90deg,transparent,gold,transparent);
-animation:loading 2s infinite;
+pointer-events:none;
+z-index:1;
 }
-
-@keyframes loading{
-0%{left:-100%;}
-100%{left:100%;}
-}
-
-/* SECTIONS */
-
-.section{
-position:fixed;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
-transition:opacity 1s ease;
-}
-
-/* DUST */
 
 .dust{
 position:absolute;
-width:5px;
-height:5px;
-background:radial-gradient(circle,#fff4c4,#d4af37);
-border-radius:50%;
-opacity:0.7;
-animation:float linear infinite;
+width:2px;
+height:2px;
+background:white;
+opacity:0.15;
+animation:float 12s linear infinite;
 }
 
 @keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
+0%{transform:translateY(0px);}
+100%{transform:translateY(-120vh);}
 }
 
-/* PAGE 1 */
-
-.section1{z-index:2;}
-
-.section1.fade-out{
-opacity:0;
-pointer-events:none;
-}
+/* -------- INVITE BOX -------- */
 
 .invite-box{
-width:100%;
-max-width:650px;
-background:rgba(20,20,20,0.96);
-padding:70px 50px;
-border-radius:24px;
+
 position:relative;
-transform-style:preserve-3d;
-transition:transform .15s ease;
-box-shadow:
-0 60px 120px rgba(0,0,0,0.8),
-0 0 60px rgba(212,175,55,0.08);
+z-index:2;
+
+border:2px solid transparent;
+border-radius:20px;
+padding:50px 30px;
+
+max-width:420px;
+width:90%;
+
+background:rgba(0,0,0,0.6);
+
+background-image:
+linear-gradient(black,black),
+linear-gradient(120deg,var(--gold1),var(--gold2),var(--gold3));
+
+background-origin:border-box;
+background-clip:padding-box,border-box;
+
+transition:transform .25s ease;
+
 }
 
-.invite-box::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:24px;
-background:linear-gradient(120deg,#7a5a00,#d4af37,#fff2b0,#d4af37,#7a5a00);
-background-size:300% 300%;
-animation:goldFlow 6s ease infinite;
+/* tilt */
 
--webkit-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
--webkit-mask-composite:xor;
-mask-composite:exclude;
+.invite-box:hover{
+transform:rotateX(4deg) rotateY(-4deg);
 }
 
-@keyframes goldFlow{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* -------- TEXT -------- */
+
+.invited{
+font-size:22px;
+letter-spacing:3px;
+margin-bottom:20px;
+color:var(--gold2);
 }
 
-.invite-title{
-font-size:2.6rem;
-letter-spacing:4px;
-color:#f5e6b3;
+.quran{
+font-size:14px;
+opacity:0.8;
 margin-bottom:25px;
+line-height:1.5;
 }
 
-.invite-subtitle{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.8;
-color:#d6d6d6;
-margin-bottom:25px;
-}
-
-.quran-line{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:rgba(212,175,55,0.75);
-margin-bottom:5px;
-}
-
-.quran-ref{
-font-family:'Playfair Display',serif;
-font-size:13px;
-color:rgba(212,175,55,0.55);
-margin-bottom:40px;
-}
+/* -------- ENTER BUTTON -------- */
 
 .enter-btn{
-padding:14px 45px;
-font-size:15px;
+
+margin-top:10px;
+padding:12px 34px;
+border-radius:30px;
+
+border:1px solid var(--gold1);
+background:transparent;
+color:var(--gold2);
+
+font-size:16px;
 letter-spacing:2px;
-background:linear-gradient(45deg,#d4af37,#f1c94a);
-border:none;
-border-radius:40px;
+
 cursor:pointer;
-transition:.25s;
+
+transition:all .3s ease;
 }
 
 .enter-btn:hover{
-transform:translateY(-3px);
+
 box-shadow:
-0 0 18px rgba(212,175,55,0.7),
-0 12px 30px rgba(212,175,55,0.35);
+0 0 12px rgba(198,168,90,0.5),
+0 0 25px rgba(198,168,90,0.4);
+
 }
 
-.enter-btn:active{
-transform:scale(.96);
-box-shadow:0 0 10px rgba(212,175,55,0.6);
-}
+/* -------- PAGE 2 -------- */
 
-/* PAGE 2 */
+.names{
 
-.section2{
-background:#0c0c0c;
+font-size:48px;
+letter-spacing:3px;
+margin-bottom:20px;
+
+background:linear-gradient(var(--gold2),var(--gold1));
+-webkit-background-clip:text;
+color:transparent;
+
 opacity:0;
-pointer-events:none;
-z-index:3;
-flex-direction:column;
+transform:translateY(20px);
+animation:fadeUp 1.2s forwards;
 }
 
-.section2.active{
+@keyframes fadeUp{
+to{
 opacity:1;
-pointer-events:auto;
+transform:translateY(0);
+}
 }
 
-/* COUPLE */
+.details{
 
-.name-left,
-.name-right{
-font-size:3rem;
-letter-spacing:4px;
-color:#f5e6b3;
+font-size:16px;
+line-height:1.8;
+max-width:500px;
+margin-top:10px;
 opacity:0;
-transition:all 1.2s ease;
-}
-
-.name-left{transform:translateX(-60px);}
-.name-right{transform:translateX(60px);}
-
-.section2.active .name-left,
-.section2.active .name-right{
-opacity:1;
-transform:translateX(0);
-}
-
-.amp{
-font-family:'Playfair Display',serif;
-font-size:2rem;
-color:#d4af37;
-margin:15px 0;
-opacity:0;
-transition:opacity 1s ease .7s;
-}
-
-.section2.active .amp{opacity:1;}
-
-.gold-divider{
-width:150px;
-height:1px;
-background:linear-gradient(to right,transparent,#d4af37,transparent);
-margin:40px 0;
-}
-
-.ceremony-text{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.9;
-max-width:620px;
-color:#d6d6d6;
-margin-bottom:30px;
-}
-
-.event{
-color:#d4af37;
-font-size:20px;
-margin-bottom:15px;
+animation:fadeUp 1.4s forwards;
+animation-delay:.3s;
 }
 
 .date{
-font-size:17px;
-margin-bottom:35px;
+margin-top:20px;
+font-size:18px;
+color:var(--gold2);
+letter-spacing:1px;
 }
 
-.host{
-font-family:'Playfair Display',serif;
-font-size:16px;
-color:#d4af37;
+/* -------- MOBILE -------- */
+
+@media(max-width:600px){
+
+.names{
+font-size:36px;
 }
 
-.host-detail{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:#d6d6d6;
+.invite-box{
+padding:40px 20px;
 }
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.invite-box{padding:60px 28px;}
-
-.invite-title{font-size:1.9rem;}
-
-.invite-subtitle{font-size:16px;}
-
-.enter-btn{width:100%;}
-
-.name-left,.name-right{font-size:2rem;}
-
-.ceremony-text{font-size:15px;}
 
 }
 
@@ -300,116 +209,98 @@ color:#d6d6d6;
 
 <body>
 
-<div class="loader" id="loader">
-<div class="loader-text">Preparing Invitation</div>
-<div class="loader-bar"></div>
+<!-- DUST -->
+<div id="dust"></div>
+
+<!-- PAGE 1 -->
+
+<section id="page1" class="page">
+
+<div class="invite-box">
+
+<div class="invited">YOU ARE INVITED</div>
+
+<div class="quran">
+“And We created you in pairs.”  
+<br>
+(Qur’an 78:8)
 </div>
 
-<section class="section section1" id="page1">
-
-<div class="dust" style="left:20%;animation-duration:14s;"></div>
-<div class="dust" style="left:40%;animation-duration:16s;"></div>
-<div class="dust" style="left:60%;animation-duration:13s;"></div>
-<div class="dust" style="left:80%;animation-duration:15s;"></div>
-
-<div class="invite-box" id="card">
-
-<div class="invite-title">YOU ARE INVITED</div>
-
-<div class="invite-subtitle">
-With gratitude and joy, we request the honour of your presence
-at a sacred celebration of love and unity.
-</div>
-
-<div class="quran-line">
-“And We created you in pairs.”
-</div>
-
-<div class="quran-ref">
-— Qur’an 78:8
-</div>
-
-<button class="enter-btn" id="enterBtn">Enter</button>
+<button class="enter-btn" onclick="openInvite()">
+ENTER
+</button>
 
 </div>
+
 </section>
 
-<section class="section section2" id="page2">
+<!-- PAGE 2 -->
 
-<div class="name-left">Adeeba</div>
-<div class="amp">&</div>
-<div class="name-right">Shadab</div>
+<section id="page2" class="page hidden">
 
-<div class="gold-divider"></div>
-
-<div class="event">Nikah Ceremony</div>
-
-<div class="ceremony-text">
-The family of the bride joyfully invites you to witness
-the sacred union and blessings of marriage.
-Your presence will honour this beautiful beginning.
+<div class="names">
+Adeeba & Shadab
 </div>
+
+<div class="details">
+
+request the honour of your presence  
+at the sacred celebration of their Nikah
 
 <div class="date">
-Wednesday<br>
-1st April 2026
+1st April 2026 • Day Event
 </div>
 
-<div class="host">Hosted by</div>
+<br>
 
-<div class="host-detail">
-Mohammad Arshad<br>
-Meerut, Uttar Pradesh 250002
+Venue  
+<b>M.A. Palace</b>
+
+<br><br>
+
+From  
+Mohammad Arshad  
+Meerut, U.P. 250002
+
 </div>
 
 </section>
 
 <script>
 
-document.addEventListener("DOMContentLoaded",function(){
+/* OPEN PAGE 2 */
 
-const btn=document.getElementById("enterBtn");
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
+function openInvite(){
 
-btn.addEventListener("click",function(){
+document.getElementById("page1").style.opacity="0";
 
-page1.classList.add("fade-out");
+setTimeout(function(){
 
-setTimeout(()=>{
-page2.classList.add("active");
-},500);
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+document.getElementById("page2").style.opacity="1";
 
-});
+},600)
 
-/* loader */
+}
 
-window.addEventListener("load",()=>{
-setTimeout(()=>{
-document.getElementById("loader").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},1000);
-},1800);
-});
+/* DUST PARTICLES */
 
-/* tilt */
+const dustContainer=document.getElementById("dust");
 
-const card=document.getElementById("card");
+for(let i=0;i<40;i++){
 
-card.addEventListener("mousemove",(e)=>{
-const rect=card.getBoundingClientRect();
-const x=(e.clientX-rect.left)/rect.width-0.5;
-const y=(e.clientY-rect.top)/rect.height-0.5;
+const d=document.createElement("div");
 
-card.style.transform=`rotateY(${x*12}deg) rotateX(${y*-12}deg)`;
-});
+d.classList.add("dust");
 
-card.addEventListener("mouseleave",()=>{
-card.style.transform="rotateY(0) rotateX(0)";
-});
+d.style.left=Math.random()*100+"%";
+d.style.bottom=Math.random()*100+"%";
+d.style.animationDuration=8+Math.random()*6+"s";
 
-});
+dustContainer.appendChild(d);
+
+}
 
 </script>
 

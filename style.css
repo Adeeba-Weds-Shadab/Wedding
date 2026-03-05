@@ -358,20 +358,6 @@ animation:scrollPulse 2s infinite;
 
 .hero-content{gap:10px;}
 
-
-
-
-
-
-html{
-scroll-behavior:smooth;
-}
-
-
-
-
-
-  
 }
 
 

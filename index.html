@@ -1,51 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Video Marketing</title>
+<title>Adeeba & Shadab Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-<div class="page active" id="page1">
+<!-- LOADER -->
 
-<h1 class="title">AI Video Marketing</h1>
+<div class="loader" id="loader">
 
-<p class="subtitle">
-The Future of Content Creation
-</p>
+<div class="loader-text">
+Preparing Invitation
+</div>
 
-<button id="enterBtn">ENTER</button>
+<div class="loader-bar"></div>
 
 </div>
 
 
-<script>
+<!-- PAGE 1 -->
 
-document.addEventListener("DOMContentLoaded", function () {
+<section class="section section1" id="page1">
 
-const btn = document.getElementById("enterBtn");
+<div class="dust" style="left:20%;animation-duration:14s;"></div>
+<div class="dust" style="left:40%;animation-duration:16s;"></div>
+<div class="dust" style="left:60%;animation-duration:13s;"></div>
+<div class="dust" style="left:80%;animation-duration:15s;"></div>
 
-btn.addEventListener("click", function(){
+<div class="invite-box" id="card">
 
-document.body.classList.add("fade-out");
+<div class="invite-title">
+YOU ARE INVITED
+</div>
 
-setTimeout(function(){
+<div class="invite-subtitle">
 
-window.location.href = "page2.html";
+With gratitude and joy, we request the honour of your presence
+at a sacred celebration of love and unity.
 
-},700);
+</div>
 
-});
+<div class="quran-line">
+“And We created you in pairs.”
+</div>
 
-});
+<div class="quran-ref">
+— Qur’an 78:8
+</div>
 
-</script>
+<button class="enter-btn" id="enterBtn">
+Enter
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="section section2" id="page2">
+
+<div class="name-left">
+Adeeba
+</div>
+
+<div class="amp">
+&
+</div>
+
+<div class="name-right">
+Shadab
+</div>
+
+<div class="gold-divider"></div>
+
+<div class="event">
+Nikah Ceremony
+</div>
+
+<div class="ceremony-text">
+
+The family of the bride joyfully invites you to witness
+the sacred union and blessings of marriage.
+Your presence will honour this beautiful beginning.
+
+</div>
+
+<div class="date">
+
+Wednesday<br>
+1st April 2026
+
+</div>
+
+<div class="host">
+Hosted by
+</div>
+
+<div class="host-detail">
+
+Mohammad Arshad<br>
+Meerut, Uttar Pradesh 250002
+
+</div>
+
+</section>
+
+
+<script src="script.js"></script>
 
 </body>
+
 </html>

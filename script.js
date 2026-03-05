@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
 
 const loader = document.getElementById("loader");
 
@@ -10,10 +10,9 @@ const enterBtn = document.getElementById("enterBtn");
 const card = document.getElementById("card");
 
 
+/* LOADER */
 
-/* ---------------- LOADER ---------------- */
-
-window.addEventListener("load", function () {
+window.addEventListener("load", function(){
 
 setTimeout(function(){
 
@@ -23,15 +22,14 @@ setTimeout(function(){
 loader.style.display = "none";
 },1000);
 
-},1800);
+},1500);
 
 });
 
 
+/* ENTER BUTTON */
 
-/* ---------------- ENTER BUTTON ---------------- */
-
-enterBtn.addEventListener("click", function () {
+enterBtn.addEventListener("click", function(){
 
 page1.classList.add("fade-out");
 
@@ -46,8 +44,7 @@ page2.classList.add("active");
 });
 
 
-
-/* ---------------- CARD TILT EFFECT ---------------- */
+/* CARD TILT EFFECT */
 
 card.addEventListener("mousemove", function(e){
 
@@ -57,7 +54,7 @@ const x = (e.clientX - rect.left) / rect.width - 0.5;
 const y = (e.clientY - rect.top) / rect.height - 0.5;
 
 card.style.transform =
-`rotateY(${x * 12}deg) rotateX(${y * -12}deg)`;
+`rotateY(${x*12}deg) rotateX(${y*-12}deg)`;
 
 });
 

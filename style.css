@@ -549,6 +549,22 @@ font-size:26px;
 
 
 
+/* PAGE CONTENT REVEAL SYSTEM */
+
+.reveal-content{
+opacity:0;
+transform:translateY(60px);
+transition:opacity 1.2s ease, transform 1.2s ease;
+}
+
+.reveal-content.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+
+
 
 /* GLOBAL SCROLL ARCHITECTURE FIX */
 

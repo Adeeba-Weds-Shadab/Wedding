@@ -345,31 +345,98 @@ opacity:.9;
 }
 }
 
-/* PAGE 2 CONTENT FADE */
-
-.section2 > *{
-opacity:0;
-transform:translateY(30px);
-transition:all 1.2s ease;
-}
-
-.section2.active > *{
-opacity:1;
-transform:translateY(0);
-}
-
-/* STAGGERED REVEAL */
-
-.section2.active .name-left{transition-delay:.2s;}
-.section2.active .name-right{transition-delay:.4s;}
-.section2.active .amp{transition-delay:.6s;}
-.section2.active .gold-divider{transition-delay:.7s;}
-.section2.active .event{transition-delay:.9s;}
-.section2.active .ceremony-text{transition-delay:1.1s;}
-.section2.active .date{transition-delay:1.3s;}
-.section2.active .host{transition-delay:1.5s;}
-.section2.active .host-detail{transition-delay:1.7s;} 
   
+
+
+
+
+
+/* PAGE 2 BACKGROUND GLOW */
+
+.page2-glow{
+position:absolute;
+width:900px;
+height:900px;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:radial-gradient(circle,
+rgba(212,175,55,0.15),
+transparent 65%);
+z-index:0;
+pointer-events:none;
+}
+
+/* FLOATING LIGHTS */
+
+.light{
+position:absolute;
+width:4px;
+height:4px;
+border-radius:50%;
+background:radial-gradient(circle,#fff4c4,#d4af37);
+opacity:.6;
+animation:lightFloat linear infinite;
+z-index:0;
+}
+
+@keyframes lightFloat{
+
+from{
+transform:translateY(110vh) scale(.7);
+opacity:.3;
+}
+
+to{
+transform:translateY(-10vh) scale(1.2);
+opacity:.8;
+}
+
+}
+
+/* PAGE 2 CONTENT LAYER */
+
+.section2 > *:not(.page2-glow):not(.light){
+position:relative;
+z-index:2;
+}
+
+/* ARABIC CALLIGRAPHY */
+
+.calligraphy{
+
+font-family:'Playfair Display',serif;
+
+font-size:22px;
+
+color:rgba(212,175,55,0.85);
+
+margin-bottom:40px;
+
+letter-spacing:2px;
+
+opacity:0;
+
+transform:translateY(20px);
+
+transition:all 1.2s ease;
+
+}
+
+.section2.active .calligraphy{
+
+opacity:1;
+
+transform:translateY(0);
+
+transition-delay:.15s;
+
+}
+
+
+
+  
+
 
   
 

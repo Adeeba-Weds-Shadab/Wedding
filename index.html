@@ -100,9 +100,8 @@ to{transform:translateY(-10vh);}
 
 .section1.fade-out{
 opacity:0;
+pointer-events:none;
 }
-
-/* INVITE BOX */
 
 .invite-box{
 width:100%;
@@ -170,8 +169,6 @@ color:rgba(212,175,55,0.55);
 margin-bottom:40px;
 }
 
-/* BUTTON */
-
 .enter-btn{
 padding:14px 45px;
 font-size:15px;
@@ -200,14 +197,13 @@ box-shadow:0 0 10px rgba(212,175,55,0.6);
 .section2{
 background:#0c0c0c;
 opacity:0;
-z-index:1;
-flex-direction:column;
 pointer-events:none;
+z-index:3;
+flex-direction:column;
 }
 
 .section2.active{
 opacity:1;
-z-index:3;
 pointer-events:auto;
 }
 
@@ -370,6 +366,22 @@ Meerut, Uttar Pradesh 250002
 
 <script>
 
+document.addEventListener("DOMContentLoaded",function(){
+
+const btn=document.getElementById("enterBtn");
+const page1=document.getElementById("page1");
+const page2=document.getElementById("page2");
+
+btn.addEventListener("click",function(){
+
+page1.classList.add("fade-out");
+
+setTimeout(()=>{
+page2.classList.add("active");
+},500);
+
+});
+
 /* loader */
 
 window.addEventListener("load",()=>{
@@ -381,45 +393,23 @@ document.getElementById("loader").style.display="none";
 },1800);
 });
 
-/* PAGE SWITCH */
-
-document.getElementById("enterBtn").addEventListener("click",()=>{
-
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
-
-page2.classList.add("active");
-
-setTimeout(()=>{
-page1.classList.add("fade-out");
-},100);
-
-});
-
-/* TILT */
+/* tilt */
 
 const card=document.getElementById("card");
 
-function tilt(e){
-
+card.addEventListener("mousemove",(e)=>{
 const rect=card.getBoundingClientRect();
+const x=(e.clientX-rect.left)/rect.width-0.5;
+const y=(e.clientY-rect.top)/rect.height-0.5;
 
-const centerX=rect.left+rect.width/2;
-const centerY=rect.top+rect.height/2;
+card.style.transform=`rotateY(${x*12}deg) rotateX(${y*-12}deg)`;
+});
 
-const rotateY=((e.clientX-centerX)/rect.width)*10;
-const rotateX=((e.clientY-centerY)/rect.height)*-10;
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateY(0) rotateX(0)";
+});
 
-card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-
-}
-
-function resetTilt(){
-card.style.transform="rotateX(0) rotateY(0)";
-}
-
-card.addEventListener("mousemove",tilt);
-card.addEventListener("mouseleave",resetTilt);
+});
 
 </script>
 

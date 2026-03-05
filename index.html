@@ -1,101 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Adeeba & Shadab Wedding Invitation</title>
+<title>AI Video Marketing</title>
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
 
+<div class="page active" id="page1">
 
-<!-- LOADER -->
+<h1 class="title">AI Video Marketing</h1>
 
-<div class="loader" id="loader">
-<div class="loader-text">Preparing Invitation</div>
-<div class="loader-bar"></div>
-</div>
+<p class="subtitle">
+The Future of Content Creation
+</p>
 
-
-
-<!-- PAGE 1 -->
-
-<section class="section section1" id="page1">
-
-<div class="dust" style="left:20%;animation-duration:14s;"></div>
-<div class="dust" style="left:40%;animation-duration:16s;"></div>
-<div class="dust" style="left:60%;animation-duration:13s;"></div>
-<div class="dust" style="left:80%;animation-duration:15s;"></div>
-
-<div class="invite-box" id="card">
-
-<div class="invite-title">YOU ARE INVITED</div>
-
-<div class="invite-subtitle">
-With gratitude and joy, we request the honour of your presence
-at a sacred celebration of love and unity.
-</div>
-
-<div class="quran-line">
-“And We created you in pairs.”
-</div>
-
-<div class="quran-ref">
-— Qur’an 78:8
-</div>
-
-<button class="enter-btn" id="enterBtn">Enter</button>
+<button id="enterBtn">ENTER</button>
 
 </div>
 
-</section>
 
+<script>
 
+document.addEventListener("DOMContentLoaded", function () {
 
-<!-- PAGE 2 -->
+const btn = document.getElementById("enterBtn");
 
-<section class="section section2" id="page2">
+btn.addEventListener("click", function(){
 
-<div class="name-left">Adeeba</div>
+document.body.classList.add("fade-out");
 
-<div class="amp">&</div>
+setTimeout(function(){
 
-<div class="name-right">Shadab</div>
+window.location.href = "page2.html";
 
-<div class="gold-divider"></div>
+},700);
 
-<div class="event">Nikah Ceremony</div>
+});
 
-<div class="ceremony-text">
-The family of the bride joyfully invites you to witness
-the sacred union and blessings of marriage.
-Your presence will honour this beautiful beginning.
-</div>
+});
 
-<div class="date">
-Wednesday<br>
-1st April 2026
-</div>
-
-<div class="host">Hosted by</div>
-
-<div class="host-detail">
-Mohammad Arshad<br>
-Meerut, Uttar Pradesh 250002
-</div>
-
-</section>
-
-
-
-<script src="script.js"></script>
+</script>
 
 </body>
 </html>

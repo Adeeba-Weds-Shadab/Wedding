@@ -378,16 +378,8 @@ align-items:center;
 
 padding:80px 20px;
 
-opacity:0;
-transform:translateY(60px);
-transition:all 1.2s ease;
-
 }
 
-.section3.show{
-opacity:1;
-transform:translateY(0);
-}
 
 /* CONTENT */
 
@@ -559,19 +551,21 @@ font-size:26px;
 
 
 
-
-
-
 /* ============================= */
-/* GLOBAL SCROLL ARCHITECTURE FIX */
+/* GLOBAL SCROLL REVEAL SYSTEM */
 /* ============================= */
 
-/* Only intro screen stays fixed */
-
-.section:not(.section1){
-position:relative;
-inset:auto;
-min-height:100vh;
-width:100%;
-z-index:auto;
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:opacity 1.2s ease, transform 1.2s ease;
 }
+
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+
+
+
+

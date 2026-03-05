@@ -198,6 +198,21 @@ display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+padding:40px 20px;
+}
+
+/* subtle islamic gold pattern */
+
+.section2::before{
+content:"";
+position:absolute;
+inset:0;
+opacity:0.07;
+background-image:
+linear-gradient(45deg,#d4af37 1px,transparent 1px),
+linear-gradient(-45deg,#d4af37 1px,transparent 1px);
+background-size:60px 60px;
+pointer-events:none;
 }
 
 .section2.active{
@@ -216,13 +231,8 @@ opacity:0;
 transition:all 1.2s ease;
 }
 
-.name-left{
-transform:translateX(-60px);
-}
-
-.name-right{
-transform:translateX(60px);
-}
+.name-left{transform:translateX(-60px);}
+.name-right{transform:translateX(60px);}
 
 .section2.active .name-left,
 .section2.active .name-right{
@@ -239,9 +249,7 @@ opacity:0;
 transition:opacity 1s ease 0.8s;
 }
 
-.section2.active .amp{
-opacity:1;
-}
+.section2.active .amp{opacity:1;}
 
 .gold-divider{
 width:150px;

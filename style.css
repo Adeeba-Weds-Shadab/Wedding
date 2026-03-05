@@ -125,6 +125,7 @@ border-radius:24px;
 background:linear-gradient(120deg,#7a5a00,#d4af37,#fff2b0,#d4af37,#7a5a00);
 background-size:300% 300%;
 animation:goldFlow 6s ease infinite;
+pointer-events:none;
 
 -webkit-mask:
 linear-gradient(#000 0 0) content-box,

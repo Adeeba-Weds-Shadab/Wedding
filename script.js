@@ -1,60 +1,55 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 const loader = document.getElementById("loader");
-const enterBtn = document.getElementById("enterBtn");
+
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
+
+const enterBtn = document.getElementById("enterBtn");
+
 const card = document.getElementById("card");
+
 
 
 /* ---------------- LOADER ---------------- */
 
 window.addEventListener("load", function () {
 
-setTimeout(function () {
+setTimeout(function(){
 
 loader.style.opacity = "0";
 
-setTimeout(function () {
+setTimeout(function(){
 loader.style.display = "none";
-}, 1000);
+},1000);
 
-}, 1600);
+},1800);
 
 });
+
 
 
 /* ---------------- ENTER BUTTON ---------------- */
 
 enterBtn.addEventListener("click", function () {
 
-/* fade page 1 */
+page1.classList.add("fade-out");
 
-page1.style.opacity = "0";
-
-setTimeout(function () {
-
-/* hide page1 */
+setTimeout(function(){
 
 page1.style.display = "none";
 
-/* show page2 */
-
-page2.style.display = "flex";
-
-setTimeout(function () {
 page2.classList.add("active");
-}, 50);
 
-}, 700);
+},900);
 
 });
 
 
 
-/* ---------------- CARD TILT ---------------- */
+/* ---------------- CARD TILT EFFECT ---------------- */
 
-card.addEventListener("mousemove", function (e) {
+card.addEventListener("mousemove", function(e){
 
 const rect = card.getBoundingClientRect();
 
@@ -67,11 +62,10 @@ card.style.transform =
 });
 
 
-card.addEventListener("mouseleave", function () {
+card.addEventListener("mouseleave", function(){
 
 card.style.transform = "rotateY(0) rotateX(0)";
 
 });
-
 
 });

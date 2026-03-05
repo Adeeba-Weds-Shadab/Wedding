@@ -68,25 +68,27 @@ card.style.transform="rotateY(0) rotateX(0)";
 
   
 
-/* PAGE 3 FADE REVEAL */
+  
+/* GLOBAL SCROLL REVEAL SYSTEM */
 
-window.addEventListener("scroll", function(){
+const reveals = document.querySelectorAll(".reveal");
 
-const trigger = window.innerHeight * 0.8;
-
-if(page3){
-
-const top = page3.getBoundingClientRect().top;
-
-if(top < trigger){
-
-page3.classList.add("show");
-
-
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
 }
-
-}
-
+});
+},{
+threshold:0.25
 });
 
+reveals.forEach(el=>{
+observer.observe(el);
+});
+  
+
+
+
+  
 });

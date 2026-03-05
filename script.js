@@ -1,12 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
 
 const loader = document.getElementById("loader");
-
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
-
 const enterBtn = document.getElementById("enterBtn");
-
 const card = document.getElementById("card");
 
 
@@ -35,7 +32,7 @@ page1.classList.add("fade-out");
 
 setTimeout(function(){
 
-page1.style.display = "none";
+page1.style.display="none";
 
 page2.classList.add("active");
 
@@ -44,7 +41,7 @@ page2.classList.add("active");
 });
 
 
-/* CARD TILT EFFECT */
+/* CARD TILT */
 
 card.addEventListener("mousemove", function(e){
 
@@ -61,7 +58,7 @@ card.style.transform =
 
 card.addEventListener("mouseleave", function(){
 
-card.style.transform = "rotateY(0) rotateX(0)";
+card.style.transform="rotateY(0) rotateX(0)";
 
 });
 

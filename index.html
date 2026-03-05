@@ -1,309 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Adeeba & Shadab Wedding Invitation</title>
 
+<link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html,body{
-height:100%;
-background:#0c0c0c;
-font-family:'Cinzel',serif;
-color:white;
-overflow:hidden;
-}
-
-/* LOADER */
-
-.loader{
-position:fixed;
-inset:0;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-z-index:9999;
-transition:opacity 1s ease;
-}
-
-.loader-text{
-font-family:'Playfair Display',serif;
-font-size:22px;
-letter-spacing:3px;
-color:#d4af37;
-margin-bottom:30px;
-}
-
-.loader-bar{
-width:200px;
-height:2px;
-background:rgba(255,215,0,0.2);
-overflow:hidden;
-position:relative;
-}
-
-.loader-bar::after{
-content:"";
-position:absolute;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(90deg,transparent,gold,transparent);
-animation:loading 2s infinite;
-}
-
-@keyframes loading{
-0%{left:-100%;}
-100%{left:100%;}
-}
-
-/* SECTIONS */
-
-.section{
-position:fixed;
-inset:0;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:40px 20px;
-text-align:center;
-transition:opacity 1s ease;
-}
-
-/* DUST */
-
-.dust{
-position:absolute;
-width:5px;
-height:5px;
-background:radial-gradient(circle,#fff4c4,#d4af37);
-border-radius:50%;
-opacity:0.7;
-animation:float linear infinite;
-}
-
-@keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
-}
-
-/* PAGE 1 */
-
-.section1{z-index:2;}
-
-.section1.fade-out{
-opacity:0;
-pointer-events:none;
-}
-
-.invite-box{
-width:100%;
-max-width:650px;
-background:rgba(20,20,20,0.96);
-padding:70px 50px;
-border-radius:24px;
-position:relative;
-transform-style:preserve-3d;
-transition:transform .15s ease;
-box-shadow:
-0 60px 120px rgba(0,0,0,0.8),
-0 0 60px rgba(212,175,55,0.08);
-}
-
-.invite-box::before{
-content:"";
-position:absolute;
-inset:0;
-padding:2px;
-border-radius:24px;
-background:linear-gradient(120deg,#7a5a00,#d4af37,#fff2b0,#d4af37,#7a5a00);
-background-size:300% 300%;
-animation:goldFlow 6s ease infinite;
-
--webkit-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
--webkit-mask-composite:xor;
-mask-composite:exclude;
-}
-
-@keyframes goldFlow{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.invite-title{
-font-size:2.6rem;
-letter-spacing:4px;
-color:#f5e6b3;
-margin-bottom:25px;
-}
-
-.invite-subtitle{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.8;
-color:#d6d6d6;
-margin-bottom:25px;
-}
-
-.quran-line{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:rgba(212,175,55,0.75);
-margin-bottom:5px;
-}
-
-.quran-ref{
-font-family:'Playfair Display',serif;
-font-size:13px;
-color:rgba(212,175,55,0.55);
-margin-bottom:40px;
-}
-
-.enter-btn{
-padding:14px 45px;
-font-size:15px;
-letter-spacing:2px;
-background:linear-gradient(45deg,#d4af37,#f1c94a);
-border:none;
-border-radius:40px;
-cursor:pointer;
-transition:.25s;
-}
-
-.enter-btn:hover{
-transform:translateY(-3px);
-box-shadow:
-0 0 18px rgba(212,175,55,0.7),
-0 12px 30px rgba(212,175,55,0.35);
-}
-
-.enter-btn:active{
-transform:scale(.96);
-box-shadow:0 0 10px rgba(212,175,55,0.6);
-}
-
-/* PAGE 2 */
-
-.section2{
-background:#0c0c0c;
-opacity:0;
-pointer-events:none;
-z-index:3;
-flex-direction:column;
-}
-
-.section2.active{
-opacity:1;
-pointer-events:auto;
-}
-
-/* COUPLE */
-
-.name-left,
-.name-right{
-font-size:3rem;
-letter-spacing:4px;
-color:#f5e6b3;
-opacity:0;
-transition:all 1.2s ease;
-}
-
-.name-left{transform:translateX(-60px);}
-.name-right{transform:translateX(60px);}
-
-.section2.active .name-left,
-.section2.active .name-right{
-opacity:1;
-transform:translateX(0);
-}
-
-.amp{
-font-family:'Playfair Display',serif;
-font-size:2rem;
-color:#d4af37;
-margin:15px 0;
-opacity:0;
-transition:opacity 1s ease .7s;
-}
-
-.section2.active .amp{opacity:1;}
-
-.gold-divider{
-width:150px;
-height:1px;
-background:linear-gradient(to right,transparent,#d4af37,transparent);
-margin:40px 0;
-}
-
-.ceremony-text{
-font-family:'Playfair Display',serif;
-font-size:18px;
-line-height:1.9;
-max-width:620px;
-color:#d6d6d6;
-margin-bottom:30px;
-}
-
-.event{
-color:#d4af37;
-font-size:20px;
-margin-bottom:15px;
-}
-
-.date{
-font-size:17px;
-margin-bottom:35px;
-}
-
-.host{
-font-family:'Playfair Display',serif;
-font-size:16px;
-color:#d4af37;
-}
-
-.host-detail{
-font-family:'Playfair Display',serif;
-font-size:15px;
-color:#d6d6d6;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.invite-box{padding:60px 28px;}
-
-.invite-title{font-size:1.9rem;}
-
-.invite-subtitle{font-size:16px;}
-
-.enter-btn{width:100%;}
-
-.name-left,.name-right{font-size:2rem;}
-
-.ceremony-text{font-size:15px;}
-
-}
-
-</style>
 </head>
 
+
 <body>
+
+
+<!-- LOADER -->
 
 <div class="loader" id="loader">
 <div class="loader-text">Preparing Invitation</div>
 <div class="loader-bar"></div>
 </div>
+
+
+
+<!-- PAGE 1 -->
 
 <section class="section section1" id="page1">
 
@@ -332,12 +54,19 @@ at a sacred celebration of love and unity.
 <button class="enter-btn" id="enterBtn">Enter</button>
 
 </div>
+
 </section>
+
+
+
+<!-- PAGE 2 -->
 
 <section class="section section2" id="page2">
 
 <div class="name-left">Adeeba</div>
+
 <div class="amp">&</div>
+
 <div class="name-right">Shadab</div>
 
 <div class="gold-divider"></div>
@@ -364,72 +93,9 @@ Meerut, Uttar Pradesh 250002
 
 </section>
 
-  
-<script>
 
-document.addEventListener("DOMContentLoaded",function(){
 
-const btn=document.getElementById("enterBtn");
-const page1=document.getElementById("page1");
-const page2=document.getElementById("page2");
+<script src="script.js"></script>
 
-/* ENTER BUTTON */
-
-btn.addEventListener("click",function(){
-
-/* fade page1 */
-page1.style.opacity="0";
-
-setTimeout(function(){
-
-/* hide page1 completely */
-page1.style.display="none";
-
-/* show page2 */
-page2.style.display="flex";
-page2.style.opacity="1";
-
-},700);
-
-});
-
-/* LOADER */
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-document.getElementById("loader").style.opacity="0";
-
-setTimeout(()=>{
-document.getElementById("loader").style.display="none";
-},1000);
-
-},1800);
-
-});
-
-/* TILT EFFECT */
-
-const card=document.getElementById("card");
-
-card.addEventListener("mousemove",(e)=>{
-
-const rect=card.getBoundingClientRect();
-
-const x=(e.clientX-rect.left)/rect.width-0.5;
-const y=(e.clientY-rect.top)/rect.height-0.5;
-
-card.style.transform=`rotateY(${x*12}deg) rotateX(${y*-12}deg)`;
-
-});
-
-card.addEventListener("mouseleave",()=>{
-card.style.transform="rotateY(0) rotateX(0)";
-});
-
-});
-
-</script>
 </body>
 </html>

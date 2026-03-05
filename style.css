@@ -70,7 +70,18 @@ text-align:center;
 transition:opacity 1s ease;
 }
 
-/* DUST PARTICLES */
+/* PAGE 1 */
+
+.section1{
+z-index:2;
+}
+
+.section1.fade-out{
+opacity:0;
+pointer-events:none;
+}
+
+/* DUST */
 
 .dust{
 position:absolute;
@@ -85,17 +96,6 @@ animation:float linear infinite;
 @keyframes float{
 from{transform:translateY(100vh);}
 to{transform:translateY(-10vh);}
-}
-
-/* PAGE 1 */
-
-.section1{
-z-index:2;
-}
-
-.section1.fade-out{
-opacity:0;
-pointer-events:none;
 }
 
 /* INVITE CARD */
@@ -113,8 +113,6 @@ box-shadow:
 0 60px 120px rgba(0,0,0,0.8),
 0 0 60px rgba(212,175,55,0.08);
 }
-
-/* GOLD ANIMATED BORDER (THIS WAS MISSING) */
 
 .invite-box::before{
 content:"";
@@ -171,7 +169,7 @@ color:rgba(212,175,55,0.55);
 margin-bottom:40px;
 }
 
-/* ENTER BUTTON */
+/* BUTTON */
 
 .enter-btn{
 padding:14px 45px;
@@ -184,16 +182,12 @@ cursor:pointer;
 transition:.25s;
 }
 
-/* HOVER GLOW */
-
 .enter-btn:hover{
 transform:translateY(-3px);
 box-shadow:
 0 0 18px rgba(212,175,55,0.7),
 0 12px 30px rgba(212,175,55,0.35);
 }
-
-/* MOBILE TAP GLOW */
 
 .enter-btn:active{
 transform:scale(.96);
@@ -215,7 +209,63 @@ opacity:1;
 pointer-events:auto;
 }
 
-/* COUPLE NAMES */
+/* GOLD AMBIENT GLOW */
+
+.luxury-glow{
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,rgba(212,175,55,0.25),transparent 70%);
+filter:blur(80px);
+animation:glowMove 12s ease-in-out infinite;
+}
+
+@keyframes glowMove{
+0%{transform:translate(-150px,-120px);}
+50%{transform:translate(150px,120px);}
+100%{transform:translate(-150px,-120px);}
+}
+
+/* PARTICLES */
+
+.particles{
+position:absolute;
+inset:0;
+pointer-events:none;
+}
+
+.p{
+position:absolute;
+width:3px;
+height:3px;
+background:#d4af37;
+border-radius:50%;
+opacity:.7;
+animation:floatParticle 14s linear infinite;
+}
+
+.p:nth-child(1){left:20%;animation-duration:15s;}
+.p:nth-child(2){left:40%;animation-duration:13s;}
+.p:nth-child(3){left:60%;animation-duration:17s;}
+.p:nth-child(4){left:75%;animation-duration:16s;}
+.p:nth-child(5){left:50%;animation-duration:14s;}
+
+@keyframes floatParticle{
+from{transform:translateY(100vh);}
+to{transform:translateY(-20vh);}
+}
+
+/* HERO CONTENT */
+
+.hero-content{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px;
+max-width:600px;
+}
+
+/* NAMES */
 
 .name-left,
 .name-right{
@@ -239,52 +289,57 @@ transform:translateX(0);
 font-family:'Playfair Display',serif;
 font-size:2rem;
 color:#d4af37;
-margin:15px 0;
-opacity:0;
-transition:opacity 1s ease .7s;
+margin:10px 0;
 }
 
-.section2.active .amp{
-opacity:1;
-}
+/* DIVIDER */
 
 .gold-divider{
-width:150px;
+width:0;
 height:1px;
-background:linear-gradient(to right,transparent,#d4af37,transparent);
-margin:40px 0;
+background:#d4af37;
+margin:30px 0;
+transition:width 1.4s ease;
 }
 
-.ceremony-text{
+.section2.active .gold-divider{
+width:160px;
+}
+
+/* TEXT */
+
+.celebration{
 font-family:'Playfair Display',serif;
 font-size:18px;
-line-height:1.9;
-max-width:620px;
-color:#d6d6d6;
-margin-bottom:30px;
-}
-
-.event{
 color:#d4af37;
-font-size:20px;
-margin-bottom:15px;
+margin-top:10px;
 }
 
 .date{
 font-size:17px;
-margin-bottom:35px;
-}
-
-.host{
-font-family:'Playfair Display',serif;
-font-size:16px;
-color:#d4af37;
-}
-
-.host-detail{
-font-family:'Playfair Display',serif;
-font-size:15px;
 color:#d6d6d6;
+}
+
+.location{
+font-size:15px;
+color:#bdbdbd;
+}
+
+/* SCROLL */
+
+.scroll-indicator{
+margin-top:40px;
+font-size:13px;
+letter-spacing:2px;
+color:#d4af37;
+opacity:.6;
+animation:scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse{
+0%{opacity:.3;}
+50%{opacity:1;}
+100%{opacity:.3;}
 }
 
 /* MOBILE */
@@ -301,144 +356,6 @@ color:#d6d6d6;
 
 .name-left,.name-right{font-size:2rem;}
 
-.ceremony-text{font-size:15px;}
+.hero-content{gap:10px;}
 
-
-
-  
-
- /* PAGE 2 LUXURY BACKGROUND */
-
-.page2-glow{
-position:absolute;
-width:800px;
-height:800px;
-background:radial-gradient(circle,
-rgba(212,175,55,0.18),
-transparent 65%);
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-pointer-events:none;
-}
-
-/* FLOATING LIGHT PARTICLES */
-
-.light{
-position:absolute;
-width:4px;
-height:4px;
-border-radius:50%;
-background:radial-gradient(circle,#fff4c4,#d4af37);
-opacity:.6;
-animation:lightFloat linear infinite;
-}
-
-@keyframes lightFloat{
-from{
-transform:translateY(110vh) scale(.8);
-opacity:.4;
-}
-to{
-transform:translateY(-10vh) scale(1.2);
-opacity:.9;
-}
-}
-
-  
-
-
-
-
-
-/* PAGE 2 BACKGROUND GLOW */
-
-.page2-glow{
-position:absolute;
-width:900px;
-height:900px;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:radial-gradient(circle,
-rgba(212,175,55,0.15),
-transparent 65%);
-z-index:0;
-pointer-events:none;
-}
-
-/* FLOATING LIGHTS */
-
-.light{
-position:absolute;
-width:4px;
-height:4px;
-border-radius:50%;
-background:radial-gradient(circle,#fff4c4,#d4af37);
-opacity:.6;
-animation:lightFloat linear infinite;
-z-index:0;
-}
-
-@keyframes lightFloat{
-
-from{
-transform:translateY(110vh) scale(.7);
-opacity:.3;
-}
-
-to{
-transform:translateY(-10vh) scale(1.2);
-opacity:.8;
-}
-
-}
-
-/* PAGE 2 CONTENT LAYER */
-
-.section2 > *:not(.page2-glow):not(.light){
-position:relative;
-z-index:2;
-}
-
-/* ARABIC CALLIGRAPHY */
-
-.calligraphy{
-
-font-family:'Playfair Display',serif;
-
-font-size:22px;
-
-color:rgba(212,175,55,0.85);
-
-margin-bottom:40px;
-
-letter-spacing:2px;
-
-opacity:0;
-
-transform:translateY(20px);
-
-transition:all 1.2s ease;
-
-}
-
-.section2.active .calligraphy{
-
-opacity:1;
-
-transform:translateY(0);
-
-transition-delay:.15s;
-
-}
-
-
-
-  
-
-
-  
-
-  
 }

@@ -810,20 +810,35 @@ position:relative;
 
 /* TRACK */
 
+
 .cards-track{
 display:flex;
-gap:30px;
-overflow:hidden;
+gap:20px;
+
+overflow-x:auto;
+overflow-y:hidden;
+
 scroll-behavior:smooth;
-max-width:280px;
+
+/* allows peek of next card */
+max-width:320px;
+
+padding-left:10px;
+padding-right:10px;
+
+scroll-snap-type:x mandatory;
 }
+
+
 
 /* GLASS CARD */
 
 .glass-card{
 
-min-width:260px;
+min-width:240px;
 aspect-ratio:4/5;
+
+scroll-snap-align:center;  
 
 background:rgba(255,255,255,0.05);
 

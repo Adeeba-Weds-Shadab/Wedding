@@ -632,8 +632,8 @@ width:100%;
 scroll-snap-type:x mandatory;
 
 /* allows center alignment */
-padding-left:calc(50% - 160px);
-padding-right:calc(50% - 160px);
+padding-left:calc(50% - 150px);
+padding-right:calc(50% - 150px);
 }
 
 
@@ -799,7 +799,7 @@ width:85vw;   /* responsive width */
 }
 
 .glass-card{
-flex:0 0 85%;
+flex:0 0 75%;
 }
 
 }

@@ -667,21 +667,23 @@ border-radius:26px;
 
 background:linear-gradient(
 145deg,
-rgba(255,255,255,0.14),
-rgba(255,255,255,0.04)
+rgba(255,255,255,0.25),
+rgba(255,255,255,0.08),
+rgba(255,255,255,0.05)
 );
 
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
+backdrop-filter:blur(24px) saturate(160%);
+-webkit-backdrop-filter:blur(24px) saturate(160%);
 
 border:1px solid rgba(212,175,55,0.55);
+border-top:1px solid rgba(255,255,255,0.35);
 
 /* depth */
 
 box-shadow:
 0 40px 140px rgba(0,0,0,0.9),
 0 0 40px rgba(212,175,55,0.25),
-inset 0 0 18px rgba(255,255,255,0.05);
+inset 0 0 20px rgba(255,255,255,0.08);
   
 /* layout */
 

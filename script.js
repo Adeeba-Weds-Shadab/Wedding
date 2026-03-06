@@ -88,32 +88,6 @@ observer.observe(el);
 });
 
 
-
-
- /* PAGE 4 CARD SLIDER */
-
-const track = document.querySelector(".cards-track");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
-
-if(track){
-
-nextBtn.addEventListener("click",()=>{
-track.scrollBy({
-left:300,
-behavior:"smooth"
-});
-});
-
-prevBtn.addEventListener("click",()=>{
-track.scrollBy({
-left:-300,
-behavior:"smooth"
-});
-});
-
-} 
-
   
 
   

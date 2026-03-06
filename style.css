@@ -768,7 +768,31 @@ transform:translateY(-10px);
 }
 
 
+/* PARALLAX CARD SHUFFLE */
 
+.card-left{
+transition:transform .4s ease;
+}
+
+.card-right{
+transition:transform .4s ease;
+}
+
+.card-center{
+transition:transform .4s ease;
+}
+
+.section4:hover .card-left{
+transform:rotate(-8deg) translateY(-6px);
+}
+
+.section4:hover .card-right{
+transform:rotate(8deg) translateY(-6px);
+}
+
+.section4:hover .card-center{
+transform:translateY(-16px);
+}
 
 
 

@@ -102,6 +102,8 @@ const prevBtn = document.querySelector(".prev");
 
 if(track){
 
+track.scrollLeft = track.scrollWidth / 3;
+  
 const card = track.querySelector(".glass-card");
 const cardWidth = card.offsetWidth + 20;
 
@@ -124,7 +126,34 @@ behavior:"smooth"
 
 
 
+const cards = document.querySelectorAll(".glass-card");
 
+function updateFocus(){
+
+const center = window.innerWidth / 2;
+
+cards.forEach(card =>{
+
+const rect = card.getBoundingClientRect();
+const cardCenter = rect.left + rect.width / 2;
+
+const distance = Math.abs(center - cardCenter);
+
+if(distance < rect.width/2){
+card.style.transform = "scale(1)";
+card.style.opacity = "1";
+}
+else{
+card.style.transform = "scale(.85)";
+card.style.opacity = ".7";
+}
+
+});
+
+}
+
+track.addEventListener("scroll",updateFocus);
+updateFocus();
 
 
   

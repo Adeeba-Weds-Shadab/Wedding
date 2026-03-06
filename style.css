@@ -613,7 +613,11 @@ margin:auto;
 
 .glass-card{
 
+flex:0 0 240px;
+
 aspect-ratio:4/5;
+
+scroll-snap-align:center;
 
 width:100%;
 max-width:260px;
@@ -815,6 +819,8 @@ width:100%;
 
 /* TRACK */
 
+
+
 .cards-track{
 display:flex;
 overflow-x:auto;
@@ -822,15 +828,20 @@ overflow-y:hidden;
 
 scroll-behavior:smooth;
 
-gap:20px;
+gap:18px;
 
-width:260px;      /* viewport for one card + peek */
-
-padding:10px;
+width:100%;
 
 scroll-snap-type:x mandatory;
 
+/* allows center alignment */
+padding-left:calc(50% - 120px);
+padding-right:calc(50% - 120px);
 }
+
+
+
+
 
 /* HIDE SCROLLBAR */
 
@@ -910,7 +921,7 @@ width:85vw;   /* responsive width */
 }
 
 .glass-card{
-flex:0 0 80%;
+flex:0 0 70%;
 }
 
 }

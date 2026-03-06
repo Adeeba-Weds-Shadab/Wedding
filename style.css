@@ -721,30 +721,47 @@ color:black;
 
 }
 
-/* MOBILE FIX */
+
+/* ============================= */
+/* MOBILE OVERLAP VERSION */
+/* ============================= */
 
 @media(max-width:768px){
 
 .cards-wrapper{
 
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:22px;
+max-width:300px;
+margin:auto;
 
 }
 
 .glass-card{
 
-position:relative;
-left:auto;
-right:auto;
-top:auto;
+max-width:200px;
 
-transform:none;
+}
 
-max-width:320px;
-width:90%;
+/* keep overlap but reduce distance */
+
+.card-left{
+
+left:-45px;
+top:35px;
+transform:rotate(-6deg);
+
+}
+
+.card-right{
+
+right:-45px;
+top:35px;
+transform:rotate(6deg);
+
+}
+
+.card-center{
+
+transform:translateY(-10px);
 
 }
 

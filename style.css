@@ -632,8 +632,8 @@ width:100%;
 scroll-snap-type:x mandatory;
 
 /* allows center alignment */
-padding-left:calc(50% - 160px);
-padding-right:calc(50% - 160px);
+padding-left:calc(50% - 130px);
+padding-right:calc(50% - 130px);
 }
 
 
@@ -653,7 +653,7 @@ display:none;
 
 .cards-track .glass-card{
 
-flex:0 0 320px;
+flex:0 0 260px;
 
 aspect-ratio:4/5;
 
@@ -730,34 +730,6 @@ transform:skewX(-20deg);
 
 
 
-.glass-card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:-120%;
-
-width:80%;
-height:100%;
-
-background:linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,0.35),
-transparent
-);
-
-transform:skewX(-20deg);
-
-}
-
-
-
-
-
-
 
 /* NAVIGATION */
 
@@ -798,8 +770,8 @@ display:none;
 width:85vw;   /* responsive width */
 }
 
-.glass-card{
-flex:0 0 85%;
+.cards-track .glass-card{
+flex:0 0 80%;
 }
 
 }

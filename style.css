@@ -796,7 +796,101 @@ transform:translateY(-16px);
 
 
 
+/* ============================= */
+/* PAGE 4 CARD CAROUSEL */
+/* ============================= */
 
+.carousel{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+position:relative;
+}
+
+/* TRACK */
+
+.cards-track{
+display:flex;
+gap:30px;
+overflow:hidden;
+scroll-behavior:smooth;
+max-width:280px;
+}
+
+/* GLASS CARD */
+
+.glass-card{
+
+min-width:260px;
+aspect-ratio:4/5;
+
+background:rgba(255,255,255,0.05);
+
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+
+border:1px solid rgba(212,175,55,0.25);
+
+border-radius:22px;
+
+padding:30px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+box-shadow:
+0 25px 80px rgba(0,0,0,0.7),
+0 0 30px rgba(212,175,55,0.08);
+
+}
+
+/* NAV BUTTONS */
+
+.nav{
+
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,55,0.3);
+
+color:#d4af37;
+
+width:40px;
+height:40px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:20px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.nav{
+display:none;
+}
+
+.cards-track{
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+}
+
+.glass-card{
+scroll-snap-align:center;
+}
+
+}
 
 
 

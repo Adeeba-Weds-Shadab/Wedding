@@ -879,4 +879,19 @@ z-index:auto;
 }
 
 
+/* CARD FOCUS EFFECT */
 
+.cards-track .glass-card{
+transition:transform .35s ease, opacity .35s ease;
+}
+
+.cards-track .glass-card{
+transform:scale(.85);
+opacity:.7;
+}
+
+.cards-track .glass-card:focus-within,
+.cards-track .glass-card:hover{
+transform:scale(1);
+opacity:1;
+}

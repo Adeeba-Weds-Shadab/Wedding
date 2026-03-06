@@ -632,8 +632,8 @@ width:100%;
 scroll-snap-type:x mandatory;
 
 /* allows center alignment */
-padding-left:calc(50% - 120px);
-padding-right:calc(50% - 120px);
+padding-left:calc(50% - 150px);
+padding-right:calc(50% - 150px);
 }
 
 
@@ -646,26 +646,46 @@ padding-right:calc(50% - 120px);
 display:none;
 }
 
+
+
 /* GLASS CARD */
 
 .glass-card{
 
-flex:0 0 240px;   /* prevents shrinking */
+flex:0 0 300px;   /* larger cards */
 
 aspect-ratio:4/5;
 
 scroll-snap-align:center;
 
-background:rgba(255,255,255,0.05);
+position:relative;
 
-backdrop-filter:blur(16px);
--webkit-backdrop-filter:blur(16px);
+/* GLASS BACKGROUND */
 
-border:1px solid rgba(212,175,55,0.25);
+background:linear-gradient(
+145deg,
+rgba(255,255,255,0.10),
+rgba(255,255,255,0.03)
+);
 
-border-radius:22px;
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
 
-padding:30px;
+/* BORDER */
+
+border:1px solid rgba(212,175,55,0.35);
+
+border-radius:26px;
+
+/* SHADOW DEPTH */
+
+box-shadow:
+0 30px 100px rgba(0,0,0,0.75),
+0 0 35px rgba(212,175,55,0.08);
+
+/* CARD LAYOUT */
+
+padding:40px 32px;
 
 display:flex;
 flex-direction:column;
@@ -674,11 +694,41 @@ align-items:center;
 
 text-align:center;
 
-box-shadow:
-0 25px 80px rgba(0,0,0,0.7),
-0 0 30px rgba(212,175,55,0.08);
+overflow:hidden;
 
 }
+
+
+
+
+.glass-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:80%;
+height:100%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+
+transform:skewX(-20deg);
+
+}
+
+
+
+
+
+
 
 /* NAVIGATION */
 
@@ -718,7 +768,7 @@ width:85vw;   /* responsive width */
 }
 
 .glass-card{
-flex:0 0 70%;
+flex:0 0 85%;
 }
 
 }

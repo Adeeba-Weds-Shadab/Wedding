@@ -587,11 +587,11 @@ position:absolute;
 inset:-120px;
 
 background:
-radial-gradient(circle at 30% 40%, rgba(212,175,55,0.035), transparent 60%),
-radial-gradient(circle at 70% 60%, rgba(255,255,255,0.025), transparent 60%),
-radial-gradient(circle at 50% 80%, rgba(212,175,55,0.05), transparent 70%);
+radial-gradient(circle at 30% 40%, rgba(212,175,55,0.018), transparent 65%),
+radial-gradient(circle at 70% 60%, rgba(255,255,255,0.012), transparent 65%),
+radial-gradient(circle at 50% 80%, rgba(212,175,55,0.022), transparent 75%);
 
-filter:blur(120px);
+filter:blur(140px);
 
 z-index:0;
 
@@ -735,22 +735,22 @@ content:"";
 
 position:absolute;
 
-top:-150%;
-left:-150%;
+top:-120%;
+left:-200%;
 
-width:30%;
-height:320%;
+width:45%;
+height:300%;
 
 background:linear-gradient(
 120deg,
 transparent,
-rgba(255,255,255,0.35),
+rgba(255,255,255,0.45),
 transparent
 );
 
 transform:rotate(25deg);
 
-animation:glassShine 8s linear infinite;
+animation:glassShine 6s linear infinite;
 
 pointer-events:none;
 
@@ -759,11 +759,11 @@ pointer-events:none;
 @keyframes glassShine{
 
 0%{
-transform:translateX(-250%) rotate(25deg);
+transform:translateX(-320%) rotate(25deg);
 }
 
 100%{
-transform:translateX(600%) rotate(25deg);
+transform:translateX(320%) rotate(25deg);
 }
 
 }

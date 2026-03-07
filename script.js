@@ -80,7 +80,7 @@ entry.target.classList.add("show");
 }
 });
 },{
-threshold:0.25
+threshold:0.55
 });
 
 reveals.forEach(el=>{

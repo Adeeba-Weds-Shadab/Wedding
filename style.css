@@ -560,6 +560,99 @@ font-size:14px;
 
 
 
+/* ============================= */
+/* PAGE 4 BLESSING SECTION */
+/* ============================= */
+
+.section-blessing{
+
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 20px;
+
+background:#0c0c0c;
+text-align:center;
+
+}
+
+.blessing-content{
+
+max-width:700px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+gap:30px;
+
+}
+
+.arabic-verse{
+
+font-family:'Playfair Display',serif;
+font-size:34px;
+line-height:1.8;
+color:#d4af37;
+
+}
+
+.verse-divider{
+
+width:140px;
+height:1px;
+
+background:linear-gradient(
+to right,
+transparent,
+#d4af37,
+transparent
+);
+
+}
+
+.verse-translation{
+
+font-family:'Playfair Display',serif;
+font-size:18px;
+color:#e6e6e6;
+line-height:1.8;
+
+max-width:520px;
+
+}
+
+.verse-ref{
+
+font-size:14px;
+color:#bdbdbd;
+
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.arabic-verse{
+font-size:24px;
+}
+
+.verse-translation{
+font-size:16px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

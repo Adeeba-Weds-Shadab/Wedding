@@ -109,13 +109,19 @@ const cardWidth = card.offsetWidth + 20;
 
 nextBtn.forEach(btn=>{
 btn.addEventListener("click",()=>{
-track.scrollBy({left:300,behavior:"smooth"});
-});
+track.scrollBy({
+left:cardWidth,
+behavior:"smooth"
+});});
 });
 
 prevBtn.forEach(btn=>{
 btn.addEventListener("click",()=>{
-track.scrollBy({left:-300,behavior:"smooth"});
+track.scrollBy({
+left:-cardWidth,
+behavior:"smooth"
+});
+
 });
 });
 

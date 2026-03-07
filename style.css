@@ -144,6 +144,78 @@ mask-composite:exclude;
 100%{background-position:0% 50%;}
 }
 
+
+
+
+/* ========================== */
+/* GOLD FLOATING PARTICLES */
+/* ========================== */
+
+.particles{
+
+position:absolute;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+
+}
+
+.particle{
+
+position:absolute;
+
+width:4px;
+height:4px;
+
+background:#d4af37;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:particleFloat linear infinite;
+
+}
+
+
+
+
+/* ========================== */
+/* ENTER TRANSITION LIGHT */
+/* ========================== */
+
+.enter-light{
+
+position:absolute;
+inset:0;
+
+background:radial-gradient(
+circle,
+rgba(212,175,55,0.6),
+transparent 60%
+);
+
+opacity:0;
+pointer-events:none;
+
+transform:scale(.5);
+
+transition:
+opacity 1s ease,
+transform 1.2s ease;
+
+}
+
+.section1.entering .enter-light{
+
+opacity:1;
+transform:scale(2.2);
+
+}
+
+
+
+
 /* TEXT */
 
 .invite-title{

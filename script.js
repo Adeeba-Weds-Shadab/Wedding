@@ -31,7 +31,13 @@ loader.style.display="none";
 
 enterBtn.addEventListener("click", function(){
 
+page1.classList.add("entering");
+
+setTimeout(function(){
+
 page1.classList.add("fade-out");
+
+},600);
 
 setTimeout(function(){
 
@@ -41,7 +47,7 @@ page2.classList.add("active");
 
 document.body.style.overflowY="auto";
 
-},900);
+},1300);
 
 });
 

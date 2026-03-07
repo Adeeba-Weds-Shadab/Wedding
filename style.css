@@ -9,9 +9,12 @@ height:100%;
 background:#0c0c0c;
 font-family:'Cinzel',serif;
 color:white;
-overflow:hidden;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
+body{
+scroll-snap-type:y mandatory;}
 
 /* LOADER */
 
@@ -69,6 +72,8 @@ align-items:center;
 padding:40px 20px;
 text-align:center;
 transition:opacity 1s ease;
+  
+scroll-snap-align:start;
 }
 
 /* PAGE 1 */
@@ -1086,10 +1091,6 @@ display:none;
 
 
 
-
-
-
-
 /* hide bottom slider buttons on desktop */
 
 @media (min-width: 769px) {
@@ -1106,4 +1107,30 @@ display:none !important;
 
 
 
+
+
+
+
+
+/* ============================= */
+/* CINEMATIC SCENE TRANSITIONS */
+/* ============================= */
+
+.section:not(.section1){
+
+transition:
+opacity .9s ease,
+transform .9s ease;
+
+opacity:.6;
+transform:scale(.97);
+
+}
+
+.section.show{
+
+opacity:1;
+transform:scale(1);
+
+}
 

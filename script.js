@@ -104,8 +104,8 @@ if(track){
 
 track.scrollLeft = track.scrollWidth / 3;
   
-const firstCard = track.querySelector(".glass-card");
-const cardWidth = firstCard.offsetWidth + 20;
+const card = track.querySelector(".glass-card");
+const cardWidth = card.offsetWidth + 20;
 
 nextBtn.forEach(btn=>{
 btn.addEventListener("click",()=>{

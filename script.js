@@ -97,8 +97,8 @@ observer.observe(el);
 /* PAGE 4 CARD SLIDER */
 
 const track = document.querySelector(".cards-track");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelectorAll(".next");
+const prevBtn = document.querySelectorAll(".prev");
 
 if(track){
 
@@ -107,17 +107,15 @@ track.scrollLeft = track.scrollWidth / 3;
 const card = track.querySelector(".glass-card");
 const cardWidth = card.offsetWidth + 20;
 
-nextBtn.addEventListener("click",()=>{
-track.scrollBy({
-left:cardWidth,
-behavior:"smooth"
+nextBtn.forEach(btn=>{
+btn.addEventListener("click",()=>{
+track.scrollBy({left:300,behavior:"smooth"});
 });
 });
 
-prevBtn.addEventListener("click",()=>{
-track.scrollBy({
-left:-cardWidth,
-behavior:"smooth"
+prevBtn.forEach(btn=>{
+btn.addEventListener("click",()=>{
+track.scrollBy({left:-300,behavior:"smooth"});
 });
 });
 

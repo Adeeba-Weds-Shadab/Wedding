@@ -1328,6 +1328,8 @@ align-items:center;
 
 gap:60px;
 
+position:relative;
+
 }
 
 /* heading */
@@ -1351,7 +1353,7 @@ left:7%;
 top:0px;
 
 width:2px;
-height:100;
+height:100%;
 
 background:linear-gradient(
 to bottom,
@@ -1363,7 +1365,8 @@ transform-origin:top;
 
 transform:scaleY(0);
 
-
+z-index:0;
+  
 }
 
 .timeline-content.show .timeline-line{
@@ -1396,7 +1399,9 @@ align-items:center;
 gap:20px;
 
 position:relative;
+z-index:2;
 
+  
 }
 
 /* gold dot */
@@ -1477,12 +1482,12 @@ margin-top:4px;
 
 @keyframes timelineGrow{
 
-from{
+0%{
 transform:scaleY(0);
 }
 
-to{
-transform:scale(1);
+100%{
+transform:scaleY(1);
 }
   
 

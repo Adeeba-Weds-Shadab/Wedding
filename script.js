@@ -166,6 +166,48 @@ track.addEventListener("scroll",updateFocus);
 updateFocus();
 
 
+
+
+
+
+/* TIMELINE PROGRESSION SYSTEM */
+
+const timelineSection = document.querySelector(".timeline-content");
+
+if(timelineSection){
+
+const dots = document.querySelectorAll(".timeline-dot");
+
+const timelineObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+let delay = 400;
+
+dots.forEach((dot,i)=>{
+
+setTimeout(()=>{
+
+dot.classList.add("active");
+
+}, delay * (i+1));
+
+});
+
+}
+
+});
+
+},{threshold:.6});
+
+timelineObserver.observe(timelineSection);
+
+}
+
+
+
   
   
   

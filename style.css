@@ -1964,7 +1964,7 @@ pointer-events:none;
 
 /* icon */
 
-.nasheed-icon{
+.music-icon{
 
 display:flex;
 align-items:center;
@@ -1981,7 +1981,7 @@ flex-shrink:0;
 
 .nasheed-btn:hover{
 
-width:140px;
+width:150px;
 
 justify-content:flex-start;
 
@@ -1991,7 +1991,7 @@ padding-left:10px;
 
 /* label */
 
-.nasheed-label{
+.music-text{
 
 font-family:'Playfair Display',serif;
 
@@ -2009,9 +2009,9 @@ transition:opacity .25s ease;
 
 /* show text */
 
-.nasheed-btn:hover .nasheed-label{
+.nasheed-btn:hover .music-text{
 
-opacity:.9;
+opacity:.1;
 
 }
 
@@ -2019,7 +2019,7 @@ opacity:.9;
 
 .nasheed-btn.playing{
 
-box-shadow:0 0 10px rgba(212,175,55,0.6);
+box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 }
 

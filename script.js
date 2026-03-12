@@ -227,24 +227,38 @@ timelineObserver.observe(timelineSection);
 
 
 
-/* NASHEED AUDIO */
+
+
+
+/* NASHEED AUDIO SYSTEM */
 
 const nasheed = document.getElementById("nasheedAudio");
 const toggle = document.getElementById("nasheedToggle");
 
 let playing = false;
 
-toggle.addEventListener("click", () => {
+toggle.addEventListener("click", function(){
 
 if(!playing){
 
-nasheed.volume = 0.35;
-nasheed.play();
+nasheed.volume = 0.25;
+
+nasheed.play()
+.then(()=>{
+
 toggle.classList.add("playing");
+
+})
+.catch(err=>{
+
+console.log("Audio error:", err);
+
+});
 
 }else{
 
 nasheed.pause();
+
 toggle.classList.remove("playing");
 
 }
@@ -252,6 +266,3 @@ toggle.classList.remove("playing");
 playing = !playing;
 
 });
-
-
-

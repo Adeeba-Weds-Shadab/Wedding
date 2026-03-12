@@ -212,3 +212,46 @@ timelineObserver.observe(timelineSection);
   
   
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NASHEED AUDIO */
+
+const nasheed = document.getElementById("nasheedAudio");
+const toggle = document.getElementById("nasheedToggle");
+
+let playing = false;
+
+toggle.addEventListener("click", () => {
+
+if(!playing){
+
+nasheed.volume = 0.35;
+nasheed.play();
+toggle.classList.add("playing");
+
+}else{
+
+nasheed.pause();
+toggle.classList.remove("playing");
+
+}
+
+playing = !playing;
+
+});
+
+
+

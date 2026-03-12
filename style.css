@@ -1921,7 +1921,7 @@ font-size:16px;
 
 
 
-/* NASHEED BUTTON */
+ /* NASHEED CONTROL BUTTON */
 
 .nasheed-btn{
 
@@ -1935,7 +1935,7 @@ width:36px;
 
 border-radius:40px;
 
-background:rgba(20,20,20,0.8);
+background:rgba(20,20,20,0.85);
 
 border:1px solid rgba(212,175,55,0.4);
 
@@ -1945,7 +1945,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 
-font-size:14px;
+font-size:16px;
 
 cursor:pointer;
 
@@ -1955,41 +1955,61 @@ transition:all .35s ease;
 
 z-index:999;
 
+/* hidden initially */
+
+opacity:0;
+pointer-events:none;
+
 }
 
-/* expanded state */
+/* icon */
+
+.nasheed-icon{
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:36px;
+height:36px;
+
+flex-shrink:0;
+
+}
+
+/* expanded */
 
 .nasheed-btn:hover{
 
-width:170px;
+width:140px;
 
 justify-content:flex-start;
 
-padding-left:12px;
+padding-left:10px;
 
 }
 
-/* text inside */
+/* label */
 
-.nasheed-btn::after{
-
-content:" Turn off nasheed";
+.nasheed-label{
 
 font-family:'Playfair Display',serif;
 
 font-size:13px;
 
-white-space:nowrap;
+margin-left:6px;
 
 opacity:0;
 
-margin-left:6px;
+white-space:nowrap;
 
 transition:opacity .25s ease;
 
 }
 
-.nasheed-btn:hover::after{
+/* show text */
+
+.nasheed-btn:hover .nasheed-label{
 
 opacity:.9;
 
@@ -2002,7 +2022,6 @@ opacity:.9;
 box-shadow:0 0 10px rgba(212,175,55,0.6);
 
 }
-
 
 
 

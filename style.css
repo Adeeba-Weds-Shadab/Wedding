@@ -1776,3 +1776,144 @@ font-size:18px;
 
 
 
+
+
+
+
+
+
+/* ========================================= */
+/* THANK YOU SECTION                         */
+/* Delete if section removed                 */
+/* ========================================= */
+
+.section-thankyou{
+
+background:#0c0c0c;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:140px 20px;
+
+text-align:center;
+
+}
+
+.thankyou-content{
+
+max-width:600px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+gap:40px;
+
+}
+
+.thankyou-heading{
+
+font-size:32px;
+
+letter-spacing:4px;
+
+color:#f5e6b3;
+
+}
+
+/* divider */
+
+.thankyou-divider{
+
+width:0;
+height:1px;
+
+background:linear-gradient(
+to right,
+transparent,
+#d4af37,
+transparent
+);
+
+transition:width 1.4s ease;
+
+}
+
+.thankyou-content.show .thankyou-divider{
+
+width:160px;
+
+}
+
+/* message */
+
+.thankyou-message{
+
+font-family:'Playfair Display',serif;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#d6d6d6;
+
+max-width:450px;
+
+}
+
+/* couple names */
+
+.thankyou-couple{
+
+font-size:26px;
+
+letter-spacing:3px;
+
+color:#d4af37;
+
+animation:coupleGlow 4s ease-in-out infinite;
+
+}
+
+/* glow animation */
+
+@keyframes coupleGlow{
+
+0%{
+text-shadow:0 0 4px rgba(212,175,55,0.3);
+}
+
+50%{
+text-shadow:0 0 14px rgba(212,175,55,0.9);
+}
+
+100%{
+text-shadow:0 0 4px rgba(212,175,55,0.3);
+}
+
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.thankyou-heading{
+font-size:26px;
+}
+
+.thankyou-message{
+font-size:16px;
+}
+
+}
+
+
+
+
+
+
+
+
+

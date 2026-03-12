@@ -259,31 +259,38 @@ const toggle = document.getElementById("nasheedToggle");
 
 let playing = false;
 
-toggle.addEventListener("click", function(){
+
+
+toggle.addEventListener("click", () => {
 
 if(!playing){
 
-nasheed.volume = 0.20;
+nasheed.volume = 0.18;
+nasheed.play();
 
-nasheed.play()
-.then(()=>{
+icon.textContent = "🔊";
 
 toggle.classList.add("playing");
-
-})
-.catch(err=>{
-
-console.log("Audio error:", err);
-
-});
 
 }else{
 
 nasheed.pause();
 
+icon.textContent = "🔇";
+
 toggle.classList.remove("playing");
 
 }
+
+playing = !playing;
+
+});
+
+
+
+
+
+
 
 playing = !playing;
 

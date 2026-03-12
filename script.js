@@ -241,7 +241,7 @@ toggle.addEventListener("click", function(){
 
 if(!playing){
 
-nasheed.volume = 0.25;
+nasheed.volume = 0.20;
 
 nasheed.play()
 .then(()=>{

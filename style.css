@@ -1916,7 +1916,12 @@ font-size:16px;
 
 
 
-/* NASHEED CONTROL */
+
+
+
+
+
+/* NASHEED BUTTON */
 
 .nasheed-btn{
 
@@ -1925,12 +1930,12 @@ position:fixed;
 bottom:18px;
 right:18px;
 
-width:36px;
 height:36px;
+width:36px;
 
-border-radius:50%;
+border-radius:40px;
 
-background:rgba(20,20,20,0.75);
+background:rgba(20,20,20,0.8);
 
 border:1px solid rgba(212,175,55,0.4);
 
@@ -1944,13 +1949,62 @@ font-size:14px;
 
 cursor:pointer;
 
-backdrop-filter:blur(8px);
+overflow:hidden;
+
+transition:all .35s ease;
 
 z-index:999;
 
 }
 
+/* expanded state */
+
+.nasheed-btn:hover{
+
+width:170px;
+
+justify-content:flex-start;
+
+padding-left:12px;
+
+}
+
+/* text inside */
+
+.nasheed-btn::after{
+
+content:" Turn off nasheed";
+
+font-family:'Playfair Display',serif;
+
+font-size:13px;
+
+white-space:nowrap;
+
+opacity:0;
+
+margin-left:6px;
+
+transition:opacity .25s ease;
+
+}
+
+.nasheed-btn:hover::after{
+
+opacity:.9;
+
+}
+
+/* glowing when playing */
+
 .nasheed-btn.playing{
+
+box-shadow:0 0 10px rgba(212,175,55,0.6);
+
+}
+
+
+
 
 box-shadow:0 0 10px rgba(212,175,55,0.6);
 

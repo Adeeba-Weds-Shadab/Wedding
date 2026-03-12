@@ -10,6 +10,18 @@ const enterBtn = document.getElementById("enterBtn");
 const card = document.getElementById("card");
 
 
+/* NASHEED SYSTEM */
+
+const nasheed = document.getElementById("nasheedAudio");
+const toggleBtn = document.getElementById("nasheedToggle");
+const icon = document.querySelector(".nasheed-icon");
+
+
+
+
+
+  
+
 /* LOADER */
 
 window.addEventListener("load", function(){
@@ -260,6 +272,7 @@ const toggle = document.getElementById("nasheedToggle");
 let playing = false;
 
 
+if(toggleBtn && nasheed){
 
 toggle.addEventListener("click", () => {
 
@@ -286,7 +299,7 @@ playing = !playing;
 
 });
 
-
+}
 
 
 

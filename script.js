@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
 
+/* ========================= */
+/* BASIC ELEMENTS */
+/* ========================= */
+
 const loader = document.getElementById("loader");
 
 const page1 = document.getElementById("page1");
@@ -9,29 +13,27 @@ const page3 = document.getElementById("page3");
 const enterBtn = document.getElementById("enterBtn");
 const card = document.getElementById("card");
 
-
-/* NASHEED SYSTEM */
+/* NASHEED */
 
 const nasheed = document.getElementById("nasheedAudio");
 const toggleBtn = document.getElementById("nasheedToggle");
 const icon = document.querySelector(".nasheed-icon");
 
+let playing = false;
 
 
-
-
-  
-
+/* ========================= */
 /* LOADER */
+/* ========================= */
 
 window.addEventListener("load", function(){
 
 setTimeout(function(){
 
-loader.style.opacity="0";
+loader.style.opacity = "0";
 
 setTimeout(function(){
-loader.style.display="none";
+loader.style.display = "none";
 },1000);
 
 },1500);
@@ -39,17 +41,13 @@ loader.style.display="none";
 });
 
 
+/* ========================= */
 /* ENTER BUTTON */
+/* ========================= */
 
 enterBtn.addEventListener("click", function(){
 
-page1.classList.add("entering");
-
-setTimeout(function(){
-
 page1.classList.add("fade-out");
-
-},600);
 
 setTimeout(function(){
 
@@ -57,36 +55,39 @@ page1.style.display="none";
 
 page2.classList.add("active");
 
+document.body.style.overflowY="auto";
 
-/* start nasheed automatically */
+/* START NASHEED */
 
-nasheed.volume = 0.20;
+if(nasheed){
+
+nasheed.volume = 0.18;
 
 nasheed.play().then(()=>{
 toggleBtn.classList.add("playing");
 }).catch(()=>{});
 
+}
 
-/* show nasheed control */
+/* SHOW CONTROL BUTTON */
 
-toggleBtn.style.opacity = "1";
-toggleBtn.style.pointerEvents = "auto";
-  
+if(toggleBtn){
 
+toggleBtn.style.opacity="1";
+toggleBtn.style.pointerEvents="auto";
 
+}
 
-
-
-
-  
-document.body.style.overflowY="auto";
-
-},1300);
+},900);
 
 });
 
 
+/* ========================= */
 /* CARD TILT */
+/* ========================= */
+
+if(card){
 
 card.addEventListener("mousemove", function(e){
 
@@ -106,10 +107,12 @@ card.style.transform="rotateY(0) rotateX(0)";
 
 });
 
-  
+}
 
-  
-/* GLOBAL CONTENT REVEAL SYSTEM */
+
+/* ========================= */
+/* GLOBAL CONTENT REVEAL */
+/* ========================= */
 
 const reveals = document.querySelectorAll(".reveal-content");
 
@@ -120,7 +123,7 @@ entry.target.classList.add("show");
 }
 });
 },{
-threshold:0.55
+threshold:0.25
 });
 
 reveals.forEach(el=>{
@@ -128,13 +131,9 @@ observer.observe(el);
 });
 
 
-
-
-
-
-
-
+/* ========================= */
 /* PAGE 4 CARD SLIDER */
+/* ========================= */
 
 const track = document.querySelector(".cards-track");
 const nextBtn = document.querySelectorAll(".next");
@@ -142,8 +141,6 @@ const prevBtn = document.querySelectorAll(".prev");
 
 if(track){
 
-track.scrollLeft = track.scrollWidth / 3;
-  
 const card = track.querySelector(".glass-card");
 const cardWidth = card.offsetWidth + 20;
 
@@ -152,7 +149,8 @@ btn.addEventListener("click",()=>{
 track.scrollBy({
 left:cardWidth,
 behavior:"smooth"
-});});
+});
+});
 });
 
 prevBtn.forEach(btn=>{
@@ -161,14 +159,15 @@ track.scrollBy({
 left:-cardWidth,
 behavior:"smooth"
 });
-
 });
 });
 
 }
 
 
-
+/* ========================= */
+/* CARD FOCUS SCALE */
+/* ========================= */
 
 const cards = document.querySelectorAll(".glass-card");
 
@@ -184,114 +183,53 @@ const cardCenter = rect.left + rect.width / 2;
 const distance = Math.abs(center - cardCenter);
 
 if(distance < rect.width/2){
+
 card.style.transform = "scale(1)";
 card.style.opacity = "1";
-}
-else{
+
+}else{
+
 card.style.transform = "scale(.85)";
 card.style.opacity = ".7";
+
 }
 
 });
 
 }
+
+if(track){
 
 track.addEventListener("scroll",updateFocus);
 updateFocus();
 
-
-
-
-
-
-/* TIMELINE PROGRESSION SYSTEM */
-
-const timelineSection = document.querySelector(".timeline-content");
-
-if(timelineSection){
-
-const dots = document.querySelectorAll(".timeline-dot");
-
-const timelineObserver = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-let delay = 400;
-
-dots.forEach((dot,i)=>{
-
-setTimeout(()=>{
-
-dot.classList.add("active");
-
-}, delay * (i+1));
-
-});
-
-}
-
-});
-
-},{threshold:.6});
-
-timelineObserver.observe(timelineSection);
-
 }
 
 
-
-  
-  
-  
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* NASHEED AUDIO SYSTEM */
-
-const nasheed = document.getElementById("nasheedAudio");
-const toggle = document.getElementById("nasheedToggle");
-
-let playing = false;
-
+/* ========================= */
+/* NASHEED TOGGLE */
+/* ========================= */
 
 if(toggleBtn && nasheed){
 
-toggle.addEventListener("click", () => {
+toggleBtn.addEventListener("click", function(){
 
 if(!playing){
 
 nasheed.volume = 0.18;
 nasheed.play();
 
-icon.textContent = "🔊";
+if(icon){ icon.textContent = "🔊"; }
 
-toggle.classList.add("playing");
+toggleBtn.classList.add("playing");
 
 }else{
 
 nasheed.pause();
 
-icon.textContent = "🔇";
+if(icon){ icon.textContent = "🔇"; }
 
-toggle.classList.remove("playing");
+toggleBtn.classList.remove("playing");
 
 }
 
@@ -301,14 +239,4 @@ playing = !playing;
 
 }
 
-
-
-
-
-playing = !playing;
-
-
 });
-
-
-}

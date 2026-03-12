@@ -949,6 +949,7 @@ margin:24px auto 70px auto;
 
 
 
+
 /* ============================= */
 /* PAGE 4 CARD CAROUSEL */
 /* ============================= */
@@ -1049,7 +1050,6 @@ will-change:transform;
 
 
 
-
 /* CARD TEXT SYSTEM */
 
 .card-title{
@@ -1111,9 +1111,6 @@ box-shadow:
 
 
 
-
-
-
 .cards-track .glass-card::before{
 
 content:"";
@@ -1137,9 +1134,6 @@ rgba(255,255,255,0.04);
 transform:skewX(-20deg);
 
 }
-
-
-
 
 
 
@@ -1195,6 +1189,62 @@ flex:0 0 80%;
 }
 
 }
+
+
+
+
+
+
+
+/* EVENT DETAILS SCROLL PROMPT */
+
+.details-scroll{
+
+margin-top:50px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+gap:8px;
+
+opacity:.7;
+
+}
+
+.details-scroll-text{
+
+font-family:'Playfair Display',serif;
+
+font-size:14px;
+
+color:#d4af37;
+
+letter-spacing:1px;
+
+}
+
+.details-scroll-arrow{
+
+font-size:18px;
+
+color:#d4af37;
+
+animation:detailsScrollPulse 2s infinite;
+
+}
+
+@keyframes detailsScrollPulse{
+
+0%{opacity:.3;}
+50%{opacity:1;}
+100%{opacity:.3;}
+
+}
+
+
+
+
 
 
 

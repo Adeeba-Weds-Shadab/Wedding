@@ -45,6 +45,20 @@ page1.style.display="none";
 
 page2.classList.add("active");
 
+
+/* start nasheed automatically */
+
+nasheed.volume = 0.20;
+
+nasheed.play().then(()=>{
+toggleBtn.classList.add("playing");
+}).catch(()=>{});
+
+
+
+  
+
+  
 document.body.style.overflowY="auto";
 
 },1300);

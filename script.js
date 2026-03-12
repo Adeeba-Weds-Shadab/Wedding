@@ -55,8 +55,16 @@ toggleBtn.classList.add("playing");
 }).catch(()=>{});
 
 
+/* show nasheed control */
 
+toggleBtn.style.opacity = "1";
+toggleBtn.style.pointerEvents = "auto";
   
+
+
+
+
+
 
   
 document.body.style.overflowY="auto";

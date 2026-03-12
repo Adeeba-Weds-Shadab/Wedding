@@ -307,9 +307,5 @@ playing = !playing;
 
 playing = !playing;
 
-});
-
 
 });
-
-

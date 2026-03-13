@@ -219,15 +219,11 @@ if(!playing){
 nasheed.volume = 0.18;
 nasheed.play();
 
-if(icon){ icon.textContent = "🔊"; }
-
 toggleBtn.classList.add("playing");
 
 }else{
 
 nasheed.pause();
-
-if(icon){ icon.textContent = "🔇"; }
 
 toggleBtn.classList.remove("playing");
 

@@ -2146,104 +2146,122 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
+
 /* ========================================= */
-/* GOLDEN VINE SYSTEM                        */
+/* MOBILE SAFE VINE SYSTEM                   */
 /* ========================================= */
 
-.gold-vine-system{
+#vineSystem{
 
 position:fixed;
 
 top:0;
 
-left:0;
+right:0;
 
-width:100%;
+width:80px;
 
 height:100%;
 
 pointer-events:none;
 
-z-index:2;
+z-index:3;
+
+opacity:0;
+
+transition:opacity .8s ease;
 
 }
 
-/* vines */
+/* activate after page1 */
 
-.vine{
-
-position:absolute;
-
-top:0;
-
-width:120px;
-
-height:3000px;
-
+body.vine-active #vineSystem{
+opacity:.9;
 }
 
-.vine-left{
-left:0;
+/* svg */
+
+#vineSVG{
+width:100%;
+height:100%;
 }
 
-.vine-right{
-right:0;
-}
+/* vine glow */
 
-/* vine stem */
+#vineMain,
+#vineBranch{
 
-.vine-path{
+filter:drop-shadow(0 0 5px rgba(212,175,55,.7));
 
-fill:none;
+stroke-dasharray:2600;
 
-stroke:#d4af37;
+stroke-dashoffset:2600;
 
-stroke-width:3;
-
-stroke-linecap:round;
-
-filter:drop-shadow(0 0 6px rgba(212,175,55,.7));
-
-animation:vineGlow 6s ease-in-out infinite;
+transition:stroke-dashoffset 1.2s ease;
 
 }
 
 /* flowers */
 
-.vine-flower{
+.vineFlower{
 
 fill:#d4af37;
 
-filter:drop-shadow(0 0 10px rgba(212,175,55,.9));
+filter:drop-shadow(0 0 6px rgba(212,175,55,.9));
 
-animation:flowerPulse 4s ease-in-out infinite;
+animation:flowerGlow 3s ease-in-out infinite;
 
-}
-
-/* glow animation */
-
-@keyframes vineGlow{
-
-0%{stroke:#caa42f}
-
-50%{stroke:#f6d97b}
-
-100%{stroke:#caa42f}
+pointer-events:auto;
 
 }
 
-/* flower animation */
+/* subtle glow animation */
 
-@keyframes flowerPulse{
+@keyframes flowerGlow{
 
 0%{transform:scale(1)}
 
-50%{transform:scale(1.3)}
+50%{transform:scale(1.2)}
 
 100%{transform:scale(1)}
 
 }
 
-/* ========================================= */
-/* END VINE SYSTEM                           */
+/* subtle sway */
+
+#vineSVG{
+animation:vineSway 10s ease-in-out infinite;
+}
+
+@keyframes vineSway{
+
+0%{transform:rotate(-0.8deg)}
+
+50%{transform:rotate(0.8deg)}
+
+100%{transform:rotate(-0.8deg)}
+
+}
+
+/* MOBILE OPTIMIZATION */
+
+@media(max-width:768px){
+
+#vineSystem{
+width:55px;
+opacity:.75;
+}
+
+/* reduce animation */
+
+#vineSVG{
+animation:none;
+}
+
+.vineFlower{
+animation:none;
+}
+
+}
+
 /* ========================================= */

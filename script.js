@@ -47,8 +47,15 @@ loader.style.display = "none";
 
 enterBtn.addEventListener("click", function(){
 
+page1.classList.add("entering");
+
+setTimeout(function(){
+
 page1.classList.add("fade-out");
 
+},300);
+
+  
 setTimeout(function(){
 
 page1.style.display="none";

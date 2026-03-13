@@ -208,6 +208,12 @@ transition:
 opacity .7s ease,
 transform 1s ease;
 
+
+
+filter: blur(20px);
+
+
+  
 }
 
 .section1.entering .enter-light{

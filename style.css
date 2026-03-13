@@ -2141,15 +2141,20 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
+
+
+
+
+
 /* ========================================= */
-/* GOLDEN VINE MODULE (REMOVABLE)            */
+/* GOLDEN VINE SYSTEM                        */
 /* ========================================= */
 
-.gold-vines{
+.gold-vine-system{
 
 position:fixed;
 
-top:100vh;
+top:0;
 
 left:0;
 
@@ -2159,19 +2164,19 @@ height:100%;
 
 pointer-events:none;
 
-z-index:0;
+z-index:2;
 
 }
 
 /* vines */
 
-.gold-vine{
+.vine{
 
 position:absolute;
 
 top:0;
 
-width:110px;
+width:120px;
 
 height:3000px;
 
@@ -2185,7 +2190,7 @@ left:0;
 right:0;
 }
 
-/* vine path */
+/* vine stem */
 
 .vine-path{
 
@@ -2197,9 +2202,7 @@ stroke-width:3;
 
 stroke-linecap:round;
 
-stroke-linejoin:round;
-
-filter:drop-shadow(0 0 6px rgba(212,175,55,0.7));
+filter:drop-shadow(0 0 6px rgba(212,175,55,.7));
 
 animation:vineGlow 6s ease-in-out infinite;
 
@@ -2211,7 +2214,7 @@ animation:vineGlow 6s ease-in-out infinite;
 
 fill:#d4af37;
 
-filter:drop-shadow(0 0 10px rgba(212,175,55,0.9));
+filter:drop-shadow(0 0 10px rgba(212,175,55,.9));
 
 animation:flowerPulse 4s ease-in-out infinite;
 
@@ -2229,7 +2232,7 @@ animation:flowerPulse 4s ease-in-out infinite;
 
 }
 
-/* flower breathing */
+/* flower animation */
 
 @keyframes flowerPulse{
 
@@ -2242,5 +2245,5 @@ animation:flowerPulse 4s ease-in-out infinite;
 }
 
 /* ========================================= */
-/* END GOLDEN VINE MODULE                    */
+/* END VINE SYSTEM                           */
 /* ========================================= */

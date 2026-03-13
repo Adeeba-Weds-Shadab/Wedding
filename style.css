@@ -602,39 +602,47 @@ max-width:520px;
 
 }
 
+
+
+
+
+
 /* COUPLE */
 
 .couple-names{
-
 display:flex;
 flex-direction:column;
-
 gap:8px;
-
 margin-top:10px;
-
 }
 
-.bride,
-.groom{
-
+.bride,.groom{
 font-size:34px;
-
 letter-spacing:3px;
-
 color:#f5e6b3;
-
 }
 
 .weds{
-
 font-size:16px;
-
 color:#d4af37;
-
 font-family:'Playfair Display',serif;
-
 }
+
+/* PARENTS & GRANDPARENTS */
+
+.parent,
+.grandparent{
+font-family:'Playfair Display',serif;
+font-size:14px;
+color:#bdbdbd;
+letter-spacing:.5px;
+text-transform:capitalize;
+}
+
+
+
+
+
 
 /* EVENT */
 
@@ -698,8 +706,9 @@ font-size:32px;
 
 }
   
-.parent{
-font-size:14px;
+.parent,
+.grandparent{
+font-size:13px;
   
 }
 

@@ -276,26 +276,41 @@ playing = !playing;
 
 
 
-/* ========================================= */
-/* GOLDEN VINE INTERACTION (REMOVE IF NEEDED)*/
-/* ========================================= */
 
-const vineFlowers = document.querySelectorAll(".vine-flower");
 
-vineFlowers.forEach(flower => {
 
-flower.addEventListener("click", () => {
 
-flower.classList.add("vine-sparkle");
 
-setTimeout(()=>{
-flower.classList.remove("vine-sparkle");
-},600);
+/* ===================================================== */
+/* PREMIUM VINE SCROLL GROWTH (REMOVABLE MODULE)        */
+/* Delete this whole block to remove vines              */
+/* ===================================================== */
+
+(function(){
+
+const stems = document.querySelectorAll(".lux-vine-stem");
+
+function updateVines(){
+
+const scroll = window.scrollY;
+const max = document.body.scrollHeight - window.innerHeight;
+
+const progress = scroll / max;
+
+stems.forEach(stem => {
+
+const length = 4200;
+stem.style.strokeDashoffset = length - (length * progress);
 
 });
 
-});
+}
 
-/* ========================================= */
-/* END GOLDEN VINE INTERACTION               */
-/* ========================================= */
+window.addEventListener("scroll", updateVines);
+updateVines();
+
+})();
+
+/* ===================================================== */
+/* END PREMIUM VINE SCROLL GROWTH                       */
+/* ===================================================== */

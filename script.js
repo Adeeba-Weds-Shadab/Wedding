@@ -243,3 +243,59 @@ playing = !playing;
 }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================= */
+/* GOLDEN VINE INTERACTION (REMOVE IF NEEDED)*/
+/* ========================================= */
+
+const vineFlowers = document.querySelectorAll(".vine-flower");
+
+vineFlowers.forEach(flower => {
+
+flower.addEventListener("click", () => {
+
+flower.classList.add("vine-sparkle");
+
+setTimeout(()=>{
+flower.classList.remove("vine-sparkle");
+},600);
+
+});
+
+});
+
+/* ========================================= */
+/* END GOLDEN VINE INTERACTION               */
+/* ========================================= */

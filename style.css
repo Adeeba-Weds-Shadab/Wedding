@@ -2079,3 +2079,117 @@ opacity:1;
 .nasheed-btn.playing{
 box-shadow:0 0 12px rgba(212,175,55,0.6);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================= */
+/* GOLDEN VINE SYSTEM (REMOVE IF NEEDED)     */
+/* ========================================= */
+
+.gold-vines-system{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:1;
+}
+
+.gold-vine-left,
+.gold-vine-right{
+position:absolute;
+top:0;
+width:120px;
+height:100%;
+}
+
+.gold-vine-left{
+left:0;
+}
+
+.gold-vine-right{
+right:0;
+}
+
+.vine-svg{
+width:100%;
+height:2000px;
+}
+
+.vine-path{
+fill:none;
+stroke:#d4af37;
+stroke-width:3;
+stroke-linecap:round;
+filter:drop-shadow(0 0 6px rgba(212,175,55,.7));
+animation:vineGlow 6s ease-in-out infinite;
+}
+
+@keyframes vineGlow{
+0%{stroke:#caa42f}
+50%{stroke:#f1d77a}
+100%{stroke:#caa42f}
+}
+
+.vine-flower{
+fill:#d4af37;
+filter:drop-shadow(0 0 6px rgba(212,175,55,.8));
+animation:flowerPulse 4s ease-in-out infinite;
+}
+
+@keyframes flowerPulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.25)}
+100%{transform:scale(1)}
+}
+
+/* ========================================= */
+/* END GOLDEN VINE SYSTEM                    */
+/* ========================================= */

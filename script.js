@@ -289,3 +289,26 @@ playing = !playing;
 
 
 
+/* ========================================= */
+/* FLOWER INTERACTION                        */
+/* ========================================= */
+
+document.querySelectorAll(".flower").forEach(flower=>{
+
+flower.addEventListener("click",()=>{
+
+flower.animate(
+[
+{transform:"scale(1)"},
+{transform:"scale(1.3) rotate(10deg)"},
+{transform:"scale(1)"}
+],
+{duration:500}
+
+);
+
+});
+
+});
+
+/* ========================================= */

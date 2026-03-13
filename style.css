@@ -628,6 +628,13 @@ color:#d4af37;
 font-family:'Playfair Display',serif;
 }
 
+
+.family-name{
+font-weight:600;
+color:#ffffff;
+}
+
+
 /* PARENTS & GRANDPARENTS */
 
 .parent,
@@ -635,7 +642,7 @@ font-family:'Playfair Display',serif;
 font-family:'Playfair Display',serif;
 font-size:15px;
 font-weight:500;
-color:#e2e2e2;
+color:#d6d6d6;
 letter-spacing:.6px;
 line-height:1.5;
 text-transform:capitalize;

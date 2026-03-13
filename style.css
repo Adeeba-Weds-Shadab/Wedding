@@ -633,9 +633,11 @@ font-family:'Playfair Display',serif;
 .parent,
 .grandparent{
 font-family:'Playfair Display',serif;
-font-size:14px;
-color:#bdbdbd;
-letter-spacing:.5px;
+font-size:15px;
+font-weight:500;
+color:#e2e2e2;
+letter-spacing:.6px;
+line-height:1.5;
 text-transform:capitalize;
 }
 

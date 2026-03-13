@@ -281,36 +281,48 @@ playing = !playing;
 
 
 
-/* ===================================================== */
-/* PREMIUM VINE SCROLL GROWTH (REMOVABLE MODULE)        */
-/* Delete this whole block to remove vines              */
-/* ===================================================== */
 
-(function(){
 
-const stems = document.querySelectorAll(".lux-vine-stem");
 
-function updateVines(){
 
-const scroll = window.scrollY;
-const max = document.body.scrollHeight - window.innerHeight;
 
-const progress = scroll / max;
 
-stems.forEach(stem => {
 
-const length = 4200;
-stem.style.strokeDashoffset = length - (length * progress);
+
+
+/* ========================================= */
+/* VINE SYSTEM                               */
+/* ========================================= */
+
+const vine = document.getElementById("vineMain");
+const branch = document.getElementById("vineBranch");
+
+/* show vine after entering invitation */
+
+enterBtn.addEventListener("click", () => {
+
+document.body.classList.add("vine-active");
+
+setTimeout(()=>{
+
+vine.style.strokeDashoffset="0";
+branch.style.strokeDashoffset="0";
+
+},500);
 
 });
 
-}
+/* grow while scrolling */
 
-window.addEventListener("scroll", updateVines);
-updateVines();
+window.addEventListener("scroll", ()=>{
 
-})();
+const scroll=window.scrollY;
+const max=document.body.scrollHeight-window.innerHeight;
 
-/* ===================================================== */
-/* END PREMIUM VINE SCROLL GROWTH                       */
-/* ===================================================== */
+const progress=scroll/max;
+
+const length=2600;
+
+vine.style.strokeDashoffset=length-(length*progress);
+
+});

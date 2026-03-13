@@ -2190,6 +2190,34 @@ animation:flowerPulse 4s ease-in-out infinite;
 100%{transform:scale(1)}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.vine-sparkle{
+animation:vineSparkle .6s ease;
+}
+
+@keyframes vineSparkle{
+0%{transform:scale(1)}
+50%{
+transform:scale(2);
+filter:drop-shadow(0 0 16px gold);
+}
+100%{transform:scale(1)}
+}
+
+
+
+
+
 /* ========================================= */
 /* END GOLDEN VINE SYSTEM                    */
 /* ========================================= */

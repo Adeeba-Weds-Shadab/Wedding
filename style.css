@@ -2128,96 +2128,88 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
-/* ========================================= */
-/* GOLDEN VINE SYSTEM (REMOVE IF NEEDED)     */
-/* ========================================= */
 
-.gold-vines-system{
-position:fixed;
-top:0;
+
+
+
+
+
+/* ===================================================== */
+/* PREMIUM GOLDEN VINES SYSTEM (REMOVABLE MODULE)        */
+/* Delete this whole block to remove vines               */
+/* ===================================================== */
+
+.lux-vines-module{
+position:absolute;
+top:100vh;
 left:0;
 width:100%;
-height:100%;
+height:5000px;
 pointer-events:none;
-z-index:1;
+z-index:0;
 }
 
-.gold-vine-left,
-.gold-vine-right{
+.lux-vine{
 position:absolute;
 top:0;
-width:120px;
+width:140px;
 height:100%;
 }
 
-.gold-vine-left{
-left:0;
-}
+.lux-vine.left{ left:0; }
+.lux-vine.right{ right:0; }
 
-.gold-vine-right{
-right:0;
-}
+/* STEM */
 
-.vine-svg{
-width:100%;
-height:2000px;
-}
-
-.vine-path{
+.lux-vine-stem{
 fill:none;
 stroke:#d4af37;
 stroke-width:3;
 stroke-linecap:round;
+
 filter:drop-shadow(0 0 6px rgba(212,175,55,.7));
-animation:vineGlow 6s ease-in-out infinite;
+
+stroke-dasharray:4200;
+stroke-dashoffset:4200;
+
+animation:vineGlow 6s ease-in-out infinite,
+vineSway 12s ease-in-out infinite;
 }
 
-@keyframes vineGlow{
-0%{stroke:#caa42f}
-50%{stroke:#f1d77a}
-100%{stroke:#caa42f}
-}
+/* FLOWERS */
 
-.vine-flower{
+.lux-flower circle{
 fill:#d4af37;
-filter:drop-shadow(0 0 6px rgba(212,175,55,.8));
+
+filter:drop-shadow(0 0 10px rgba(212,175,55,.9));
+
 animation:flowerPulse 4s ease-in-out infinite;
 }
 
+/* GLOW */
+
+@keyframes vineGlow{
+0%{stroke:#caa42f}
+50%{stroke:#f6d97b}
+100%{stroke:#caa42f}
+}
+
+/* FLOWER BREATH */
+
 @keyframes flowerPulse{
 0%{transform:scale(1)}
-50%{transform:scale(1.25)}
+50%{transform:scale(1.35)}
 100%{transform:scale(1)}
 }
 
+/* VERY SUBTLE SWAY */
 
-
-
-
-
-
-
-
-
-
-
-.vine-sparkle{
-animation:vineSparkle .6s ease;
+@keyframes vineSway{
+0%{transform:translateX(0px)}
+50%{transform:translateX(4px)}
+100%{transform:translateX(0px)}
 }
 
-@keyframes vineSparkle{
-0%{transform:scale(1)}
-50%{
-transform:scale(2);
-filter:drop-shadow(0 0 16px gold);
-}
-100%{transform:scale(1)}
-}
-
-
-
-
-
-/* ========================================= */
-/* END GOLDEN VINE SYSTEM                    */
-/* ========================================= */
+/* ===================================================== */
+/* END PREMIUM GOLDEN VINES SYSTEM                      */
+/* ===================================================== */

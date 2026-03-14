@@ -119,15 +119,6 @@ box-shadow:
 0 60px 120px rgba(0,0,0,0.8),
 0 0 60px rgba(212,175,55,0.08);
 
-
-
-
-
-.invite-box{
-z-index:3;
-position:relative;}
-
-
   
 }
 
@@ -2134,87 +2125,126 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
-/* ================================= */
-/* LUXURY ORNAMENT FRAME MODULE      */
-/* ================================= */
 
-.lux-frame{
+/* ===================================== */
+/* PREMIUM WEDDING FRAME MODULE          */
+/* ===================================== */
+
+.premium-frame{
+
 position:fixed;
 inset:0;
+
 pointer-events:none;
+
 z-index:1;
+
 }
 
-/* THIN GOLD FRAME */
+/* THIN GOLD BORDER */
 
-.lux-frame::before{
-content:"";
+.frame-border{
+
 position:absolute;
-inset:30px;
 
-border:1.5px solid rgba(212,175,55,.6);
-border-radius:2px;
+inset:32px;
+
+border:1.2px solid transparent;
+
+border-image:linear-gradient(
+135deg,
+#f6e3a1,
+#d4af37,
+#9c7c20
+) 1;
+
 }
 
-/* CORNER ORNAMENTS */
+/* ORNAMENT POSITION */
 
-.lux-corner{
+.frame-ornament{
+
 position:absolute;
-width:160px;
-height:160px;
+
+width:150px;
+height:150px;
+
+opacity:.9;
+
 }
 
-.lux-top-right{
-top:18px;
-right:18px;
+/* TOP RIGHT ORNAMENT */
+
+.frame-top-right{
+
+top:16px;
+right:16px;
+
 }
 
-.lux-bottom-left{
-bottom:18px;
-left:18px;
+/* BOTTOM LEFT ORNAMENT */
+
+.frame-bottom-left{
+
+bottom:16px;
+left:16px;
+
 }
 
-/* ORNAMENT LINES */
+/* VINE LINE */
 
-.lux-line{
+.ornament-line{
+
 fill:none;
-stroke:#d4af37;
-stroke-width:1.8;
+
+stroke:url(#goldGradient);
+
+stroke-width:1.6;
+
 stroke-linecap:round;
+
 stroke-linejoin:round;
 
 stroke-dasharray:500;
 stroke-dashoffset:500;
 
-animation:luxDraw 2.2s ease forwards;
+animation:ornamentDraw 2.2s ease forwards;
+
 }
 
-/* SMALL BUD DETAILS */
+/* SMALL BUDS */
 
-.lux-bud{
+.ornament-bud{
+
 fill:#d4af37;
-opacity:.85;
+
+opacity:.9;
+
 }
 
 /* DRAW ANIMATION */
 
-@keyframes luxDraw{
+@keyframes ornamentDraw{
+
 to{
 stroke-dashoffset:0;
 }
+
 }
 
-/* MOBILE ADJUSTMENT */
+/* MOBILE OPTIMIZATION */
 
 @media(max-width:768px){
 
-.lux-frame::before{
-inset:14px;
+.frame-border{
+inset:16px;
 }
 
-.lux-corner{
-width:110px;
-height:110px;
+.frame-ornament{
+
+width:95px;
+height:95px;
+
 }
 
 }

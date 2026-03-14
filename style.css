@@ -2114,146 +2114,101 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
-/* ================================= */
-/* PREMIUM WEDDING FRAME MODULE      */
-/* ================================= */
 
-.premium-frame{
+
+
+/* ========================================= */
+/* PREMIUM ARABESQUE FRAME MODULE            */
+/* ========================================= */
+
+.arabesque-frame{
 position:fixed;
 inset:0;
 pointer-events:none;
 z-index:1;
 }
 
-/* FRAME LINES */
+/* geometric border */
 
-.frame-lines::before,
-.frame-lines::after{
-content:"";
+.arabesque-border{
 position:absolute;
-border:1.2px solid transparent;
-border-image:linear-gradient(
-135deg,
-#f7e7b0,
-#d4af37,
-#8c6b1a
-) 1;
+inset:36px;
+border:1.3px solid transparent;
+border-image:linear-gradient(135deg,#f7e7b0,#d4af37,#8c6b1a) 1;
+border-radius:2px;
 }
 
-.frame-lines::before{
-top:40px;
-left:40px;
-right:40px;
-height:0;
-}
+/* ornament base */
 
-.frame-lines::after{
-bottom:40px;
-left:40px;
-right:40px;
-height:0;
-}
-
-/* SIDE LINES */
-
-.premium-frame::before,
-.premium-frame::after{
-content:"";
+.arabesque-ornament{
 position:absolute;
-border:1.2px solid transparent;
-border-image:linear-gradient(
-135deg,
-#f7e7b0,
-#d4af37,
-#8c6b1a
-) 1;
+width:160px;
+height:160px;
+opacity:.95;
 }
 
-.premium-frame::before{
-left:40px;
-top:40px;
-bottom:40px;
-width:0;
+/* positions */
+
+.arabesque-top{
+top:18px;
+right:18px;
 }
 
-.premium-frame::after{
-right:40px;
-top:40px;
-bottom:40px;
-width:0;
+.arabesque-bottom{
+bottom:18px;
+left:18px;
 }
 
-/* ORNAMENTS */
+/* vine lines */
 
-.frame-ornament{
-position:absolute;
-width:150px;
-height:150px;
+.arabesque-vine{
+fill:none;
+stroke:url(#goldGrad);
+stroke-width:2;
+stroke-linecap:round;
+stroke-linejoin:round;
+
+stroke-dasharray:400;
+stroke-dashoffset:400;
+
+animation:arabesqueDraw 2s ease forwards;
+}
+
+/* leaves */
+
+.arabesque-leaf{
+fill:url(#goldGrad);
 opacity:.9;
 }
 
-.top-right{
-top:15px;
-right:15px;
-}
+/* decorative bud */
 
-.bottom-left{
-bottom:15px;
-left:15px;
-}
-
-/* ORNAMENT VINE */
-
-.ornament-vine{
-fill:none;
-stroke:#d4af37;
-stroke-width:1.8;
-stroke-linecap:round;
-stroke-linejoin:round;
-stroke-dasharray:400;
-stroke-dashoffset:400;
-animation:ornamentDraw 2s ease forwards;
-}
-
-/* FLOWER BUDS */
-
-.ornament-bud{
+.arabesque-bud{
 fill:#d4af37;
 }
 
-/* DRAW ANIMATION */
+/* draw animation */
 
-@keyframes ornamentDraw{
+@keyframes arabesqueDraw{
 to{
 stroke-dashoffset:0;
 }
 }
 
-/* MOBILE ADJUSTMENT */
+/* mobile adjustment */
 
 @media(max-width:768px){
 
-.frame-lines::before,
-.frame-lines::after{
-left:16px;
-right:16px;
+.arabesque-border{
+inset:16px;
 }
 
-.premium-frame::before{
-left:16px;
-}
-
-.premium-frame::after{
-right:16px;
-}
-
-.frame-ornament{
-width:90px;
-height:90px;
+.arabesque-ornament{
+width:95px;
+height:95px;
 }
 
 }
-
 
 
 

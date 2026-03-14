@@ -2079,3 +2079,149 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================= */
+/* ORNAMENTAL FRAME SYSTEM   */
+/* ========================= */
+
+.ornamental-frame{
+
+position:absolute;
+inset:0;
+
+pointer-events:none;
+
+z-index:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.ornamental-svg{
+
+width:92%;
+height:88%;
+
+}
+
+/* FRAME LINES */
+
+.frame-line{
+
+stroke:#d4af37;
+stroke-width:1.6;
+fill:none;
+
+stroke-dasharray:1200;
+stroke-dashoffset:1200;
+
+animation:frameDraw 2s ease forwards;
+
+}
+
+/* FLORAL ELEMENTS */
+
+.floral-line{
+
+stroke:#d4af37;
+stroke-width:1.2;
+fill:none;
+
+opacity:0;
+
+animation:floralFade 2.2s ease forwards;
+
+}
+
+.floral-bud{
+
+fill:#d4af37;
+
+opacity:0;
+
+animation:floralFade 2.2s ease forwards;
+
+}
+
+/* FLORAL POSITIONS */
+
+.floral-top{
+
+transform:translate(820px,0px);
+
+}
+
+.floral-bottom{
+
+transform:translate(0px,460px) rotate(180deg);
+
+}
+
+/* ANIMATIONS */
+
+@keyframes frameDraw{
+
+to{
+stroke-dashoffset:0;
+}
+
+}
+
+@keyframes floralFade{
+
+0%{opacity:0;}
+100%{opacity:1;}
+
+}
+
+/* MOBILE ADJUSTMENTS */
+
+@media(max-width:768px){
+
+.ornamental-svg{
+
+width:95%;
+height:85%;
+
+}
+
+.frame-line{
+
+stroke-width:1.2;
+
+}
+
+}

@@ -118,6 +118,14 @@ transition:transform .15s ease;
 box-shadow:
 0 60px 120px rgba(0,0,0,0.8),
 0 0 60px rgba(212,175,55,0.08);
+
+
+
+
+
+
+z-index:2;
+  
 }
 
 .invite-box::before{

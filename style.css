@@ -2119,117 +2119,96 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
-/* ========================= */
-/* ORNAMENTAL FRAME SYSTEM   */
-/* ========================= */
 
-.ornamental-frame{
 
-position:absolute;
+
+
+
+
+
+
+
+/* ================================= */
+/* LUXURY ORNAMENT FRAME MODULE      */
+/* ================================= */
+
+.lux-frame{
+position:fixed;
 inset:0;
-
 pointer-events:none;
-
-z-index:0;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
+z-index:1;
 }
 
-.ornamental-svg{
+/* THIN GOLD FRAME */
 
-width:92%;
-height:88%;
+.lux-frame::before{
+content:"";
+position:absolute;
+inset:30px;
 
+border:1.5px solid rgba(212,175,55,.6);
+border-radius:2px;
 }
 
-/* FRAME LINES */
+/* CORNER ORNAMENTS */
 
-.frame-line{
+.lux-corner{
+position:absolute;
+width:160px;
+height:160px;
+}
 
-stroke:#d4af37;
-stroke-width:1.6;
+.lux-top-right{
+top:18px;
+right:18px;
+}
+
+.lux-bottom-left{
+bottom:18px;
+left:18px;
+}
+
+/* ORNAMENT LINES */
+
+.lux-line{
 fill:none;
-
-stroke-dasharray:1200;
-stroke-dashoffset:1200;
-
-animation:frameDraw 2s ease forwards;
-
-}
-
-/* FLORAL ELEMENTS */
-
-.floral-line{
-
 stroke:#d4af37;
-stroke-width:1.2;
-fill:none;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
 
-opacity:0;
+stroke-dasharray:500;
+stroke-dashoffset:500;
 
-animation:floralFade 2.2s ease forwards;
-
+animation:luxDraw 2.2s ease forwards;
 }
 
-.floral-bud{
+/* SMALL BUD DETAILS */
 
+.lux-bud{
 fill:#d4af37;
-
-opacity:0;
-
-animation:floralFade 2.2s ease forwards;
-
+opacity:.85;
 }
 
-/* FLORAL POSITIONS */
+/* DRAW ANIMATION */
 
-.floral-top{
-
-transform:translate(820px,0px);
-
-}
-
-.floral-bottom{
-
-transform:translate(0px,460px) rotate(180deg);
-
-}
-
-/* ANIMATIONS */
-
-@keyframes frameDraw{
-
+@keyframes luxDraw{
 to{
 stroke-dashoffset:0;
 }
-
 }
 
-@keyframes floralFade{
-
-0%{opacity:0;}
-100%{opacity:1;}
-
-}
-
-/* MOBILE ADJUSTMENTS */
+/* MOBILE ADJUSTMENT */
 
 @media(max-width:768px){
 
-.ornamental-svg{
-
-width:95%;
-height:85%;
-
+.lux-frame::before{
+inset:14px;
 }
 
-.frame-line{
-
-stroke-width:1.2;
-
+.lux-corner{
+width:110px;
+height:110px;
 }
 
 }

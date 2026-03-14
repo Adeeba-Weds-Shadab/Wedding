@@ -123,10 +123,16 @@ box-shadow:
 
 
 
+.invite-box{
+z-index:3;
+position:relative;}
 
-z-index:2;
+
   
 }
+
+
+
 
 .invite-box::before{
 content:"";

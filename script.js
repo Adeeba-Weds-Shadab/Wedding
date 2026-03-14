@@ -17,7 +17,7 @@ const card = document.getElementById("card");
 
 const nasheed = document.getElementById("nasheedAudio");
 const toggleBtn = document.getElementById("nasheedToggle");
-const icon = document.querySelector(".nasheed-icon");
+const icon = document.querySelector(".music-icon");
 
 let playing = false;
 

@@ -2090,3 +2090,171 @@ box-shadow:0 0 12px rgba(212,175,55,0.6);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================= */
+/* PREMIUM WEDDING FRAME MODULE      */
+/* ================================= */
+
+.premium-frame{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:1;
+}
+
+/* FRAME LINES */
+
+.frame-lines::before,
+.frame-lines::after{
+content:"";
+position:absolute;
+border:1.2px solid transparent;
+border-image:linear-gradient(
+135deg,
+#f7e7b0,
+#d4af37,
+#8c6b1a
+) 1;
+}
+
+.frame-lines::before{
+top:40px;
+left:40px;
+right:40px;
+height:0;
+}
+
+.frame-lines::after{
+bottom:40px;
+left:40px;
+right:40px;
+height:0;
+}
+
+/* SIDE LINES */
+
+.premium-frame::before,
+.premium-frame::after{
+content:"";
+position:absolute;
+border:1.2px solid transparent;
+border-image:linear-gradient(
+135deg,
+#f7e7b0,
+#d4af37,
+#8c6b1a
+) 1;
+}
+
+.premium-frame::before{
+left:40px;
+top:40px;
+bottom:40px;
+width:0;
+}
+
+.premium-frame::after{
+right:40px;
+top:40px;
+bottom:40px;
+width:0;
+}
+
+/* ORNAMENTS */
+
+.frame-ornament{
+position:absolute;
+width:150px;
+height:150px;
+opacity:.9;
+}
+
+.top-right{
+top:15px;
+right:15px;
+}
+
+.bottom-left{
+bottom:15px;
+left:15px;
+}
+
+/* ORNAMENT VINE */
+
+.ornament-vine{
+fill:none;
+stroke:#d4af37;
+stroke-width:1.8;
+stroke-linecap:round;
+stroke-linejoin:round;
+stroke-dasharray:400;
+stroke-dashoffset:400;
+animation:ornamentDraw 2s ease forwards;
+}
+
+/* FLOWER BUDS */
+
+.ornament-bud{
+fill:#d4af37;
+}
+
+/* DRAW ANIMATION */
+
+@keyframes ornamentDraw{
+to{
+stroke-dashoffset:0;
+}
+}
+
+/* MOBILE ADJUSTMENT */
+
+@media(max-width:768px){
+
+.frame-lines::before,
+.frame-lines::after{
+left:16px;
+right:16px;
+}
+
+.premium-frame::before{
+left:16px;
+}
+
+.premium-frame::after{
+right:16px;
+}
+
+.frame-ornament{
+width:90px;
+height:90px;
+}
+
+}
+
+
+
+
+
